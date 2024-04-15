@@ -4,7 +4,7 @@ import java.util.List;
 
 
 // Interface for Data Access Object and CRUD operations
-public interface ApplicationDAO {
+public interface UserDAO {
 
     /**
      * Adds a new user to the database.
