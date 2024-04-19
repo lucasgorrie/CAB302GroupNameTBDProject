@@ -1,16 +1,17 @@
-package com.example.cab302groupnametbdproject.model;
+package com.example.cab302groupnametbdproject.model.users;
+
+import com.example.cab302groupnametbdproject.model.SqliteConnection;
 
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.List;
 
 // Handles DAO and CRUD
-public class SqliteAssociatedWebsiteDAO implements AssociatedWebsiteDAO {
-
+public class SqliteUserDAO implements UserDAO {
     private Connection connection;
 
     // Constructor
-    public SqliteAssociatedWebsiteDAO(){
+    public SqliteUserDAO(){
         connection = SqliteConnection.getInstance();
         createTable();
 
@@ -22,9 +23,12 @@ public class SqliteAssociatedWebsiteDAO implements AssociatedWebsiteDAO {
         // Create the users table, if it doesn't already exist
         try {
             Statement statement = connection.createStatement();
-            String query = "CREATE TABLE IF NOT EXISTS websites ("
+            String query = "CREATE TABLE IF NOT EXISTS users ("
                     + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-                    + "URL VARCHAR NOT NULL"
+                    + "firstName VARCHAR NOT NULL,"
+                    + "lastName VARCHAR NOT NULL,"
+                    + "email VARCHAR NOT NULL,"
+                    + "password VARCHAR NOT NULL"
                     + ")";
             statement.execute(query);
         } catch (Exception e) {
@@ -42,10 +46,10 @@ public class SqliteAssociatedWebsiteDAO implements AssociatedWebsiteDAO {
 
             // Insert testing data
             Statement insertStatement = connection.createStatement();
-            String insertQuery = "INSERT INTO websites (URL) VALUES "
-                    + "('gmail.com'),"
-                    + "('qut.edu.au.hiq.com'),"
-                    + "('my.gov')";
+            String insertQuery = "INSERT INTO users (firstName, lastName, email, password) VALUES "
+                    + "('Lucas', 'Gorrie', '123@example.com', 'PasswordPlainText1!'),"
+                    + "('Alyx', 'Vance', 'avance@example.com', 'PasswordTest2@'),"
+                    + "('Cave', 'Johnson', 'cave@aperturescience.com', 'PassPassPass3#')";
             insertStatement.execute(insertQuery);
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,22 +57,27 @@ public class SqliteAssociatedWebsiteDAO implements AssociatedWebsiteDAO {
     }
 
     @Override
-    public void addWebsite(Website website) {
+    public void addUser(User user) {
 
     }
 
     @Override
-    public void deleteUser(Website website) {
+    public void updateUser(User user) {
 
     }
 
     @Override
-    public Website getWebsite(int id) {
+    public void deleteUser(User user) {
+
+    }
+
+    @Override
+    public User getUser(int id) {
         return null;
     }
 
     @Override
-    public List<Website> getAllWebsites() {
+    public List<User> getAllUsers() {
         return null;
     }
 }

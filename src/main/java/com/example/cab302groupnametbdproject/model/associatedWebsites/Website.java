@@ -1,4 +1,4 @@
-package com.example.cab302groupnametbdproject.model;
+package com.example.cab302groupnametbdproject.model.associatedWebsites;
 
 public class Website {
     private int id;

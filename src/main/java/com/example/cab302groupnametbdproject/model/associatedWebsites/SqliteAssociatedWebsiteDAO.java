@@ -1,15 +1,18 @@
-package com.example.cab302groupnametbdproject.model;
+package com.example.cab302groupnametbdproject.model.associatedWebsites;
+
+import com.example.cab302groupnametbdproject.model.SqliteConnection;
 
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.List;
 
 // Handles DAO and CRUD
-public class SqliteUserDAO implements UserDAO {
+public class SqliteAssociatedWebsiteDAO implements AssociatedWebsiteDAO {
+
     private Connection connection;
 
     // Constructor
-    public SqliteUserDAO(){
+    public SqliteAssociatedWebsiteDAO(){
         connection = SqliteConnection.getInstance();
         createTable();
 
@@ -21,12 +24,9 @@ public class SqliteUserDAO implements UserDAO {
         // Create the users table, if it doesn't already exist
         try {
             Statement statement = connection.createStatement();
-            String query = "CREATE TABLE IF NOT EXISTS users ("
+            String query = "CREATE TABLE IF NOT EXISTS websites ("
                     + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
-                    + "firstName VARCHAR NOT NULL,"
-                    + "lastName VARCHAR NOT NULL,"
-                    + "email VARCHAR NOT NULL,"
-                    + "password VARCHAR NOT NULL"
+                    + "URL VARCHAR NOT NULL"
                     + ")";
             statement.execute(query);
         } catch (Exception e) {
@@ -39,15 +39,15 @@ public class SqliteUserDAO implements UserDAO {
         try {
             // Clear deployed DB before inserting
             Statement clearStatement = connection.createStatement();
-            String clearQuery = "DELETE FROM users";
+            String clearQuery = "DELETE FROM websites";
             clearStatement.execute(clearQuery);
 
             // Insert testing data
             Statement insertStatement = connection.createStatement();
-            String insertQuery = "INSERT INTO users (firstName, lastName, email, password) VALUES "
-                    + "('Lucas', 'Gorrie', '123@example.com', 'PasswordPlainText1!'),"
-                    + "('Alyx', 'Vance', 'avance@example.com', 'PasswordTest2@'),"
-                    + "('Cave', 'Johnson', 'cave@aperturescience.com', 'PassPassPass3#')";
+            String insertQuery = "INSERT INTO websites (URL) VALUES "
+                    + "('gmail.com'),"
+                    + "('qut.edu.au.hiq.com'),"
+                    + "('my.gov')";
             insertStatement.execute(insertQuery);
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,27 +55,22 @@ public class SqliteUserDAO implements UserDAO {
     }
 
     @Override
-    public void addUser(User user) {
+    public void addWebsite(Website website) {
 
     }
 
     @Override
-    public void updateUser(User user) {
+    public void deleteUser(Website website) {
 
     }
 
     @Override
-    public void deleteUser(User user) {
-
-    }
-
-    @Override
-    public User getUser(int id) {
+    public Website getWebsite(int id) {
         return null;
     }
 
     @Override
-    public List<User> getAllUsers() {
+    public List<Website> getAllWebsites() {
         return null;
     }
 }
