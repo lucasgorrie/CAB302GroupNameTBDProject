@@ -22,14 +22,14 @@ public interface UserDAO {
      * Deletes a user from the database.
      * @param user The user to delete.
      */
-    public void deleteContact(User user);
+    public void deleteUser(User user);
 
     /**
      * Retrieves a user from the database.
      * @param id The id of the user to retrieve.
      * @return The user with the given id, or null if not found.
      */
-    public User getContact(int id);
+    public User getUser(int id);
 
     /**
      * Retrieves all users from the database.

@@ -25,7 +25,8 @@ public class SqliteUserDAO implements UserDAO {
                     + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + "firstName VARCHAR NOT NULL,"
                     + "lastName VARCHAR NOT NULL,"
-                    + "email VARCHAR NOT NULL"
+                    + "email VARCHAR NOT NULL,"
+                    + "password VARCHAR NOT NULL"
                     + ")";
             statement.execute(query);
         } catch (Exception e) {
@@ -43,10 +44,10 @@ public class SqliteUserDAO implements UserDAO {
 
             // Insert testing data
             Statement insertStatement = connection.createStatement();
-            String insertQuery = "INSERT INTO users (firstName, lastName, email) VALUES "
-                    + "('Lucas', 'Gorrie', '123@example.com'),"
-                    + "('Alyx', 'Vance', 'avance@example.com'),"
-                    + "('Cave', 'Johnson', 'cave@aperturescience.com')";
+            String insertQuery = "INSERT INTO users (firstName, lastName, email, password) VALUES "
+                    + "('Lucas', 'Gorrie', '123@example.com', 'PasswordPlainText1!'),"
+                    + "('Alyx', 'Vance', 'avance@example.com', 'PasswordTest2@'),"
+                    + "('Cave', 'Johnson', 'cave@aperturescience.com', 'PassPassPass3#')";
             insertStatement.execute(insertQuery);
         } catch (Exception e) {
             e.printStackTrace();
@@ -64,12 +65,12 @@ public class SqliteUserDAO implements UserDAO {
     }
 
     @Override
-    public void deleteContact(User user) {
+    public void deleteUser(User user) {
 
     }
 
     @Override
-    public User getContact(int id) {
+    public User getUser(int id) {
         return null;
     }
 
