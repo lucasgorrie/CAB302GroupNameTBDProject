@@ -1,5 +1,7 @@
 package com.example.cab302groupnametbdproject;
 
+import com.example.cab302groupnametbdproject.model.AssociatedWebsiteDAO;
+import com.example.cab302groupnametbdproject.model.SqliteAssociatedWebsiteDAO;
 import com.example.cab302groupnametbdproject.model.SqliteUserDAO;
 import com.example.cab302groupnametbdproject.model.UserDAO;
 import javafx.fxml.FXML;
@@ -17,8 +19,10 @@ public class HelloController {
 
     // Constructor
     private UserDAO userDAO;
+    private AssociatedWebsiteDAO AssociatedWebsiteDAO;
     public HelloController(){
         userDAO = new SqliteUserDAO();
+        AssociatedWebsiteDAO = new SqliteAssociatedWebsiteDAO();
     }
 
 }
