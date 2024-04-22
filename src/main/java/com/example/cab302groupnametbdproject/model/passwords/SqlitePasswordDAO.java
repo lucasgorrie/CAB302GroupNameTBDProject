@@ -48,8 +48,8 @@ public class SqlitePasswordDAO implements PasswordDAO {
             // Insert testing data
             Statement insertStatement = connection.createStatement();
             String insertQuery = "INSERT INTO passwords (user_id, website_id, password, key) VALUES "
-                    + "(0, 0, 'Pass1!', '00100110'),"
-                    + "(1, 0, 'Pass2@', '10111000'),"
+                    + "(1, 3, 'Pass1!', '00100110'),"
+                    + "(3, 3, 'Pass2@', '10111000'),"
                     + "(2, 1, 'Pass3#', '11111000')";
             insertStatement.execute(insertQuery);
         } catch (Exception e) {
