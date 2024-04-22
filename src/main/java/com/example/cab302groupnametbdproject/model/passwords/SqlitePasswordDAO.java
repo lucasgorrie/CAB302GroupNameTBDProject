@@ -11,15 +11,15 @@ public class SqlitePasswordDAO implements PasswordDAO {
 
     // Constructor
     public SqlitePasswordDAO(){
-        connection = SqliteConnection.getInstance();
-        createTable();
+        connection = SqliteConnection.getInstance(); // Establish connection with DB
+        createTable(); // Create table if it does not exist
 
         // Insert data for testing
         insertTestingData();
     }
 
     private void createTable() {
-        // Create the users table, if it doesn't already exist
+        // Create the passwords table, if it doesn't already exist
         try {
             Statement statement = connection.createStatement();
             String query = "CREATE TABLE IF NOT EXISTS passwords("
@@ -57,21 +57,25 @@ public class SqlitePasswordDAO implements PasswordDAO {
         }
     }
 
+    // Needs finishing, not started
     @Override
     public void addPassword(Password password) {
 
     }
 
+    // Needs finishing, not started
     @Override
     public void updatePassword(Password password) {
 
     }
 
+    // Needs finishing, not started
     @Override
     public void deletePassword(Password password) {
 
     }
 
+    // Needs finishing, not started
     @Override
     public Password getPassword(int id) {
         return null;

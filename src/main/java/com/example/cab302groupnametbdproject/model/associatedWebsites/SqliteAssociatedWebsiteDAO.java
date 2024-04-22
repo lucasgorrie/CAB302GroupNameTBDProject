@@ -13,15 +13,15 @@ public class SqliteAssociatedWebsiteDAO implements AssociatedWebsiteDAO {
 
     // Constructor
     public SqliteAssociatedWebsiteDAO(){
-        connection = SqliteConnection.getInstance();
-        createTable();
+        connection = SqliteConnection.getInstance(); // Establish connection with DB
+        createTable(); // Create table if it does not exist
 
         // Insert data for testing
         insertTestingData();
     }
 
     private void createTable() {
-        // Create the users table, if it doesn't already exist
+        // Create the websites table, if it doesn't already exist
         try {
             Statement statement = connection.createStatement();
             String query = "CREATE TABLE IF NOT EXISTS websites ("
@@ -54,23 +54,28 @@ public class SqliteAssociatedWebsiteDAO implements AssociatedWebsiteDAO {
         }
     }
 
+    // Needs finishing, not started
     @Override
     public void addWebsite(Website website) {
 
     }
 
+    // Needs finishing, not started
     @Override
     public void deleteUser(Website website) {
 
     }
 
+    // Needs finishing, not started
     @Override
     public Website getWebsite(int id) {
         return null;
     }
 
+    // Needs finishing, not started
     @Override
     public List<Website> getAllWebsites() {
         return null;
     }
+
 }

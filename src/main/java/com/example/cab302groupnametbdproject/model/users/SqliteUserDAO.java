@@ -12,8 +12,8 @@ public class SqliteUserDAO implements UserDAO {
 
     // Constructor
     public SqliteUserDAO(){
-        connection = SqliteConnection.getInstance();
-        createTable();
+        connection = SqliteConnection.getInstance(); // Establish connection with DB
+        createTable(); // Create table if it does not exist
 
         // Insert data for testing
         insertTestingData();
@@ -56,26 +56,31 @@ public class SqliteUserDAO implements UserDAO {
         }
     }
 
+    // Needs finishing, not started
     @Override
     public void addUser(User user) {
 
     }
 
+    // Needs finishing, not started
     @Override
     public void updateUser(User user) {
 
     }
 
+    // Needs finishing, not started
     @Override
     public void deleteUser(User user) {
 
     }
 
+    // Needs finishing, not started
     @Override
     public User getUser(int id) {
         return null;
     }
 
+    // Needs finishing, not started
     @Override
     public List<User> getAllUsers() {
         return null;
