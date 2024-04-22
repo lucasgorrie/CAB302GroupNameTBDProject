@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="mainLayout" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.cab302groupnametbdproject.HelloController">
+<BorderPane fx:id="mainLayout" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.cab302groupnametbdproject.HelloController" stylesheets="@com/example/cab302groupnametbdproject/style.css">
     <top>
         <Button text="Sign Out" onAction="#onSignOutButtonClick" BorderPane.alignment="TOP_LEFT"/>
     </top>

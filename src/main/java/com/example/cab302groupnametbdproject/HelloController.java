@@ -113,5 +113,6 @@ public class HelloController {
 
         // Set the new page as the center of the main layout
         mainLayout.setCenter(childAccountsPage);
+
     }
 }
