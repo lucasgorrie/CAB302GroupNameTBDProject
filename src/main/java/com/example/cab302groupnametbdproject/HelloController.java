@@ -4,6 +4,8 @@ import com.example.cab302groupnametbdproject.model.associatedWebsites.Associated
 import com.example.cab302groupnametbdproject.model.associatedWebsites.SqliteAssociatedWebsiteDAO;
 import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
 import com.example.cab302groupnametbdproject.model.users.UserDAO;
+import com.example.cab302groupnametbdproject.model.passwords.SqlitePasswordDAO;
+import com.example.cab302groupnametbdproject.model.passwords.PasswordDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -20,9 +22,11 @@ public class HelloController {
     // Constructor
     private UserDAO userDAO;
     private AssociatedWebsiteDAO AssociatedWebsiteDAO;
+    private PasswordDAO PasswordDAO;
     public HelloController(){
         userDAO = new SqliteUserDAO();
         AssociatedWebsiteDAO = new SqliteAssociatedWebsiteDAO();
+        PasswordDAO = new SqlitePasswordDAO();
     }
 
 }
