@@ -4,9 +4,12 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.layout.HBox?>
 <BorderPane fx:id="mainLayout" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.cab302groupnametbdproject.HelloController" stylesheets="@com/example/cab302groupnametbdproject/style.css">
     <top>
-        <Button text="Sign Out" onAction="#onSignOutButtonClick" BorderPane.alignment="TOP_LEFT"/>
+        <HBox spacing="10" >
+            <Button fx:id="onSignOutButtonClick" text="Sign Out" onAction="#onSignOutButtonClick" styleClass="sign-out-button" alignment="TOP_LEFT"/>
+        </HBox>
     </top>
 
     <center>
@@ -14,10 +17,17 @@
             <padding>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
             </padding>
-            <Label fx:id="titleLabel" text="Password Manager" alignment="CENTER" id="titleLabel"/>
             <Button text="Associated Websites" onAction="#onAssociatedWebsitesClick"/>
             <Button text="About the App" onAction="#onAboutButtonClick"/>
             <Button text="Child Accounts" onAction="#onChildAccountsButtonClick"/>
         </VBox>
     </center>
+
+    <bottom>
+        <HBox spacing="10" >
+            <Label fx:id="titleLabel" text="Password Manager" styleClass="title-label" alignment="TOP_CENTER"/>
+        </HBox>
+    </bottom>
+
 </BorderPane>
+

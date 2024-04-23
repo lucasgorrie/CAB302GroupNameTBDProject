@@ -35,11 +35,5 @@
     -fx-font-family: "Arial";
     -fx-text-fill: #2c3e50; /* A dark shade of blue */
     -fx-font-weight: bold;
-    -fx-alignment: center;
-    -fx-padding: 0 0 0 0; /* Top, right, bottom, left padding */
-    -fx-translate-x: 0; /* Move right by 10 pixels */
-    -fx-translate-y: -215; /* Move down by 10 pixels */
+
 }
-.onSignOutButtonClick {}
-    -fx-translate-x: 50; /* Move right by 10 pixels */
-    -fx-translate-y: 50; /* Move down by 10 pixels */

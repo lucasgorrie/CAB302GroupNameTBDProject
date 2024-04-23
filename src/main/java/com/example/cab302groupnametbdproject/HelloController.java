@@ -2,117 +2,64 @@ package com.example.cab302groupnametbdproject;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.geometry.Pos;
+import javafx.scene.layout.Pane;
+import javafx.scene.control.Button;
 
 public class HelloController {
 
-    public Label titleLabel;
     @FXML
     private BorderPane mainLayout;
     @FXML
     private VBox mainContent;
 
-    @FXML
-    private void onSignOutButtonClick() {
-        // Create a new BorderPane
-        BorderPane SignOutButtonPage = new BorderPane();
-        Label SignOutButtonLabel = new Label("Sign Out");
-        SignOutButtonLabel.setAlignment(Pos.CENTER);
+    private void switchToPage(String labelText) {
+        Label pageLabel = new Label(labelText);
+        pageLabel.setAlignment(Pos.CENTER);
 
-        // Create a VBox for central content
-        VBox centerContent = new VBox(SignOutButtonLabel);
+        VBox centerContent = new VBox(pageLabel);
         centerContent.setAlignment(Pos.CENTER);
 
-        // Back Button in the top right
-        Button backButton = new Button("Back");
-        backButton.setOnAction(e -> mainLayout.setCenter(mainContent));
+        // Use the custom BackButton class
+        BackButton backButton = new BackButton(mainLayout, mainContent);
 
-        // Setting the back button in the top right corner of the BorderPane
-        BorderPane.setAlignment(backButton, Pos.TOP_RIGHT);
-        BorderPane.setMargin(backButton, new Insets(10)); // Adds a margin around the button
-        SignOutButtonPage.setTop(backButton);
-        SignOutButtonPage.setCenter(centerContent);
+        BorderPane newPage = new BorderPane();
+        newPage.setTop(backButton);
+        newPage.setCenter(centerContent);
 
-        // Set the new page as the center of the main layout
-        mainLayout.setCenter(SignOutButtonPage);
+        mainLayout.setCenter(newPage);
+    }
+
+    public static class BackButton extends Button {
+
+        public BackButton(BorderPane mainLayout, Pane mainContent) {
+            super("Back");
+            this.setOnAction(event -> mainLayout.setCenter(mainContent));
+            this.setStyle("-fx-background-color: blue; -fx-text-fill: white;");
+            BorderPane.setMargin(this, new Insets(10));
+            BorderPane.setAlignment(this, Pos.TOP_RIGHT);
+        }
+    }
+    @FXML
+    private void onSignOutButtonClick() {
+        switchToPage("Sign Out");
     }
 
     @FXML
     private void onAssociatedWebsitesClick() {
-        // Create a new BorderPane
-        BorderPane AssociatedWebsitesPage = new BorderPane();
-        Label AssociatedWebsitesLabel = new Label("Associated Websites");
-        AssociatedWebsitesLabel.setAlignment(Pos.CENTER);
-
-        // Create a VBox for central content
-        VBox centerContent = new VBox(AssociatedWebsitesLabel);
-        centerContent.setAlignment(Pos.CENTER);
-
-        // Back Button in the top right
-        Button backButton = new Button("Back");
-        backButton.setOnAction(e -> mainLayout.setCenter(mainContent));
-
-        // Setting the back button in the top right corner of the BorderPane
-        BorderPane.setAlignment(backButton, Pos.TOP_RIGHT);
-        BorderPane.setMargin(backButton, new Insets(10)); // Adds a margin around the button
-        AssociatedWebsitesPage.setTop(backButton);
-        AssociatedWebsitesPage.setCenter(centerContent);
-
-        // Set the new page as the center of the main layout
-        mainLayout.setCenter(AssociatedWebsitesPage);
+        switchToPage("Associated Websites");
     }
 
     @FXML
     private void onAboutButtonClick() {
-        // Create a new BorderPane
-        BorderPane AboutUsPage = new BorderPane();
-        Label AboutUsLabel = new Label("About Us");
-        AboutUsLabel.setAlignment(Pos.CENTER);
-
-        // Create a VBox for central content
-        VBox centerContent = new VBox(AboutUsLabel);
-        centerContent.setAlignment(Pos.CENTER);
-
-        // Back Button in the top right
-        Button backButton = new Button("Back");
-        backButton.setOnAction(e -> mainLayout.setCenter(mainContent));
-
-        // Setting the back button in the top right corner of the BorderPane
-        BorderPane.setAlignment(backButton, Pos.TOP_RIGHT);
-        BorderPane.setMargin(backButton, new Insets(10)); // Adds a margin around the button
-        AboutUsPage.setTop(backButton);
-        AboutUsPage.setCenter(centerContent);
-
-        // Set the new page as the center of the main layout
-        mainLayout.setCenter(AboutUsPage);
+        switchToPage("About Us");
     }
 
     @FXML
     private void onChildAccountsButtonClick() {
-        // Create a new BorderPane
-        BorderPane childAccountsPage = new BorderPane();
-        Label childAccountsLabel = new Label("Child Accounts");
-        childAccountsLabel.setAlignment(Pos.CENTER);
-
-        // Create a VBox for central content
-        VBox centerContent = new VBox(childAccountsLabel);
-        centerContent.setAlignment(Pos.CENTER);
-
-        // Back Button in the top right
-        Button backButton = new Button("Back");
-        backButton.setOnAction(e -> mainLayout.setCenter(mainContent));
-
-        // Setting the back button in the top right corner of the BorderPane
-        BorderPane.setAlignment(backButton, Pos.TOP_RIGHT);
-        BorderPane.setMargin(backButton, new Insets(10)); // Adds a margin around the button
-        childAccountsPage.setTop(backButton);
-        childAccountsPage.setCenter(centerContent);
-
-        // Set the new page as the center of the main layout
-        mainLayout.setCenter(childAccountsPage);
+        switchToPage("Child Accounts");
     }
 }
