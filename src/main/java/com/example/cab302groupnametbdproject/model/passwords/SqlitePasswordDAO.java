@@ -3,6 +3,7 @@ package com.example.cab302groupnametbdproject.model.passwords;
 import com.example.cab302groupnametbdproject.model.SqliteConnection;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 public class SqlitePasswordDAO implements PasswordDAO {
@@ -57,10 +58,19 @@ public class SqlitePasswordDAO implements PasswordDAO {
         }
     }
 
-    // Needs finishing, not started
+    // Add a new Password to the DB table passwords. Requires int arguments for FKs
     @Override
-    public void addPassword(Password password) {
-
+    public void addPassword(Password password, int user_id, int website_id) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO passwords (user_id, website_id, password, key) VALUES (?, ?, ?, ?)");
+            statement.setInt(1, user_id);
+            statement.setInt(2, website_id);
+            statement.setString(3, password.getPasswordContent());
+            statement.setString(4, password.getKey());
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // Needs finishing, not started

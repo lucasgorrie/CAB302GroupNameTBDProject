@@ -6,7 +6,7 @@ public interface PasswordDAO {
      * Adds a new password to the database.
      * @param password The password to add.
      */
-    public void addPassword(Password password);
+    public void addPassword(Password password, int user_id, int website_id);
 
     /**
      * Updates a password in the database.
