@@ -10,6 +10,7 @@ import javafx.geometry.Pos;
 
 public class HelloController {
 
+    public Label titleLabel;
     @FXML
     private BorderPane mainLayout;
     @FXML
@@ -113,6 +114,5 @@ public class HelloController {
 
         // Set the new page as the center of the main layout
         mainLayout.setCenter(childAccountsPage);
-
     }
 }

@@ -8,12 +8,13 @@
     <top>
         <Button text="Sign Out" onAction="#onSignOutButtonClick" BorderPane.alignment="TOP_LEFT"/>
     </top>
+
     <center>
         <VBox fx:id="mainContent" alignment="CENTER" spacing="20.0">
             <padding>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
             </padding>
-            <Label/>
+            <Label fx:id="titleLabel" text="Password Manager" alignment="CENTER" id="titleLabel"/>
             <Button text="Associated Websites" onAction="#onAssociatedWebsitesClick"/>
             <Button text="About the App" onAction="#onAboutButtonClick"/>
             <Button text="Child Accounts" onAction="#onChildAccountsButtonClick"/>
