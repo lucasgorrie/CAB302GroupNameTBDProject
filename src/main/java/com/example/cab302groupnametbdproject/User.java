@@ -1,12 +1,15 @@
 package com.example.cab302groupnametbdproject;
 
-public class User {
-    private final String urllink;
-    private final String user;
-    private final String usertype;
-    private final String actions;
+import javafx.scene.control.Button;
+import java.util.List;
 
-    public User(String urllink, String user, String usertype, String actions) {
+public class User {
+    private String urllink;
+    private String user;
+    private String usertype;
+    private List<Button> actions;
+
+    public User(String urllink, String user, String usertype, List<Button> actions) {
         this.urllink = urllink;
         this.user = user;
         this.usertype = usertype;
@@ -25,7 +28,8 @@ public class User {
         return usertype;
     }
 
-    public String getActions() {
+    public List<Button> getActions() {
         return actions;
     }
+
 }
