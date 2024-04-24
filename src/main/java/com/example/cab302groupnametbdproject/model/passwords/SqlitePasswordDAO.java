@@ -1,9 +1,11 @@
 package com.example.cab302groupnametbdproject.model.passwords;
 
 import com.example.cab302groupnametbdproject.model.SqliteConnection;
+import com.example.cab302groupnametbdproject.model.users.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class SqlitePasswordDAO implements PasswordDAO {
@@ -60,11 +62,11 @@ public class SqlitePasswordDAO implements PasswordDAO {
 
     // Add a new Password to the DB table passwords. Requires int arguments for FKs
     @Override
-    public void addPassword(Password password, int user_id, int website_id) {
+    public void addPassword(Password password) {
         try {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO passwords (user_id, website_id, password, key) VALUES (?, ?, ?, ?)");
-            statement.setInt(1, user_id);
-            statement.setInt(2, website_id);
+            statement.setInt(1, password.getUser_id());
+            statement.setInt(2, password.getWebsite_id());
             statement.setString(3, password.getPasswordContent());
             statement.setString(4, password.getKey());
             statement.executeUpdate();
@@ -73,21 +75,51 @@ public class SqlitePasswordDAO implements PasswordDAO {
         }
     }
 
-    // Needs finishing, not started
+    // Updates an existing password in the passwords table with a Password object argument. Cannot change FKs
     @Override
     public void updatePassword(Password password) {
-
+        try {
+            PreparedStatement statement = connection.prepareStatement("UPDATE passwords SET password = ?, key = ? WHERE id = ?");
+            statement.setString(1, password.getPasswordContent());
+            statement.setString(2, password.getKey());
+            statement.setInt(3, password.getId());
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    // Needs finishing, not started
+    // Deletes a password from the database given a Password object's PK
     @Override
     public void deletePassword(Password password) {
-
+        try {
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM passwords WHERE id = ?");
+            statement.setInt(1, password.getId());
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    // Needs finishing, not started
+    // Returns a Password object based on an id
     @Override
     public Password getPassword(int id) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM passwords WHERE id = ?");
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                int user_id = resultSet.getInt("user_id");
+                int website_id = resultSet.getInt("website_id");
+                String password_content = resultSet.getString("password");
+                String key = resultSet.getString("key");
+                Password password = new Password(user_id, website_id, password_content, key);
+                password.setId(id);
+                return password;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }

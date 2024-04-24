@@ -75,7 +75,7 @@ public class SqliteUserDAO implements UserDAO {
         }
     }
 
-    // Updates a User's data in the users table
+    // Updates a User's data in the users table based on a User object argument
     @Override
     public void updateUser(User user) {
         try {

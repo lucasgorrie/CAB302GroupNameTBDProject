@@ -3,11 +3,15 @@ package com.example.cab302groupnametbdproject.model.passwords;
 // Structure of Password objects
 public class Password {
     private int id;
+    private int user_id; // represents a FK for associated User
+    private int website_id; // represents a FK for associated Website
     private String password;
     private String key;
 
     // Constructor
-    public Password(String password, String key) {
+    public Password(int user_id, int website_id, String password, String key) {
+        this.user_id = user_id;
+        this.website_id = website_id;
         this.password=password;
         this.key=key;
     }
@@ -26,6 +30,22 @@ public class Password {
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+    /**
+     *
+     * @return the id of the associated User
+     */
+    public int getUser_id(){
+        return user_id;
+    }
+
+    /**
+     *
+     * @return the id of the associated Website
+     */
+    public int getWebsite_id() {
+        return website_id;
     }
 
     /**
