@@ -1,3 +1,66 @@
 .root {
     -fx-background-color: linear-gradient(to bottom, #fcca81, white);
 }
+
+/* Style for the table */
+.table-view {
+    -fx-background-color: linear-gradient(to bottom, #fcca81, white);
+}
+
+/* Style for table headers */
+.table-view .column-header {
+    -fx-background-color:  #FFA500;
+    -fx-text-fill: white;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+}
+
+/* Style for table rows */
+.table-row-cell {
+    -fx-background-color:  rgba(255,255,255,0);
+}
+
+/* Style for alternate table rows */
+.table-row-cell:odd {
+    -fx-background-color:  rgba(255,255,255,0);
+}
+
+/* Style for selected rows */
+.table-row-cell:selected {
+    -fx-background-color: dodgerblue;
+    -fx-text-fill: white;
+}
+
+/* Style for cell borders */
+.table-cell {
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+}
+
+/* Normal state */
+.button {
+    -fx-background-color: #FFA500;
+    -fx-text-fill: white;
+    -fx-background-radius: 15px;
+}
+
+/* Hovered state */
+.button:hover {
+    -fx-background-color: #ff8c00;
+}
+
+/* Pressed state */
+.button:pressed {
+    -fx-background-color: #b45f06;
+}
+
+/* Disabled state */
+.button:disabled {
+    -fx-opacity: 0.5;
+}
+
+/* Spacing between buttons */
+.button-separator {
+    -fx-margin: 20px;
+
+}
