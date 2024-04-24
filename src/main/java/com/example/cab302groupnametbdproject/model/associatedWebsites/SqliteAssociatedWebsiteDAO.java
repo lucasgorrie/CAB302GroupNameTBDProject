@@ -1,9 +1,13 @@
 package com.example.cab302groupnametbdproject.model.associatedWebsites;
 
 import com.example.cab302groupnametbdproject.model.SqliteConnection;
+import com.example.cab302groupnametbdproject.model.users.User;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 // Handles DAO and CRUD
@@ -54,28 +58,71 @@ public class SqliteAssociatedWebsiteDAO implements AssociatedWebsiteDAO {
         }
     }
 
-    // Needs finishing, not started
+    // Adds a Website object into the websites table
     @Override
     public void addWebsite(Website website) {
-
+        try {
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO websites (id, URL) VALUES (?, ?)");
+            statement.setInt(1, website.getId());
+            statement.setString(2, website.getURL());
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    // Needs finishing, not started
+    // Deletes a row from the websites table based on the id of a Website object
     @Override
-    public void deleteUser(Website website) {
-
+    public void deleteWebsite(Website website) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM websites WHERE id = ?");
+            statement.setInt(1, website.getId());
+            statement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    // Needs finishing, not started
+    // Returns a Website object from the websites table based on a PK argument
     @Override
     public Website getWebsite(int id) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM websites WHERE id = ?");
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                String URL = resultSet.getString("URL");
+                Website website = new Website(URL);
+                website.setId(id);
+                return website;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
-    // Needs finishing, not started
+    // Returns a list containing Website objects of all the websites in the DB table "websites"
+    // On its own, this will only return the objects themselves. Use something like this to get specific properties:
+    // List<String> URLs = getAllWebsites().stream().map(Website::getURL).toList(); <-- gets all URLs
     @Override
     public List<Website> getAllWebsites() {
-        return null;
+        List<Website> websites = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            String query = "SELECT * FROM websites";
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String URL = resultSet.getString("URL");
+                Website website = new Website(URL);
+                website.setId(id);
+                websites.add(website);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return websites;
     }
 
 }

@@ -16,7 +16,7 @@ public interface AssociatedWebsiteDAO {
      * Deletes a website from the database.
      * @param website The user to delete.
      */
-    public void deleteUser(Website website);
+    public void deleteWebsite(Website website);
 
     /**
      * Retrieves a website from the database.
