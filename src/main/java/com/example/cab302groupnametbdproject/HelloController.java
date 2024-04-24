@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 public class HelloController implements Initializable {
 
         @FXML
-        private TableColumn<User, String> actionscolumn;
+        private TableColumn<User, String> actions;
 
         @FXML
         private Button backbutton;
@@ -25,16 +25,16 @@ public class HelloController implements Initializable {
         private TableView<User> datatable;
 
         @FXML
-        private TableColumn<User, String> urlcolumn;
+        private TableColumn<User, String> urllink;
 
         @FXML
         private Button userbutton;
 
         @FXML
-        private TableColumn<User, String> usercolumn;
+        private TableColumn<User, String> user;
 
         @FXML
-        private TableColumn<User, String> usertypecolumn;
+        private TableColumn<User, String> usertype;
 
         ObservableList<User> list = FXCollections.observableArrayList(
                 new User("https://www.example.com/page.html", "User0", "Parent", "Disassociate"),
@@ -43,15 +43,16 @@ public class HelloController implements Initializable {
         );
 
 
-    @Override
+        @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
-                urlcolumn.setCellValueFactory(new PropertyValueFactory<User, String>("urlcolumn"));
-                usercolumn.setCellValueFactory(new PropertyValueFactory<User, String>("usercolumn"));
-                usertypecolumn.setCellValueFactory(new PropertyValueFactory<User, String>("usertypecolumn"));
-                actionscolumn.setCellValueFactory(new PropertyValueFactory<User, String>("actionscolumn"));
+                urllink.setCellValueFactory(new PropertyValueFactory<>("urllink"));
+                user.setCellValueFactory(new PropertyValueFactory<>("user"));
+                usertype.setCellValueFactory(new PropertyValueFactory<>("usertype"));
+                actions.setCellValueFactory(new PropertyValueFactory<>("actions"));
 
                 datatable.setItems(list);
         }
+
 
 
 }

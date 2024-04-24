@@ -1,31 +1,31 @@
 package com.example.cab302groupnametbdproject;
 
 public class User {
-    private String urlcolumn;
-    private String usercolumn;
-    private String usertypecolumn;
-    private String actionscolumn;
+    private final String urllink;
+    private final String user;
+    private final String usertype;
+    private final String actions;
 
-    public User(String urlcolumn, String usercolumn, String usertypecolumn, String actionscolumn) {
-        this.urlcolumn = urlcolumn;
-        this.usercolumn = usercolumn;
-        this.usertypecolumn = usertypecolumn;
-        this.actionscolumn = actionscolumn;
+    public User(String urllink, String user, String usertype, String actions) {
+        this.urllink = urllink;
+        this.user = user;
+        this.usertype = usertype;
+        this.actions = actions;
     }
 
-    public String getUrlcolumn() {
-        return urlcolumn;
+    public String getUrllink() {
+        return urllink;
     }
 
-    public String getUsercolumn() {
-        return usercolumn;
+    public String getUser() {
+        return user;
     }
 
-    public String getUsertypecolumn() {
-        return usertypecolumn;
+    public String getUsertype() {
+        return usertype;
     }
 
-    public String getActionscolumn() {
-        return actionscolumn;
+    public String getActions() {
+        return actions;
     }
 }
