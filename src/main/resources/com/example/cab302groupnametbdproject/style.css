@@ -18,6 +18,8 @@
 /* Style for table rows */
 .table-row-cell {
     -fx-background-color:  rgba(255,255,255,0);
+    -fx-font-size: 14pt;
+
 }
 
 /* Style for alternate table rows */
