@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class HelloController implements Initializable {
+public class MainTableController implements Initializable {
         @FXML
         private TableColumn<User, String> urllink;
 
