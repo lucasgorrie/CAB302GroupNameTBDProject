@@ -3,13 +3,15 @@ package com.example.cab302groupnametbdproject.model.users;
 // Structure of User objects
 public class User {
     private int id;
+    private String username;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
 
     // Constructor
-    public User(String firstName, String lastName, String email, String password) {
+    public User(String username, String firstName, String lastName, String email, String password) {
+        this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -30,6 +32,22 @@ public class User {
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+    /**
+     *
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     *
+     * @param username the username to be set for the User
+     */
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     /**
