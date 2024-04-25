@@ -4,6 +4,8 @@ import javafx.scene.control.Button;
 import java.util.List;
 
 public class User {
+
+    /* Columns for Main Table */
     private String urllink;
     private String user;
     private String usertype;
@@ -14,7 +16,10 @@ public class User {
         this.user = user;
         this.usertype = usertype;
         this.actions = actions;
+
     }
+
+    /* Getters */
 
     public String getUrllink() {
         return urllink;
@@ -31,5 +36,4 @@ public class User {
     public List<Button> getActions() {
         return actions;
     }
-
 }
