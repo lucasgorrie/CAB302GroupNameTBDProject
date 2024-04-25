@@ -40,9 +40,13 @@
 /* Normal state */
 .button {
     -fx-background-color: #FFA500;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-background-radius: 15px;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-border-radius: 15px;
 }
+
 
 /* Hovered state */
 .button:hover {
@@ -57,10 +61,4 @@
 /* Disabled state */
 .button:disabled {
     -fx-opacity: 0.5;
-}
-
-/* Spacing between buttons */
-.button-separator {
-    -fx-margin: 20px;
-
 }

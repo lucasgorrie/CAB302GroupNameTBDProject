@@ -43,6 +43,7 @@ public class HelloController implements Initializable {
                                         User user = getTableView().getItems().get(getIndex());
                                         List<Button> buttons = user.getActions();
                                         HBox hbox = new HBox();
+                                        hbox.setSpacing(5);
                                         for (Button button : buttons) {
                                                 button.setOnAction(event -> {
                                                         // Show an alert or perform any action here
