@@ -1,5 +1,6 @@
 package com.example.cab302groupnametbdproject;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,6 +12,7 @@ import javafx.scene.control.Button;
 
 public class HelloController {
 
+    public Label titleLabel;
     @FXML
     private BorderPane mainLayout;
     @FXML
@@ -38,9 +40,9 @@ public class HelloController {
         public BackButton(BorderPane mainLayout, Pane mainContent) {
             super("Back");
             this.setOnAction(event -> mainLayout.setCenter(mainContent));
-            this.setStyle("-fx-background-color: blue; -fx-text-fill: white;");
+            this.setStyle("-fx-background-color: #3071a9; -fx-text-fill: white;");
             BorderPane.setMargin(this, new Insets(10));
-            BorderPane.setAlignment(this, Pos.TOP_RIGHT);
+            BorderPane.setAlignment(this, Pos.TOP_LEFT);
         }
     }
     @FXML
