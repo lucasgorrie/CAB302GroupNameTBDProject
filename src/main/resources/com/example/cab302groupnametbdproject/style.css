@@ -39,6 +39,8 @@
     -fx-border-width: 1px;
 }
 
+
+
 /* Normal state */
 .button {
     -fx-background-color: #FFA500;
