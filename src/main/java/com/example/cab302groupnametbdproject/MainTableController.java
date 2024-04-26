@@ -30,6 +30,15 @@ public class MainTableController implements Initializable {
         @FXML
         private TableView<User> datatable;
 
+        @FXML
+        private Button backbutton;
+
+        @FXML
+        private Button homebutton;
+
+        @FXML
+        private Button userbutton;
+
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
                 actions.setCellFactory(column -> new TableCell<User, String>() {
