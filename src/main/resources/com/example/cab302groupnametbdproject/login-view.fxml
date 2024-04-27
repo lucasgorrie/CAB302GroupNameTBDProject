@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="536.0" style="-fx-background-color: linear-gradient(to bottom, #fcca81, white);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.cab302groupnametbdproject.LoginSignUpController">
+            fx:controller="com.example.cab302groupnametbdproject.LoginController">
    <children>
       <TextField layoutX="172.0" layoutY="305.0" prefHeight="32.0" prefWidth="197.0" promptText="Username..." style="-fx-border-color: orange; -fx-border-radius: 25;" />
       <TextField layoutX="172.0" layoutY="345.0" prefHeight="32.0" prefWidth="197.0" promptText="Password..." style="-fx-border-color: orange; -fx-border-radius: 25;" />
