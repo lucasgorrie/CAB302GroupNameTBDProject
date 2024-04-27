@@ -19,7 +19,6 @@ public class SqliteUserDAO implements UserDAO {
         createTable(); // Create table if it does not exist
 
         // Insert data for testing
-        insertTestingData();
 
     }
 
@@ -115,6 +114,27 @@ public class SqliteUserDAO implements UserDAO {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 String username = resultSet.getString("username");
+                String firstName = resultSet.getString("firstName");
+                String lastName = resultSet.getString("lastName");
+                String email = resultSet.getString("email");
+                String password = resultSet.getString("password");
+                User user = new User(username, firstName, lastName, email, password);
+                user.setId(id);
+                return user;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public User getUserFromUserName(String username) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
+            statement.setString(1, username);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id");
                 String firstName = resultSet.getString("firstName");
                 String lastName = resultSet.getString("lastName");
                 String email = resultSet.getString("email");

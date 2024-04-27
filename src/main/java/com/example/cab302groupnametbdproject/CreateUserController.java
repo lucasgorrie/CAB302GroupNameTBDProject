@@ -44,7 +44,6 @@ public class CreateUserController {
     }
     @FXML
     protected void createUserClick() throws IOException {
-        SqliteUserDAO table;
         String firstNameInput = firstName.getText();
         String lastNameInput = lastName.getText();
         String usernameInput = username.getText();
@@ -56,6 +55,10 @@ public class CreateUserController {
         } else if (!passwordInput.equals(repeatPasswordInput)) {
             signupInfo.setText("Passwords do not match.");
         } else {
+            SqliteUserDAO table = new SqliteUserDAO();
+            User newUser = new User(usernameInput, firstNameInput, lastNameInput, emailInput, passwordInput);
+            table.addUser(newUser);
+            onBackToLoginClick();
             signupInfo.setText("User Created");
         }
 

@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import com.example.cab302groupnametbdproject.model.users.User;
+import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
 
 import java.io.IOException;
 
@@ -18,6 +20,10 @@ public class LoginController {
 
     @FXML
     private Label loginInfo;
+    @FXML
+    private TextField username;
+    @FXML
+    private TextField password;
 
 
 
@@ -28,6 +34,22 @@ public class LoginController {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("create-user-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
+    }
+    @FXML
+    protected void onLoginButtonClick() throws IOException {
+        String usernameInput = username.getText();
+        String passwordInput = password.getText();
+        if (usernameInput.isEmpty() || passwordInput.isEmpty()) {
+            loginInfo.setText("Make sure all fields are filled.");
+        } else {
+            SqliteUserDAO table = new SqliteUserDAO();
+            User userQuery = table.getUserFromUserName(usernameInput);
+            if (userQuery != null) {
+                if (passwordInput.equals(userQuery.getPassword())) {
+                    loginInfo.setText("Logged in Successfully");
+                } else { loginInfo.setText("Incorrect Password."); }
+            } else { loginInfo.setText("Username not found."); }
+        }
     }
 
 
