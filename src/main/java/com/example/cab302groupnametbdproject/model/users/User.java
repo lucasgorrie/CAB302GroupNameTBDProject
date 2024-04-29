@@ -8,6 +8,8 @@ public class User {
     private String lastName;
     private String email;
     private String password;
+    //private String userType; // <-- PARENT or CHILD
+    //private int parent_id; // <-- PK of PARENT User, references this db
 
     // Constructor
     public User(String username, String firstName, String lastName, String email, String password) {

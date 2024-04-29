@@ -22,16 +22,6 @@ import java.util.ResourceBundle;
 
 public class MainTableController implements Initializable {
 
-        // Constructor
-        private UserDAO userDAO;
-        private AssociatedWebsiteDAO AssociatedWebsiteDAO;
-        private PasswordDAO PasswordDAO;
-        public MainTableController(){
-                userDAO = new SqliteUserDAO();
-                AssociatedWebsiteDAO = new SqliteAssociatedWebsiteDAO();
-                PasswordDAO = new SqlitePasswordDAO();
-        }
-
         @FXML
         private TableColumn<User, String> urllink;
 
