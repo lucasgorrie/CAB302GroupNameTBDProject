@@ -19,7 +19,7 @@ public class SqliteUserDAO implements UserDAO {
         createTable(); // Create table if it does not exist
 
         // Insert data for testing
-
+        insertTestingData();
     }
 
     // Create the users table, if it doesn't already exist
@@ -28,11 +28,14 @@ public class SqliteUserDAO implements UserDAO {
             Statement statement = connection.createStatement();
             String query = "CREATE TABLE IF NOT EXISTS users ("
                     + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + "user_type VARCHAR NOT NULL,"
+                    + "parent_id INTEGER,"
                     + "username VARCHAR NOT NULL,"
                     + "firstName VARCHAR NOT NULL,"
                     + "lastName VARCHAR NOT NULL,"
                     + "email VARCHAR NOT NULL,"
-                    + "password VARCHAR NOT NULL"
+                    + "password VARCHAR NOT NULL,"
+                    + "FOREIGN KEY (\"parent_id\") REFERENCES \"users\"(\"id\")"
                     + ")";
             statement.execute(query);
         } catch (Exception e) {
@@ -50,10 +53,10 @@ public class SqliteUserDAO implements UserDAO {
 
             // Insert testing data
             Statement insertStatement = connection.createStatement();
-            String insertQuery = "INSERT INTO users (username, firstName, lastName, email, password) VALUES "
-                    + "('myUsername', 'Lucas', 'Gorrie', '123@example.com', 'PasswordPlainText1!'),"
-                    + "('AVan', 'Alyx', 'Vance', 'avance@example.com', 'PasswordTest2@'),"
-                    + "('LCancerFTW', 'Cave', 'Johnson', 'cave@aperturescience.com', 'PassPassPass3#')";
+            String insertQuery = "INSERT INTO users (user_type, parent_id, username, firstName, lastName, email, password) VALUES "
+                    + "('PARENT', '', 'myUsername', 'Lucas', 'Gorrie', '123@example.com', 'PasswordPlainText1!'),"
+                    + "('PARENT', '', 'AVan', 'Alyx', 'Vance', 'avance@example.com', 'PasswordTest2@'),"
+                    + "('CHILD', '1', 'LCancerFTW', 'Cave', 'Johnson', 'cave@aperturescience.com', 'PassPassPass3#')";
             insertStatement.execute(insertQuery);
         } catch (Exception e) {
             e.printStackTrace();
@@ -64,12 +67,14 @@ public class SqliteUserDAO implements UserDAO {
     @Override
     public void addUser(User user) {
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO users (username, firstName, lastName, email, password) VALUES (?, ?, ?, ?, ?)");
-            statement.setString(1, user.getUsername());
-            statement.setString(2, user.getFirstName());
-            statement.setString(3, user.getLastName());
-            statement.setString(4, user.getEmail());
-            statement.setString(5, user.getPassword());
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO users (user_type, parent_id, username, firstName, lastName, email, password) VALUES (?, ?, ?, ?, ?)");
+            statement.setString(1, user.getUserType());
+            statement.setInt(2, user.getParentId());
+            statement.setString(3, user.getUsername());
+            statement.setString(4, user.getFirstName());
+            statement.setString(5, user.getLastName());
+            statement.setString(6, user.getEmail());
+            statement.setString(7, user.getPassword());
             statement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -80,13 +85,15 @@ public class SqliteUserDAO implements UserDAO {
     @Override
     public void updateUser(User user) {
         try {
-            PreparedStatement statement = connection.prepareStatement("UPDATE users SET username = ?, firstName = ?, lastName = ?, email = ?, password = ? WHERE id = ?");
-            statement.setString(1, user.getUsername());
-            statement.setString(2, user.getFirstName());
-            statement.setString(3, user.getLastName());
-            statement.setString(4, user.getEmail());
-            statement.setString(5, user.getPassword());
-            statement.setInt(6, user.getId());
+            PreparedStatement statement = connection.prepareStatement("UPDATE users SET user_type = ?, parent_id = ?, username = ?, firstName = ?, lastName = ?, email = ?, password = ? WHERE id = ?");
+            statement.setString(1, user.getUserType());
+            statement.setInt(2, user.getParentId());
+            statement.setString(3, user.getUsername());
+            statement.setString(4, user.getFirstName());
+            statement.setString(5, user.getLastName());
+            statement.setString(6, user.getEmail());
+            statement.setString(7, user.getPassword());
+            statement.setInt(8, user.getId());
             statement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -113,12 +120,14 @@ public class SqliteUserDAO implements UserDAO {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
+                String user_type = resultSet.getString("user_type");
+                int parent_id = resultSet.getInt("parent_id");
                 String username = resultSet.getString("username");
                 String firstName = resultSet.getString("firstName");
                 String lastName = resultSet.getString("lastName");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                User user = new User(username, firstName, lastName, email, password);
+                User user = new User(user_type, parent_id, username, firstName, lastName, email, password);
                 user.setId(id);
                 return user;
             }
@@ -135,11 +144,13 @@ public class SqliteUserDAO implements UserDAO {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 int id = resultSet.getInt("id");
+                String user_type = resultSet.getString("user_type");
+                int parent_id = resultSet.getInt("parent_id");
                 String firstName = resultSet.getString("firstName");
                 String lastName = resultSet.getString("lastName");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                User user = new User(username, firstName, lastName, email, password);
+                User user = new User(user_type, parent_id, username, firstName, lastName, email, password);
                 user.setId(id);
                 return user;
             }
@@ -161,12 +172,14 @@ public class SqliteUserDAO implements UserDAO {
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
+                String user_type = resultSet.getString("user_type");
+                int parent_id = resultSet.getInt("parent_id");
                 String username = resultSet.getString("username");
                 String firstName = resultSet.getString("firstName");
                 String lastName = resultSet.getString("lastName");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                User user = new User(username, firstName, lastName, email, password);
+                User user = new User(user_type, parent_id, username, firstName, lastName, email, password);
                 user.setId(id);
                 users.add(user);
             }
