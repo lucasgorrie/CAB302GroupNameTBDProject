@@ -3,16 +3,18 @@ package com.example.cab302groupnametbdproject.model.users;
 // Structure of User objects
 public class User {
     private int id;
+    private String user_type; // <-- PARENT or CHILD
+    private int parent_id; // <-- PK of PARENT User, references a User in this table's PK. is a FK.
     private String username;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
-    //private String userType; // <-- PARENT or CHILD
-    //private int parent_id; // <-- PK of PARENT User, references this db
 
     // Constructor
-    public User(String username, String firstName, String lastName, String email, String password) {
+    public User(String user_type, int parent_id, String username, String firstName, String lastName, String email, String password) {
+        this.user_type = user_type;
+        this.parent_id = parent_id;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,6 +36,38 @@ public class User {
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+    /**
+     *
+     * @return the userType of the User
+     */
+    public String getUserType() {
+        return user_type;
+    }
+
+    /**
+     *
+     * @param type the type to be set for the User
+     */
+    public void setUserType(String type) {
+        this.user_type = type;
+    }
+
+    /**
+     *
+     * @return the id of the Parent User
+     */
+    public int getParentId() {
+        return parent_id;
+    }
+
+    /**
+     *
+     * @param parent_id the Parent id to be set for the User
+     */
+    public void setParentId(int parent_id) {
+        this.parent_id = parent_id;
     }
 
     /**
