@@ -1,12 +1,15 @@
 package com.example.cab302groupnametbdproject.model.passwords;
 
 import com.example.cab302groupnametbdproject.model.SqliteConnection;
+import com.example.cab302groupnametbdproject.model.associatedWebsites.Website;
 import com.example.cab302groupnametbdproject.model.users.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SqlitePasswordDAO implements PasswordDAO {
 
@@ -121,5 +124,31 @@ public class SqlitePasswordDAO implements PasswordDAO {
             e.printStackTrace();
         }
         return null;
+    }
+
+    // Returns a list containing Password objects of all the passwords in the DB table "passwords"
+    // On its own, this will only return the objects themselves. Use something like this to get specific properties:
+    // List<String> contents = getAllPasswords().stream().map(Password::getPasswordContent).toList(); <-- gets all contents
+    @Override
+    public List<Password> getAllPasswords() {
+        List<Password> passwords = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            String query = "SELECT * FROM passwords";
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                int user_id = resultSet.getInt("user_id");
+                int website_id = resultSet.getInt("website_id");
+                String password_content = resultSet.getString("password");
+                String key = resultSet.getString("key");
+                Password password = new Password(user_id, website_id, password_content, key);
+                password.setId(id);
+                passwords.add(password);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return passwords;
     }
 }

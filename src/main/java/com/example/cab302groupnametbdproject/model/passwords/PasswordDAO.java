@@ -1,5 +1,7 @@
 package com.example.cab302groupnametbdproject.model.passwords;
 
+import java.util.List;
+
 public interface PasswordDAO {
 
     /**
@@ -26,5 +28,11 @@ public interface PasswordDAO {
      * @return The password with the given id, or null if not found.
      */
     public Password getPassword(int id);
+
+    /**
+     * Retrieves all Passwords from the database.
+     * @return A list of all Passwords in the database.
+     */
+    public List<Password> getAllPasswords();
 
 }
