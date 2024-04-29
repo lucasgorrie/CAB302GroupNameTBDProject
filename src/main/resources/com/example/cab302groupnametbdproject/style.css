@@ -2,6 +2,7 @@
     -fx-background-color: linear-gradient(to bottom, #fcca81, white);
 }
 
+<<<<<<< HEAD
 /* Style for the table */
 .table-view {
     -fx-background-color: linear-gradient(to bottom, #fcca81, white);
@@ -65,4 +66,44 @@
 /* Disabled state */
 .button:disabled {
     -fx-opacity: 0.5;
+=======
+.button {
+    -fx-background-color: #FFC04C; /* Lighter orange color */
+    -fx-text-fill: black; /* Black text */
+    -fx-background-radius: 30; /* Rounded corners */
+    -fx-padding: 10 20;
+    -fx-font-weight: bold;
+    -fx-font-size: 25px;
+    -fx-border-color: black; /* Black border */
+    -fx-border-width: 2; /* Border width */
+    -fx-border-radius: 30; /* Rounded border to match the button's corner radius */
+    -fx-font-family: "Helvetica";
+}
+
+.label {
+    -fx-font-size: 20px;
+    -fx-text-fill: #333;
+}
+
+.border-pane {
+    -fx-background-color: transparent;
+}
+
+.vbox {
+    -fx-background-color: transparent;
+}
+
+/* Assuming you want the back-button style to remain unchanged */
+.back-button {
+    -fx-background-color: #ff6347; /* Tomato color */
+    -fx-text-fill: white; /* White text */
+    -fx-background-radius: 30; /* Rounded corners */
+}
+
+.titleLabel {
+    -fx-font-size: 40px;
+    -fx-font-family: "Arial";
+    -fx-text-fill: #2c3e50; /* A dark shade of blue */
+    -fx-font-weight: bold;
+>>>>>>> main-interface
 }
