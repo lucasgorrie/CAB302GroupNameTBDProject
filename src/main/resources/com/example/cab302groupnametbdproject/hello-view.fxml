@@ -1,16 +1,76 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.cab302groupnametbdproject.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.layout.Pane?>
+<BorderPane fx:id="mainLayout" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.cab302groupnametbdproject.HelloController" stylesheets="@com/example/cab302groupnametbdproject/style.css">
+    <top>
+        <HBox alignment="CENTER" spacing="20.0">
+            <children>
+                <ImageView fx:id="leftImage" pickOnBounds="true" preserveRatio="true" fitWidth="100" fitHeight="100">
+                    <image>
+                        <Image url="@images/logo.png"/>
+                    </image>
+                </ImageView>
+                <Pane HBox.hgrow="ALWAYS" /> <!-- This pane will push the right image to the edge -->
+                <ImageView fx:id="rightImage" pickOnBounds="true" preserveRatio="true" fitWidth="100" fitHeight="100">
+                    <image>
+                        <Image url="@images/Personlogo.png"/>
+                    </image>
+                </ImageView>
+            </children>
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+        </HBox>
+    </top>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+    <center>
+        <VBox fx:id="mainContent" alignment="CENTER" spacing="20.0">
+            <!-- HBox for the "Associated Websites" button and image -->
+            <HBox alignment="CENTER" spacing="10.0">
+                <padding>
+                    <Insets left="60.0"/> <!-- Adjust this value to move them as desired -->
+                </padding>
+                <Button text="Associated Websites" onAction="#onAssociatedWebsitesClick"/>
+                <ImageView fitWidth="50" fitHeight="50">
+                    <image>
+                        <Image url="@images/web.png"/>
+                    </image>
+                </ImageView>
+            </HBox>
+
+            <!-- HBox for the "About the App" button and image -->
+            <HBox alignment="CENTER" spacing="20.0">
+                <padding>
+                    <Insets left="63.0"/> <!-- Adjust this value to move them as desired -->
+                </padding>
+                <Button text="About the App" onAction="#onAboutButtonClick"/>
+                <ImageView fitWidth="50" fitHeight="50">
+                    <image>
+                        <Image url="@images/1176.png"/>
+                    </image>
+                </ImageView>
+            </HBox>
+
+            <!-- HBox for the "Child Accounts" button and image -->
+            <HBox alignment="CENTER" spacing="10.0">
+                <padding>
+                    <Insets left="60.0"/> <!-- Adjust this value to move them as desired -->
+                </padding>
+                <Button text="Child Accounts" onAction="#onChildAccountsButtonClick"/>
+                <ImageView fitWidth="50" fitHeight="50">
+                    <image>
+                        <Image url="@images/childaccount.png"/>
+                    </image>
+                </ImageView>
+            </HBox>
+
+            <Button fx:id="onSignOutButtonClick" text="Sign Out" onAction="#onSignOutButtonClick" styleClass="sign-out-button"/>
+        </VBox>
+    </center>
+</BorderPane>
