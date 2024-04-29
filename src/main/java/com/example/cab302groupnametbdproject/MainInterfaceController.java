@@ -1,6 +1,5 @@
 package com.example.cab302groupnametbdproject;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -10,7 +9,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Button;
 
-public class HelloController {
+public class MainInterfaceController {
 
     @FXML
     private BorderPane mainLayout;
@@ -32,7 +31,7 @@ public class HelloController {
 
         BorderPane pageLayout = new BorderPane();
         pageLayout.setTop(backButton);
-        pageLayout.setCenter(content); // You can customize content here based on pageName
+        pageLayout.setCenter(content);
 
         return pageLayout;
     }
