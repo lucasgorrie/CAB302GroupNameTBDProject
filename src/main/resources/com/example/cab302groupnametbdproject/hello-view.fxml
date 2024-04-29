@@ -31,9 +31,45 @@
 
     <center>
         <VBox fx:id="mainContent" alignment="CENTER" spacing="20.0">
-            <Button text="Associated Websites" onAction="#onAssociatedWebsitesClick"/>
-            <Button text="About the App" onAction="#onAboutButtonClick"/>
-            <Button text="Child Accounts" onAction="#onChildAccountsButtonClick"/>
+            <!-- HBox for the "Associated Websites" button and image -->
+            <HBox alignment="CENTER" spacing="10.0">
+                <padding>
+                    <Insets left="60.0"/> <!-- Adjust this value to move them as desired -->
+                </padding>
+                <Button text="Associated Websites" onAction="#onAssociatedWebsitesClick"/>
+                <ImageView fitWidth="50" fitHeight="50">
+                    <image>
+                        <Image url="@images/web.png"/>
+                    </image>
+                </ImageView>
+            </HBox>
+
+            <!-- HBox for the "About the App" button and image -->
+            <HBox alignment="CENTER" spacing="20.0">
+                <padding>
+                    <Insets left="63.0"/> <!-- Adjust this value to move them as desired -->
+                </padding>
+                <Button text="About the App" onAction="#onAboutButtonClick"/>
+                <ImageView fitWidth="50" fitHeight="50">
+                    <image>
+                        <Image url="@images/1176.png"/>
+                    </image>
+                </ImageView>
+            </HBox>
+
+            <!-- HBox for the "Child Accounts" button and image -->
+            <HBox alignment="CENTER" spacing="10.0">
+                <padding>
+                    <Insets left="60.0"/> <!-- Adjust this value to move them as desired -->
+                </padding>
+                <Button text="Child Accounts" onAction="#onChildAccountsButtonClick"/>
+                <ImageView fitWidth="50" fitHeight="50">
+                    <image>
+                        <Image url="@images/childaccount.png"/>
+                    </image>
+                </ImageView>
+            </HBox>
+
             <Button fx:id="onSignOutButtonClick" text="Sign Out" onAction="#onSignOutButtonClick" styleClass="sign-out-button"/>
         </VBox>
     </center>
