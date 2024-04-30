@@ -6,14 +6,12 @@ public class Password {
     private int user_id; // represents a FK for associated User
     private int website_id; // represents a FK for associated Website
     private String password;
-    private String key;
 
     // Constructor
-    public Password(int user_id, int website_id, String password, String key) {
+    public Password(int user_id, int website_id, String password) {
         this.user_id = user_id;
         this.website_id = website_id;
         this.password=password;
-        this.key=key;
     }
 
     /**
@@ -60,17 +58,6 @@ public class Password {
      */
     public void setPassword(String password){this.password = password;}
 
-    /**
-     *
-     * @return the encryption/decryption key for the Password
-     */
-    public String getKey(){return key;}
-
-    /**
-     *
-     * @param key the encryption/decryption key to be set for the Password
-     */
-    public void setKey(String key){this.key = key;}
 
     /**
      * Encrypts the password

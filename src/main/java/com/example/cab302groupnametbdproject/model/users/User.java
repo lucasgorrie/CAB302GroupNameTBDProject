@@ -1,5 +1,7 @@
 package com.example.cab302groupnametbdproject.model.users;
 
+import com.example.cab302groupnametbdproject.model.passwords.Password;
+
 // Structure of User objects
 public class User {
     private int id;
@@ -10,6 +12,7 @@ public class User {
     private String lastName;
     private String email;
     private String password;
+    private String key = null;
 
     // Constructor
     public User(String user_type, Integer parent_id, String username, String firstName, String lastName, String email, String password) {
@@ -155,6 +158,19 @@ public class User {
      * @param password the password to be set for the User
      */
     public void setPassword(String password){this.password = password;}
+
+    /**
+     *
+     * @return the encryption/decryption key for the Password
+     */
+    public String getKey(){return key;}
+
+    /**
+     *
+     * @param key the encryption/decryption key to be set for the Password
+     */
+    public void setKey(String key){this.key = key;}
+
 
     /**
      * Encrypts the application password of the User

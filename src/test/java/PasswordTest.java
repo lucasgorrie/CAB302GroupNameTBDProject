@@ -10,7 +10,7 @@ public class PasswordTest {
 
     @BeforeEach
     public void setUp(){
-        password = new Password(1, 2, "Password44$$", "01110001");
+        password = new Password(1, 2, "Password44$$");
     }
 
     @Test
@@ -33,12 +33,6 @@ public class PasswordTest {
     public void testGetSetPasswordContent(){
         password.setPassword("ChangedPassword1!");
         assertEquals("ChangedPassword1!", password.getPasswordContent());
-    }
-
-    @Test
-    public void testGetSetKey(){
-        password.setKey("00000000");
-        assertEquals("00000000", password.getKey());
     }
 
     // ADD ENCRYPTION/DECRYPTION TESTS WHEN METHODS ARE FINISHED

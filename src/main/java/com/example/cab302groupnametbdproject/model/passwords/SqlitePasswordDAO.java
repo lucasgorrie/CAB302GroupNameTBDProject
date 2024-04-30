@@ -33,7 +33,6 @@ public class SqlitePasswordDAO implements PasswordDAO {
                     + "user_id INTEGER NOT NULL,"
                     + "website_id INTEGER NOT NULL,"
                     + "password VARCHAR NOT NULL,"
-                    + "key VARCHAR NOT NULL,"
                     + "FOREIGN KEY(\"user_id\") REFERENCES \"users\"(\"id\"),"
                     + "FOREIGN KEY(\"website_id\") REFERENCES \"websites\"(\"id\")"
                     + ")";
@@ -53,10 +52,10 @@ public class SqlitePasswordDAO implements PasswordDAO {
 
             // Insert testing data
             Statement insertStatement = connection.createStatement();
-            String insertQuery = "INSERT INTO passwords (user_id, website_id, password, key) VALUES "
-                    + "(1, 3, 'Pass1!', '00100110'),"
-                    + "(3, 3, 'Pass2@', '10111000'),"
-                    + "(2, 1, 'Pass3#', '11111000')";
+            String insertQuery = "INSERT INTO passwords (user_id, website_id, password) VALUES "
+                    + "(1, 3, 'Pass1!'),"
+                    + "(3, 3, 'Pass2@'),"
+                    + "(2, 1, 'Pass3#')";
             insertStatement.execute(insertQuery);
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,11 +66,10 @@ public class SqlitePasswordDAO implements PasswordDAO {
     @Override
     public void addPassword(Password password) {
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO passwords (user_id, website_id, password, key) VALUES (?, ?, ?, ?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO passwords (user_id, website_id, password) VALUES (?, ?, ?)");
             statement.setInt(1, password.getUser_id());
             statement.setInt(2, password.getWebsite_id());
             statement.setString(3, password.getPasswordContent());
-            statement.setString(4, password.getKey());
             statement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -82,9 +80,8 @@ public class SqlitePasswordDAO implements PasswordDAO {
     @Override
     public void updatePassword(Password password) {
         try {
-            PreparedStatement statement = connection.prepareStatement("UPDATE passwords SET password = ?, key = ? WHERE id = ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE passwords SET password = ?, WHERE id = ?");
             statement.setString(1, password.getPasswordContent());
-            statement.setString(2, password.getKey());
             statement.setInt(3, password.getId());
             statement.executeUpdate();
         } catch (Exception e) {
@@ -115,8 +112,7 @@ public class SqlitePasswordDAO implements PasswordDAO {
                 int user_id = resultSet.getInt("user_id");
                 int website_id = resultSet.getInt("website_id");
                 String password_content = resultSet.getString("password");
-                String key = resultSet.getString("key");
-                Password password = new Password(user_id, website_id, password_content, key);
+                Password password = new Password(user_id, website_id, password_content);
                 password.setId(id);
                 return password;
             }
@@ -141,8 +137,7 @@ public class SqlitePasswordDAO implements PasswordDAO {
                 int user_id = resultSet.getInt("user_id");
                 int website_id = resultSet.getInt("website_id");
                 String password_content = resultSet.getString("password");
-                String key = resultSet.getString("key");
-                Password password = new Password(user_id, website_id, password_content, key);
+                Password password = new Password(user_id, website_id, password_content);
                 password.setId(id);
                 passwords.add(password);
             }

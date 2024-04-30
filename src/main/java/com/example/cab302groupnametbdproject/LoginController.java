@@ -32,6 +32,8 @@ public class LoginController {
     @FXML
     private TextField password;
 
+    private User loggedInUser;
+
 
     // Constructor
     private UserDAO userDAO;
@@ -63,10 +65,16 @@ public class LoginController {
             User userQuery = table.getUserFromUserName(usernameInput);
             if (userQuery != null) {
                 if (passwordInput.equals(userQuery.getPassword())) {
+
+                    // Set new frame of main screen if logged in
                     Stage stage = (Stage) loginButton.getScene().getWindow();
                     FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
                     Scene scene = new Scene(fxmlLoader.load());
                     stage.setScene(scene);
+
+                    // Create User object of logged in User
+                    loggedInUser = userQuery;
+                    loggedInUser.setKey(passwordInput);
                 } else { loginInfo.setText("Incorrect Password."); }
             } else { loginInfo.setText("Username not found."); }
         }
