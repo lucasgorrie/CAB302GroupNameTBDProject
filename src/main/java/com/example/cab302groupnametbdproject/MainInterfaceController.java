@@ -1,20 +1,38 @@
 package com.example.cab302groupnametbdproject;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class MainInterfaceController {
 
+    public Button associateWebsitesButton;
+    public Button childAccountsButton;
     @FXML
     private BorderPane mainLayout;
     @FXML
     private VBox mainContent;
+
+    @FXML
+    private Button backbutton;
+
+    @FXML
+    private Button homebutton;
+
+    @FXML
+    private Button userbutton;
+    
+    
 
     private void switchToPage(String pageName) {
         mainLayout.setCenter(createContentPage(pageName));
@@ -52,8 +70,11 @@ public class MainInterfaceController {
     }
 
     @FXML
-    private void onAssociatedWebsitesClick() {
-        switchToPage("Associated Websites");
+    private void onAssociatedWebsitesClick() throws IOException {
+        Stage associatedWebsiteStage = (Stage) associateWebsitesButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-datatable.fxml"));
+        Scene associatedWebsiteScene = new Scene(fxmlLoader.load());
+        associatedWebsiteStage.setScene(associatedWebsiteScene);
     }
 
     @FXML
@@ -62,7 +83,10 @@ public class MainInterfaceController {
     }
 
     @FXML
-    private void onChildAccountsButtonClick() {
-        switchToPage("Child Accounts");
+    private void onChildAccountsButtonClick() throws IOException {
+        Stage stage = (Stage) childAccountsButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("childaccount-datatable.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
     }
 }
