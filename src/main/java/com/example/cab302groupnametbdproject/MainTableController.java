@@ -1,10 +1,11 @@
 package com.example.cab302groupnametbdproject;
 
-import com.example.cab302groupnametbdproject.model.associatedWebsites.AssociatedWebsiteDAO;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.SqliteAssociatedWebsiteDAO;
-import com.example.cab302groupnametbdproject.model.passwords.PasswordDAO;
+import com.example.cab302groupnametbdproject.model.associatedWebsites.Website;
+import com.example.cab302groupnametbdproject.model.passwords.Password;
 import com.example.cab302groupnametbdproject.model.passwords.SqlitePasswordDAO;
 import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
+import com.example.cab302groupnametbdproject.model.users.User;
 import com.example.cab302groupnametbdproject.model.users.UserDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -23,19 +25,19 @@ import java.util.ResourceBundle;
 public class MainTableController implements Initializable {
 
         @FXML
-        private TableColumn<User, String> urllink;
+        private TableColumn<MainTable, String> urllink;
 
         @FXML
-        private TableColumn<User, String> user;
+        private TableColumn<MainTable, String> user;
 
         @FXML
-        private TableColumn<User, String> usertype;
+        private TableColumn<MainTable, String> usertype;
 
         @FXML
-        private TableColumn<User, String> actions;
+        private TableColumn<MainTable, String> actions;
 
         @FXML
-        private TableView<User> datatable;
+        private TableView<MainTable> datatable;
 
         @FXML
         private Button backbutton;
@@ -46,9 +48,20 @@ public class MainTableController implements Initializable {
         @FXML
         private Button userbutton;
 
+        private UserDAO userDAO;
+        private com.example.cab302groupnametbdproject.model.associatedWebsites.AssociatedWebsiteDAO AssociatedWebsiteDAO;
+        private com.example.cab302groupnametbdproject.model.passwords.PasswordDAO PasswordDAO;
+
+        // Constructor
+        public MainTableController(){
+                userDAO = new SqliteUserDAO();
+                AssociatedWebsiteDAO = new SqliteAssociatedWebsiteDAO();
+                PasswordDAO = new SqlitePasswordDAO();
+        }
+
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
-                actions.setCellFactory(column -> new TableCell<User, String>() {
+                actions.setCellFactory(column -> new TableCell<MainTable, String>() {
                         @Override
                         protected void updateItem(String item, boolean empty) {
                                 super.updateItem(item, empty);
@@ -56,7 +69,7 @@ public class MainTableController implements Initializable {
                                         setGraphic(null);
                                         setText(null);
                                 } else {
-                                        User user = getTableView().getItems().get(getIndex());
+                                        MainTable user = getTableView().getItems().get(getIndex());
                                         List<Button> buttons = user.getActions();
                                         HBox hbox = new HBox();
                                         hbox.setSpacing(5);
@@ -81,10 +94,39 @@ public class MainTableController implements Initializable {
                 List<Button> buttons2 = Arrays.asList(new Button("Disassociate"));
                 List<Button> buttons3 = Arrays.asList(new Button("Disassociate"), new Button("Change"));
 
-                datatable.getItems().addAll(
-                        new User("https://www.example.com/page.html", "User0", "Parent", buttons1),
-                        new User("https://www.example.com/page.html", "User0Child1", "Child", buttons2),
-                        new User("https://www.example.com/page.html", "User1", "Parent", buttons3)
-                );
+
+                populateTable();
+
         }
+
+        public void populateTable(){
+
+                // Get all passwords
+                List<Password> passwords = PasswordDAO.getAllPasswords();
+
+                // Buttons
+                List<Button> buttons = new ArrayList<>();
+
+                // Iterate once per Password in DB:
+                for(Password password : passwords){
+                        // Create User object based on the associated User of the Password
+                        User user = userDAO.getUser(password.getUser_id());
+
+                        // Create Website object based on the associated Website of the Password
+                        Website website = AssociatedWebsiteDAO.getWebsite(password.getWebsite_id());
+
+                        // Create Password object based on current iteration
+                        Password cPassword = PasswordDAO.getPassword(password.getId());
+
+                        buttons.add(new Button("Disassociate"));
+                        buttons.add(new Button("Change"));
+
+                        // Return datatable with user's username, website's URL, and password's content, buttons
+                        datatable.getItems().add(new MainTable(website.getURL(), user.getUsername(), user.getUserType(), buttons));
+
+                }
+
+
+        }
+
 }

@@ -19,9 +19,6 @@ public class SqliteAssociatedWebsiteDAO implements AssociatedWebsiteDAO {
     public SqliteAssociatedWebsiteDAO(){
         connection = SqliteConnection.getInstance(); // Establish connection with DB
         createTable(); // Create table if it does not exist
-
-        // Insert data for testing
-        insertTestingData();
     }
 
     private void createTable() {
@@ -62,9 +59,8 @@ public class SqliteAssociatedWebsiteDAO implements AssociatedWebsiteDAO {
     @Override
     public void addWebsite(Website website) {
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO websites (id, URL) VALUES (?, ?)");
-            statement.setInt(1, website.getId());
-            statement.setString(2, website.getURL());
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO websites (URL) VALUES (?)");
+            statement.setString(1, website.getURL());
             statement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

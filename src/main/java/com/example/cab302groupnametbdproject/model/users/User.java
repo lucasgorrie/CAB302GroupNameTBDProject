@@ -6,7 +6,7 @@ import com.example.cab302groupnametbdproject.model.passwords.Password;
 public class User {
     private int id;
     private String user_type; // <-- PARENT or CHILD
-    private Integer parent_id; // <-- PK of PARENT User, references a User in this table's PK. is a FK.
+    private int parent_id = 0; // <-- PK of PARENT User, references a User in this table's PK. is a FK.
     private String username;
     private String firstName;
     private String lastName;
@@ -15,9 +15,8 @@ public class User {
     private String key = null;
 
     // Constructor
-    public User(String user_type, Integer parent_id, String username, String firstName, String lastName, String email, String password) {
+    public User(String user_type, String username, String firstName, String lastName, String email, String password) {
         this.user_type = user_type;
-        this.parent_id = parent_id;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -69,7 +68,7 @@ public class User {
      *
      * @param parent_id the Parent id to be set for the User
      */
-    public void setParentId(int parent_id) {
+    public void setParentId(Integer parent_id) {
         this.parent_id = parent_id;
     }
 

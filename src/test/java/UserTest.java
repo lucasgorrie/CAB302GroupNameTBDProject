@@ -11,7 +11,7 @@ public class UserTest {
 
     @BeforeEach
     public void setUp(){
-        user = new User("PARENT",null, "testUsername", "testFirstName", "testLastName", "testEmail@email.com", "testPass1!");
+        user = new User("PARENT","testUsername", "testFirstName", "testLastName", "testEmail@email.com", "testPass1!");
     }
 
     @Test

@@ -22,7 +22,7 @@ public class SqliteUserDAO implements UserDAO {
     private void createTable() {
         try {
             Statement statement = connection.createStatement();
-            String query = "CREATE TABLE IF NOT EXISTS users ("
+            String query = "CREATE TABLE IF NOT EXISTS users("
                     + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + "user_type VARCHAR NOT NULL,"
                     + "parent_id INTEGER,"
@@ -104,7 +104,7 @@ public class SqliteUserDAO implements UserDAO {
                 String lastName = resultSet.getString("lastName");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                User user = new User(user_type, parent_id, username, firstName, lastName, email, password);
+                User user = new User(user_type, username, firstName, lastName, email, password);
                 user.setId(id);
                 return user;
             }
@@ -127,7 +127,7 @@ public class SqliteUserDAO implements UserDAO {
                 String lastName = resultSet.getString("lastName");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                User user = new User(user_type, parent_id, username, firstName, lastName, email, password);
+                User user = new User(user_type, username, firstName, lastName, email, password);
                 user.setId(id);
                 return user;
             }
@@ -156,7 +156,7 @@ public class SqliteUserDAO implements UserDAO {
                 String lastName = resultSet.getString("lastName");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                User user = new User(user_type, parent_id, username, firstName, lastName, email, password);
+                User user = new User(user_type, username, firstName, lastName, email, password);
                 user.setId(id);
                 users.add(user);
             }
