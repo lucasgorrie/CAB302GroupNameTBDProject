@@ -111,8 +111,6 @@ public class MainTableController implements Initializable {
                 // Get all passwords
                 List<Password> passwords = PasswordDAO.getAllPasswords();
 
-                // Buttons
-                List<Button> buttons = new ArrayList<>();
 
                 // Iterate once per Password in DB:
                 for (Password password : passwords) {
@@ -125,8 +123,10 @@ public class MainTableController implements Initializable {
                         // Create Password object based on current iteration
                         Password cPassword = PasswordDAO.getPassword(password.getId());
 
-                        buttons.add(new Button("Disassociate"));
-                        buttons.add(new Button("Change"));
+                        // Buttons
+                        List<Button> buttons = new ArrayList<>();
+                        buttons.add(new Button("Remove"));
+                        buttons.add(new Button("Edit"));
 
                         // Return datatable with user's username, website's URL, and password's content, buttons
                         datatable.getItems().add(new MainTable(website.getURL(), user.getUsername(), cPassword.getPasswordContent(), buttons));
