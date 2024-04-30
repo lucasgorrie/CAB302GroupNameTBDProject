@@ -36,7 +36,7 @@ public class MainTableController implements Initializable {
         private TableColumn<MainTable, String> user;
 
         @FXML
-        private TableColumn<MainTable, String> usertype;
+        private TableColumn<MainTable, String> password;
 
         @FXML
         private TableColumn<MainTable, String> actions;
@@ -45,7 +45,15 @@ public class MainTableController implements Initializable {
         private TableView<MainTable> datatable;
 
         @FXML
-        private Button backbutton;
+        private Button backToMenuButton;
+
+        @FXML
+        protected void onBackToMenuClick() throws IOException {
+                Stage stage = (Stage) backToMenuButton.getScene().getWindow();
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                stage.setScene(scene);
+        }
 
         @FXML
         private Button homebutton;
@@ -92,13 +100,7 @@ public class MainTableController implements Initializable {
                 // Set cell value factories for other columns
                 urllink.setCellValueFactory(new PropertyValueFactory<>("urllink"));
                 user.setCellValueFactory(new PropertyValueFactory<>("user"));
-                usertype.setCellValueFactory(new PropertyValueFactory<>("usertype"));
-
-                // Populate your table with dummy data
-                List<Button> buttons1 = Arrays.asList(new Button("Disassociate"), new Button("Change"));
-                List<Button> buttons2 = Arrays.asList(new Button("Disassociate"));
-                List<Button> buttons3 = Arrays.asList(new Button("Disassociate"), new Button("Change"));
-
+                password.setCellValueFactory(new PropertyValueFactory<>("password"));
 
                 populateTable();
 
@@ -127,21 +129,9 @@ public class MainTableController implements Initializable {
                         buttons.add(new Button("Change"));
 
                         // Return datatable with user's username, website's URL, and password's content, buttons
-                        datatable.getItems().add(new MainTable(website.getURL(), user.getUsername(), user.getUserType(), buttons));
+                        datatable.getItems().add(new MainTable(website.getURL(), user.getUsername(), cPassword.getPasswordContent(), buttons));
 
                 }
-
-
         }
 
-        @FXML
-        private Button backToMenuButton;
-
-        @FXML
-        protected void onBackToMenuClick() throws IOException {
-                Stage stage = (Stage) backToMenuButton.getScene().getWindow();
-                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
-                stage.setScene(scene);
-        }
 }

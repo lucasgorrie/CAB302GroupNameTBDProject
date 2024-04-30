@@ -8,13 +8,13 @@ public class MainTable {
     /* Columns for Main Table */
     private String urllink;
     private String user;
-    private String usertype;
+    private String password;
     private List<Button> actions;
 
-    public MainTable(String urllink, String user, String usertype, List<Button> actions) {
+    public MainTable(String urllink, String user, String password, List<Button> actions) {
         this.urllink = urllink;
         this.user = user;
-        this.usertype = usertype;
+        this.password = password;
         this.actions = actions;
 
     }
@@ -29,8 +29,8 @@ public class MainTable {
         return user;
     }
 
-    public String getUsertype() {
-        return usertype;
+    public String getPassword() {
+        return password;
     }
 
     public List<Button> getActions() {

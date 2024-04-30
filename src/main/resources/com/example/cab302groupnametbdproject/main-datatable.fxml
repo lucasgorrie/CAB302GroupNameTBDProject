@@ -11,14 +11,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cab302groupnametbdproject.MainTableController" stylesheets="@style2.css">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@style2.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cab302groupnametbdproject.MainTableController">
 
    <children>
       <HBox prefHeight="80.0" prefWidth="800.0">
          <children>
             <Pane prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Button fx:id="backToMenuButton" onAction="#onBackToMenuClick" layoutY="10.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="57.0" style="-fx-background-color: rgba(255,255,255,0); -fx-border-color: rgba(255,255,255,0);">
+                  <Button fx:id="backToMenuButton" layoutY="10.0" mnemonicParsing="false" onAction="#onBackToMenuClick" prefHeight="57.0" prefWidth="57.0" style="-fx-background-color: rgba(255,255,255,0); -fx-border-color: rgba(255,255,255,0);">
                      <graphic>
                         <ImageView fitHeight="55.0" fitWidth="84.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -67,7 +67,7 @@
         <columns>
           <TableColumn fx:id="urllink" prefWidth="201.0" text="URL" />
           <TableColumn fx:id="user" minWidth="0.0" prefWidth="151.0" text="User" />
-            <TableColumn fx:id="usertype" prefWidth="122.0" text="UserType" />
+            <TableColumn fx:id="password" prefWidth="122.0" text="Password" />
             <TableColumn fx:id="actions" prefWidth="245.0" text="Actions" />
         </columns>
       </TableView>
