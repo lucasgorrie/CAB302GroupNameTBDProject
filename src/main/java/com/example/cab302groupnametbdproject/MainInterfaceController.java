@@ -71,10 +71,10 @@ public class MainInterfaceController {
 
     @FXML
     private void onAssociatedWebsitesClick() throws IOException {
-        Stage associatedWebsiteStage = (Stage) associateWebsitesButton.getScene().getWindow();
+        Stage stage = (Stage) associateWebsitesButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-datatable.fxml"));
-        Scene associatedWebsiteScene = new Scene(fxmlLoader.load());
-        associatedWebsiteStage.setScene(associatedWebsiteScene);
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
     }
 
     @FXML
