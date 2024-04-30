@@ -14,14 +14,10 @@ public class SqliteUserDAO implements UserDAO {
     private Connection connection;
 
     // Constructor
-    public SqliteUserDAO(){
+    public SqliteUserDAO() {
         connection = SqliteConnection.getInstance(); // Establish connection with DB
         createTable(); // Create table if it does not exist
-
-        // Insert data for testing
-        insertTestingData();
     }
-
     // Create the users table, if it doesn't already exist
     private void createTable() {
         try {
@@ -44,30 +40,11 @@ public class SqliteUserDAO implements UserDAO {
         }
     }
 
-    private void insertTestingData() {
-        try {
-            // Clear deployed DB before inserting
-            Statement clearStatement = connection.createStatement();
-            String clearQuery = "DELETE FROM users";
-            clearStatement.execute(clearQuery);
-
-            // Insert testing data
-            Statement insertStatement = connection.createStatement();
-            String insertQuery = "INSERT INTO users (user_type, parent_id, username, firstName, lastName, email, password) VALUES "
-                    + "('PARENT', '', 'myUsername', 'Lucas', 'Gorrie', '123@example.com', 'PasswordPlainText1!'),"
-                    + "('PARENT', '', 'AVan', 'Alyx', 'Vance', 'avance@example.com', 'PasswordTest2@'),"
-                    + "('CHILD', '1', 'LCancerFTW', 'Cave', 'Johnson', 'cave@aperturescience.com', 'PassPassPass3#')";
-            insertStatement.execute(insertQuery);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     // Adds a new User object to the users table
     @Override
     public void addUser(User user) {
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO users (user_type, parent_id, username, firstName, lastName, email, password) VALUES (?, ?, ?, ?, ?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO users (user_type, parent_id, username, firstName, lastName, email, password) VALUES (?, ?, ?, ?, ?, ?, ?)");
             statement.setString(1, user.getUserType());
             statement.setInt(2, user.getParentId());
             statement.setString(3, user.getUsername());
