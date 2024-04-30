@@ -11,13 +11,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="mainLayout" stylesheets="@style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="com.example.cab302groupnametbdproject.AboutViewController">
+<BorderPane fx:id="mainLayout" prefHeight="600.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cab302groupnametbdproject.AboutViewController">
     <top>
         <HBox prefHeight="80.0" prefWidth="800.0">
             <children>
                 <Pane prefHeight="200.0" prefWidth="100.0">
                     <children>
-                        <Button fx:id="backbutton" layoutY="10.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="57.0" style="-fx-background-color: rgba(255,255,255,0); -fx-border-color: rgba(255,255,255,0);" onAction= "#BackButton">
+                        <Button fx:id="backbutton" layoutY="10.0" mnemonicParsing="false" onAction="#BackButton" prefHeight="57.0" prefWidth="57.0" style="-fx-background-color: rgba(255,255,255,0); -fx-border-color: rgba(255,255,255,0);">
                             <graphic>
                                 <ImageView fitHeight="55.0" fitWidth="84.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                                     <image>

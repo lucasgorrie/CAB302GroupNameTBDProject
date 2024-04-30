@@ -9,30 +9,30 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="536.0" style="-fx-background-color: linear-gradient(to bottom, #fcca81, white);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cab302groupnametbdproject.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(to bottom, #fcca81, white);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cab302groupnametbdproject.LoginController">
    <children>
-      <TextField fx:id="username" layoutX="172.0" layoutY="305.0" prefHeight="32.0" prefWidth="197.0" promptText="Username..." style="-fx-border-color: orange; -fx-border-radius: 25;" />
-      <Button fx:id="loginButton" layoutX="200.0" layoutY="392.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="141.0" style="-fx-border-radius: 200px; -fx-background-color: linear-gradient(to bottom, #fcca81, white); -fx-border-color: orange;" text="Log In" onAction="#onLoginButtonClick">
+      <TextField fx:id="username" layoutX="304.0" layoutY="299.0" prefHeight="40.0" prefWidth="205.0" promptText="Username..." style="-fx-border-color: orange; -fx-border-radius: 25;" />
+      <Button fx:id="loginButton" layoutX="334.0" layoutY="399.0" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="45.0" prefWidth="145.0" style="-fx-border-radius: 200px; -fx-background-color: linear-gradient(to bottom, #fcca81, white); -fx-border-color: orange;" text="Log In">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="createUserButton" layoutX="207.0" layoutY="272.0" mnemonicParsing="false" onAction="#onCreateUserButtonClick" prefHeight="27.0" prefWidth="124.0" style="-fx-border-radius: 200px; -fx-background-color: linear-gradient(to bottom, #fcca81, white); -fx-border-color: orange;" text="Create New User">
+      <Button fx:id="createUserButton" layoutX="333.0" layoutY="237.0" mnemonicParsing="false" onAction="#onCreateUserButtonClick" prefHeight="45.0" prefWidth="145.0" style="-fx-border-radius: 200px; -fx-background-color: linear-gradient(to bottom, #fcca81, white); -fx-border-color: orange;" text="Create New User">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ImageView fitHeight="163.0" fitWidth="307.0" layoutX="115.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="163.0" fitWidth="307.0" layoutX="246.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/PasswordManagerLogo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="88.0" fitWidth="124.0" layoutX="225.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="88.0" fitWidth="124.0" layoutX="354.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/logo.png" />
          </image>
       </ImageView>
       <Label fx:id="loginInfo" alignment="CENTER" layoutX="94.0" layoutY="229.0" prefHeight="17.0" prefWidth="348.0" />
-      <PasswordField fx:id="password" layoutX="172.0" layoutY="347.0" prefHeight="32.0" prefWidth="197.0" promptText="Password..." style="-fx-border-color: orange; -fx-border-radius: 25;" />
+      <PasswordField fx:id="password" layoutX="305.0" layoutY="345.0" prefHeight="40.0" prefWidth="205.0" promptText="Password..." style="-fx-border-color: orange; -fx-border-radius: 25;" />
    </children>
 </AnchorPane>
