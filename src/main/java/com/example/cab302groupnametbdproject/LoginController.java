@@ -33,8 +33,7 @@ public class LoginController {
     private TextField username;
     @FXML
     private TextField password;
-
-    private User loggedInUser;
+    public static User loggedInUser;
 
 
     // Constructor
@@ -120,10 +119,9 @@ public class LoginController {
                     FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
                     Scene scene = new Scene(fxmlLoader.load());
                     stage.setScene(scene);
-
-                    // Create User object of logged in User
+                    // Set logged in User
                     loggedInUser = userQuery;
-                    loggedInUser.setKey(passwordInput);
+
                 } else { loginInfo.setText("Incorrect Password."); }
             } else { loginInfo.setText("Username not found."); }
         }

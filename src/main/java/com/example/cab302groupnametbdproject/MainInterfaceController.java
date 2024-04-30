@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import static com.example.cab302groupnametbdproject.LoginController.loggedInUser;
+
 public class MainInterfaceController {
 
     public Button associateWebsitesButton;
