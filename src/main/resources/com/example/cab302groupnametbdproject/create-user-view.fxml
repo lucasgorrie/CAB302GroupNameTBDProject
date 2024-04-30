@@ -32,16 +32,15 @@
       <TextField fx:id="email" layoutX="304.0" layoutY="362.0" prefHeight="32.0" prefWidth="197.0" promptText="Email..." style="-fx-border-color: orange; -fx-border-radius: 25;" />
       <PasswordField fx:id="repeatPassword" layoutX="304.0" layoutY="430.0" prefHeight="32.0" prefWidth="197.0" promptText="Repeat Password..." style="-fx-border-color: orange; -fx-border-radius: 25;" />
       <PasswordField fx:id="password" layoutX="304.0" layoutY="396.0" prefHeight="32.0" prefWidth="197.0" promptText="Password..." style="-fx-border-color: orange; -fx-border-radius: 25;" />
-      <Button fx:id="backToLoginButton" layoutX="-11.0" layoutY="15.0" mnemonicParsing="false" onAction="#onBackToLoginClick" opacity="0.0" prefHeight="49.0" prefWidth="52.0">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <ImageView fitHeight="68.0" fitWidth="49.0" layoutX="15.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/back.png" />
-         </image>
-      </ImageView>
       <Label fx:id="signupInfo" alignment="CENTER" layoutX="225.0" layoutY="218.0" prefHeight="17.0" prefWidth="405.0" textAlignment="CENTER" />
+      <Button fx:id="backToLoginButton" layoutX="10.0" layoutY="20.0" mnemonicParsing="false" onAction="#onBackToLoginClick" prefHeight="49.0" prefWidth="61.0" style="-fx-background-color: rgba(255,255,255,0); -fx-border-color: rgba(255,255,255,0);">
+         <graphic>
+            <ImageView fitHeight="55.0" fitWidth="84.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/back.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

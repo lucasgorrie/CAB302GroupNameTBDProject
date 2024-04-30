@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(to bottom, #fcca81, white);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cab302groupnametbdproject.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(to bottom, #fcca81, white);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cab302groupnametbdproject.LoginController" stylesheets="@style2.css">
    <children>
       <TextField fx:id="username" layoutX="304.0" layoutY="299.0" prefHeight="40.0" prefWidth="205.0" promptText="Username..." style="-fx-border-color: orange; -fx-border-radius: 25;" />
       <Button fx:id="loginButton" layoutX="334.0" layoutY="399.0" mnemonicParsing="false" onAction="#onLoginButtonClick" prefHeight="45.0" prefWidth="145.0" style="-fx-border-radius: 200px; -fx-background-color: linear-gradient(to bottom, #fcca81, white); -fx-border-color: orange;" text="Log In">

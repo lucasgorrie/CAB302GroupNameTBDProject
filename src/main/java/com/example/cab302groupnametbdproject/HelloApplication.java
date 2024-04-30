@@ -19,7 +19,7 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.show();
 
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("style.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("style2.css")).toExternalForm());
     }
 
     public static void main(String[] args) {
