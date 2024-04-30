@@ -34,6 +34,9 @@ public class MainInterfaceController {
 
     @FXML
     private Button signOutButton;
+
+    @FXML
+    private Button aboutbutton;
     
 
     private void switchToPage(String pageName) {
@@ -83,8 +86,11 @@ public class MainInterfaceController {
     }
 
     @FXML
-    private void onAboutButtonClick() {
-        switchToPage("About Us");
+    private void onAboutButtonClick() throws IOException {
+        Stage stage = (Stage) aboutbutton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("about-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
     }
 
     @FXML

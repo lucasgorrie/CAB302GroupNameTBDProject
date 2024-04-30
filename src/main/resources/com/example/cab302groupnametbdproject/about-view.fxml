@@ -1,21 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="mainLayout" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.cab302groupnametbdproject.MainInterfaceController" stylesheets="@style.css">
+<BorderPane fx:id="mainLayout" stylesheets="@style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="com.example.cab302groupnametbdproject.AboutViewController">
     <top>
         <HBox prefHeight="80.0" prefWidth="800.0">
             <children>
                 <Pane prefHeight="200.0" prefWidth="100.0">
                     <children>
-                        <Button fx:id="backbutton" layoutY="10.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="57.0" style="-fx-background-color: rgba(255,255,255,0); -fx-border-color: rgba(255,255,255,0);">
+                        <Button fx:id="backbutton" layoutY="10.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="57.0" style="-fx-background-color: rgba(255,255,255,0); -fx-border-color: rgba(255,255,255,0);" onAction= "#BackButton">
                             <graphic>
                                 <ImageView fitHeight="55.0" fitWidth="84.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -26,7 +28,7 @@
                         </Button>
                     </children>
                 </Pane>
-                <Pane prefHeight="200.0" prefWidth ="200.0" />
+                <Pane prefHeight="200.0" prefWidth="200.0" />
                 <Pane prefHeight="200.0" prefWidth="200.0">
                     <children>
                         <Button fx:id="homebutton" layoutX="88.0" layoutY="10.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="67.0" style="-fx-background-color: rgba(255,255,255,0); -fx-border-color: rgba(255,255,255,0);" />
@@ -63,47 +65,14 @@
     </top>
 
     <center>
-        <VBox fx:id="mainContent" alignment="CENTER" spacing="20.0">
-            <!-- HBox for the "Associated Websites" button and image -->
-            <HBox alignment="CENTER" spacing="10.0">
-                <padding>
-                    <Insets left="60.0"/> <!-- Adjust this value to move them as desired -->
-                </padding>
-                <Button fx:id = "associateWebsitesButton" text="Associated Websites" onAction="#onAssociatedWebsitesClick"/>
-                <ImageView fitWidth="50" fitHeight="50">
-                    <image>
-                        <Image url="@images/web.png"/>
-                    </image>
-                </ImageView>
-            </HBox>
-
-            <!-- HBox for the "About the App" button and image -->
-            <HBox alignment="CENTER" spacing="20.0">
-                <padding>
-                    <Insets left="63.0"/> <!-- Adjust this value to move them as desired -->
-                </padding>
-                <Button fx:id="aboutbutton" text="About the App" onAction="#onAboutButtonClick"/>
-                <ImageView fitWidth="50" fitHeight="50">
-                    <image>
-                        <Image url="@images/1176.png"/>
-                    </image>
-                </ImageView>
-            </HBox>
-
-            <!-- HBox for the "Child Accounts" button and image -->
-            <HBox alignment="CENTER" spacing="10.0">
-                <padding>
-                    <Insets left="60.0"/> <!-- Adjust this value to move them as desired -->
-                </padding>
-                <Button fx:id = "childAccountsButton" text="Child Accounts" onAction="#onChildAccountsButtonClick"/>
-                <ImageView fitWidth="50" fitHeight="50">
-                    <image>
-                        <Image url="@images/childaccount.png"/>
-                    </image>
-                </ImageView>
-            </HBox>
-
-            <Button fx:id="signOutButton" text="Sign Out" onAction="#onSignOutButtonClick" styleClass="sign-out-button"/>
+        <VBox fx:id="mainContent" alignment="CENTER" prefHeight="366.0" prefWidth="800.0" spacing="20.0">
+         <children>
+            <Pane prefHeight="278.0" prefWidth="800.0">
+               <children>
+                  <Text layoutX="39.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This is where we'll tell everyone all about our application and how great it is" />
+               </children>
+            </Pane>
+         </children>
         </VBox>
     </center>
 </BorderPane>
