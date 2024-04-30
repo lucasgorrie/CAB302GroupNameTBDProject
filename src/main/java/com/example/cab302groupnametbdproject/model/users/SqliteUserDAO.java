@@ -98,7 +98,7 @@ public class SqliteUserDAO implements UserDAO {
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 String user_type = resultSet.getString("user_type");
-                int parent_id = resultSet.getInt("parent_id");
+                Integer parent_id = resultSet.getInt("parent_id");
                 String username = resultSet.getString("username");
                 String firstName = resultSet.getString("firstName");
                 String lastName = resultSet.getString("lastName");
@@ -122,7 +122,7 @@ public class SqliteUserDAO implements UserDAO {
             if (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String user_type = resultSet.getString("user_type");
-                int parent_id = resultSet.getInt("parent_id");
+                Integer parent_id = resultSet.getInt("parent_id");
                 String firstName = resultSet.getString("firstName");
                 String lastName = resultSet.getString("lastName");
                 String email = resultSet.getString("email");
@@ -150,7 +150,7 @@ public class SqliteUserDAO implements UserDAO {
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String user_type = resultSet.getString("user_type");
-                int parent_id = resultSet.getInt("parent_id");
+                Integer parent_id = resultSet.getInt("parent_id");
                 String username = resultSet.getString("username");
                 String firstName = resultSet.getString("firstName");
                 String lastName = resultSet.getString("lastName");
