@@ -19,9 +19,6 @@ public class SqlitePasswordDAO implements PasswordDAO {
     public SqlitePasswordDAO(){
         connection = SqliteConnection.getInstance(); // Establish connection with DB
         createTable(); // Create table if it does not exist
-
-        // Insert data for testing
-        insertTestingData();
     }
 
     private void createTable() {

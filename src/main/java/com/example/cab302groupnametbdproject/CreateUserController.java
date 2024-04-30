@@ -58,7 +58,7 @@ public class CreateUserController {
             signupInfo.setText("Passwords do not match.");
         } else {
             SqliteUserDAO table = new SqliteUserDAO();
-            User newUser = new User(user_type, parent_id, usernameInput, firstNameInput, lastNameInput, emailInput, passwordInput);
+            User newUser = new User(user_type, usernameInput, firstNameInput, lastNameInput, emailInput, passwordInput);
             table.addUser(newUser);
             onBackToLoginClick();
             signupInfo.setText("User Created");
