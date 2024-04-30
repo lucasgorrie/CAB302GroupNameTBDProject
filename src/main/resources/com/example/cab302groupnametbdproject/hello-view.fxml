@@ -8,6 +8,7 @@
 
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+
 <BorderPane fx:id="mainLayout" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.cab302groupnametbdproject.MainInterfaceController" stylesheets="@style.css">
     <top>
         <HBox prefHeight="80.0" prefWidth="800.0">

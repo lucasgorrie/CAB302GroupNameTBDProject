@@ -3,17 +3,17 @@ package com.example.cab302groupnametbdproject;
 import javafx.scene.control.Button;
 import java.util.List;
 
-public class User {
+public class MainTable {
 
     /* Columns for Main Table */
     private String urllink;
-    private String user;
+    private String username;
     private String usertype;
     private List<Button> actions;
 
-    public User(String urllink, String user, String usertype, List<Button> actions) {
+    public MainTable(String urllink, String username, String usertype, List<Button> actions) {
         this.urllink = urllink;
-        this.user = user;
+        this.username = username;
         this.usertype = usertype;
         this.actions = actions;
 
@@ -25,8 +25,8 @@ public class User {
         return urllink;
     }
 
-    public String getUser() {
-        return user;
+    public String getUsername() {
+        return username;
     }
 
     public String getUsertype() {
