@@ -103,7 +103,7 @@
                 </ImageView>
             </HBox>
 
-            <Button fx:id="onSignOutButtonClick" text="Sign Out" onAction="#onSignOutButtonClick" styleClass="sign-out-button"/>
+            <Button fx:id="signOutButton" text="Sign Out" onAction="#onSignOutButtonClick" styleClass="sign-out-button"/>
         </VBox>
     </center>
 </BorderPane>

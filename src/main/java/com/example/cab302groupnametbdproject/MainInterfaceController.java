@@ -31,7 +31,9 @@ public class MainInterfaceController {
 
     @FXML
     private Button userbutton;
-    
+
+    @FXML
+    private Button signOutButton;
     
 
     private void switchToPage(String pageName) {
@@ -65,8 +67,11 @@ public class MainInterfaceController {
     }
 
     @FXML
-    private void onSignOutButtonClick() {
-        switchToPage("Sign Out");
+    private void onSignOutButtonClick() throws IOException {
+        Stage stage = (Stage) signOutButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
     }
 
     @FXML
