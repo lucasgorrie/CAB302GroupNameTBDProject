@@ -33,7 +33,7 @@ public class MainTableController implements Initializable {
         private TableColumn<MainTable, String> urllink;
 
         @FXML
-        private TableColumn<MainTable, String> username;
+        private TableColumn<MainTable, String> user;
 
         @FXML
         private TableColumn<MainTable, String> usertype;
@@ -91,7 +91,7 @@ public class MainTableController implements Initializable {
                 });
                 // Set cell value factories for other columns
                 urllink.setCellValueFactory(new PropertyValueFactory<>("urllink"));
-                username.setCellValueFactory(new PropertyValueFactory<>("username"));
+                user.setCellValueFactory(new PropertyValueFactory<>("user"));
                 usertype.setCellValueFactory(new PropertyValueFactory<>("usertype"));
 
                 // Populate your table with dummy data
