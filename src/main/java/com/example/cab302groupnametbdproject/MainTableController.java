@@ -7,15 +7,20 @@ import com.example.cab302groupnametbdproject.model.passwords.SqlitePasswordDAO;
 import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
 import com.example.cab302groupnametbdproject.model.users.User;
 import com.example.cab302groupnametbdproject.model.users.UserDAO;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,7 +58,7 @@ public class MainTableController implements Initializable {
         private com.example.cab302groupnametbdproject.model.passwords.PasswordDAO PasswordDAO;
 
         // Constructor
-        public MainTableController(){
+        public MainTableController() {
                 userDAO = new SqliteUserDAO();
                 AssociatedWebsiteDAO = new SqliteAssociatedWebsiteDAO();
                 PasswordDAO = new SqlitePasswordDAO();
@@ -99,7 +104,7 @@ public class MainTableController implements Initializable {
 
         }
 
-        public void populateTable(){
+        public void populateTable() {
 
                 // Get all passwords
                 List<Password> passwords = PasswordDAO.getAllPasswords();
@@ -108,7 +113,7 @@ public class MainTableController implements Initializable {
                 List<Button> buttons = new ArrayList<>();
 
                 // Iterate once per Password in DB:
-                for(Password password : passwords){
+                for (Password password : passwords) {
                         // Create User object based on the associated User of the Password
                         User user = userDAO.getUser(password.getUser_id());
 
@@ -129,4 +134,14 @@ public class MainTableController implements Initializable {
 
         }
 
+        @FXML
+        private Button backToMenuButton;
+
+        @FXML
+        protected void onBackToMenuClick() throws IOException {
+                Stage stage = (Stage) backToMenuButton.getScene().getWindow();
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                stage.setScene(scene);
+        }
 }
