@@ -21,6 +21,8 @@ import java.io.IOException;
 public class LoginController {
 
     @FXML
+    private Button loginButton;
+    @FXML
     private Button createUserButton;
 
     @FXML
@@ -61,7 +63,10 @@ public class LoginController {
             User userQuery = table.getUserFromUserName(usernameInput);
             if (userQuery != null) {
                 if (passwordInput.equals(userQuery.getPassword())) {
-                    loginInfo.setText("Logged in Successfully");
+                    Stage stage = (Stage) loginButton.getScene().getWindow();
+                    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load());
+                    stage.setScene(scene);
                 } else { loginInfo.setText("Incorrect Password."); }
             } else { loginInfo.setText("Username not found."); }
         }

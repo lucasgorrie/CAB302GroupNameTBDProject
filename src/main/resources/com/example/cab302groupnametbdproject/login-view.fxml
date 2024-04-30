@@ -12,7 +12,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="536.0" style="-fx-background-color: linear-gradient(to bottom, #fcca81, white);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cab302groupnametbdproject.LoginController">
    <children>
       <TextField fx:id="username" layoutX="172.0" layoutY="305.0" prefHeight="32.0" prefWidth="197.0" promptText="Username..." style="-fx-border-color: orange; -fx-border-radius: 25;" />
-      <Button layoutX="200.0" layoutY="392.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="141.0" style="-fx-border-radius: 200px; -fx-background-color: linear-gradient(to bottom, #fcca81, white); -fx-border-color: orange;" text="Log In" onAction="#onLoginButtonClick">
+      <Button fx:id="loginButton" layoutX="200.0" layoutY="392.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="141.0" style="-fx-border-radius: 200px; -fx-background-color: linear-gradient(to bottom, #fcca81, white); -fx-border-color: orange;" text="Log In" onAction="#onLoginButtonClick">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
