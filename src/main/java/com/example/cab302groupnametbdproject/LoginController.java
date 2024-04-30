@@ -59,18 +59,7 @@ public class LoginController {
         return (SqlitePasswordDAO) this.PasswordDAO;
     }
 
-
-    //button to take user to signup view when hitting create user button
-    @FXML
-    protected void onCreateUserButtonClick() throws IOException {
-        Stage stage = (Stage) createUserButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("create-user-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-    @FXML
-    protected void onLoginButtonClick() throws IOException {
-
+    public void addTestingData(){
         User user1 = new User("PARENT", "AAA", "ANAME", "ALNAME", "A@EMAIL.COM", "AAA");
         User user2 = new User("PARENT", "BBB", "BNAME", "BLNAME", "B@EMAIL.COM", "BBB");
         User user3 = new User("PARENT", "CCC", "CNAME", "CLNAME", "C@EMAIL.COM", "CCC");
@@ -100,6 +89,21 @@ public class LoginController {
         AssociatedWebsiteDAO.addWebsite(website2);
         AssociatedWebsiteDAO.addWebsite(website3);
         AssociatedWebsiteDAO.addWebsite(website4);
+    }
+
+
+    //button to take user to signup view when hitting create user button
+    @FXML
+    protected void onCreateUserButtonClick() throws IOException {
+        Stage stage = (Stage) createUserButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("create-user-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
+    @FXML
+    protected void onLoginButtonClick() throws IOException {
+
+        addTestingData();
 
         String usernameInput = username.getText();
         String passwordInput = password.getText();
