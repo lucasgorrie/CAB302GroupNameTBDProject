@@ -29,6 +29,28 @@
     -fx-border-radius: 30; /* Rounded border to match the button's corner radius */
     -fx-font-family: "Helvetica";
 }
+.loginSignupButton {
+    -fx-background-color: #FFC04C; /* Lighter orange color */
+    -fx-text-fill: black; /* Black text */
+    -fx-background-radius: 30; /* Rounded corners */
+    -fx-padding: 10 20;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-border-color: black; /* Black border */
+    -fx-border-width: 2; /* Border width */
+    -fx-border-radius: 30; /* Rounded border to match the button's corner radius */
+    -fx-font-family: "Helvetica";
+}
+
+.text-field {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-background-radius: 15px;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-border-radius: 15px;
+    -fx-font-family: "Helvetica";
+}
 
 .label {
     -fx-font-size: 20px;

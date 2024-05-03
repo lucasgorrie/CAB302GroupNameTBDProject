@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -14,12 +15,11 @@ import java.io.IOException;
 
 public class CreateUserController {
 
+    public Label signupInfo;
     @FXML
     private Button backToLoginButton;
     @FXML
     private Button createUser;
-    @FXML
-    private Label signupInfo;
     @FXML
     private TextField firstName;
     @FXML
@@ -32,6 +32,8 @@ public class CreateUserController {
     private TextField password;
     @FXML
     private TextField repeatPassword;
+    @FXML
+    private CheckBox userTypeButton;
 
 
     //button to take the user back to the login page from the signup page
@@ -44,8 +46,8 @@ public class CreateUserController {
     }
     @FXML
     protected void createUserClick() throws IOException {
-        String user_type = "PARENT"; // <-- CHANGE ME
         int parent_id = 0; // <-- CHANGE ME
+        String user_type = "";
         String firstNameInput = firstName.getText();
         String lastNameInput = lastName.getText();
         String usernameInput = username.getText();
@@ -58,6 +60,9 @@ public class CreateUserController {
             signupInfo.setText("Passwords do not match.");
         } else {
             SqliteUserDAO table = new SqliteUserDAO();
+            if (userTypeButton.isSelected()) {
+                user_type = "CHILD";
+            } else { user_type = "PARENT";}
             User newUser = new User(user_type, usernameInput, firstNameInput, lastNameInput, emailInput, passwordInput);
             table.addUser(newUser);
             onBackToLoginClick();
