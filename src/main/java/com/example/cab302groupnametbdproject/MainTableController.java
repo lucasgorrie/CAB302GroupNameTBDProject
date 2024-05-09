@@ -46,11 +46,21 @@ public class MainTableController implements Initializable {
 
         @FXML
         private Button backToMenuButton;
+        @FXML
+        private Button addPasswordButton;
+
 
         @FXML
         protected void onBackToMenuClick() throws IOException {
                 Stage stage = (Stage) backToMenuButton.getScene().getWindow();
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                stage.setScene(scene);
+        }
+        @FXML
+        protected void onAddPasswordClick() throws IOException {
+                Stage stage = (Stage) addPasswordButton.getScene().getWindow();
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("add-password-view.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 stage.setScene(scene);
         }
