@@ -124,6 +124,7 @@ public class MainTableController implements Initializable {
 
                         // Create Password object based on current iteration
                         Password cPassword = PasswordDAO.getPassword(password.getId());
+                        String decryptedPassword = Encryption.decrypt(cPassword.getPasswordContent(), LoginController.loggedInUser.getKey());
 
                         // Buttons
                         List<Button> buttons = new ArrayList<>();
@@ -131,7 +132,7 @@ public class MainTableController implements Initializable {
                         buttons.add(new Button("Edit"));
 
                         // Return datatable with user's username, website's URL, and password's content, buttons
-                        datatable.getItems().add(new MainTable(website.getURL(), user.getUsername(), cPassword.getPasswordContent(), buttons));
+                        datatable.getItems().add(new MainTable(website.getURL(), user.getUsername(), decryptedPassword, buttons));
 
                 }
         }

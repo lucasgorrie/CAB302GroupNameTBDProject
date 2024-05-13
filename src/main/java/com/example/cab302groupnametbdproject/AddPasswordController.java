@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import java.util.Random;
 
 import java.io.IOException;
 import com.example.cab302groupnametbdproject.model.passwords.Password;
@@ -47,7 +48,26 @@ public class AddPasswordController {
             infoLabel.setText("Password Field Empty");
         } else {
             newPassword(passwordInput, URLInput);
+            onBackToMenuClick();
         }
+    }
+    @FXML
+    protected void onGeneratePasswordClick() throws IOException {
+        String URLInput = URL.getText();
+        String generatedPassword = "";
+        char[] Characters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w',
+        'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+                '0','1', '2', '3', '4', '5', '6', '7', '8', '9',
+                '!', '@', '#', '$', '%', '&' };
+        for (int i = 0; i < 15; i++) {
+            Random random = new Random();
+            generatedPassword += Characters[random.nextInt(Characters.length)];
+        }
+        newPassword(generatedPassword, URLInput);
+        onBackToMenuClick();
+
+
+
     }
     private void newPassword(String addingPassword, String URL) {
         SqlitePasswordDAO passwordTable = new SqlitePasswordDAO();
@@ -58,8 +78,7 @@ public class AddPasswordController {
             websiteTable.addWebsite(website);
             website = websiteTable.getWebsiteFromURL(URL);
         }
-        String key = "Test Key Innit";
-        String encryptedPassword = Encryption.encrypt(addingPassword, key);
+        String encryptedPassword = Encryption.encrypt(addingPassword, LoginController.loggedInUser.getKey());
         Password newPassword = new Password(LoginController.loggedInUser.getId(), website.getId(), encryptedPassword);
         passwordTable.addPassword(newPassword);
 

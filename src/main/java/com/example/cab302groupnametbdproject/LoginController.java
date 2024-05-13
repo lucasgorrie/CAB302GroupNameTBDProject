@@ -102,7 +102,6 @@ public class LoginController {
     @FXML
     protected void onLoginButtonClick() throws IOException {
 
-        addTestingData();
 
         String usernameInput = username.getText();
         String passwordInput = password.getText();
@@ -121,6 +120,7 @@ public class LoginController {
                     stage.setScene(scene);
                     // Set logged in User
                     loggedInUser = userQuery;
+                    loggedInUser.setKey(passwordInput);
 
                 } else { loginInfo.setText("Incorrect Password."); }
             } else { loginInfo.setText("Username not found."); }
