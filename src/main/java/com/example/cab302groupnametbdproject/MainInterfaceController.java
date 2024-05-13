@@ -39,6 +39,8 @@ public class MainInterfaceController {
 
     @FXML
     private Button aboutbutton;
+    @FXML
+    private Button addPasswordButton;
     
 
     private void switchToPage(String pageName) {
@@ -59,6 +61,14 @@ public class MainInterfaceController {
         pageLayout.setCenter(content);
 
         return pageLayout;
+    }
+
+    @FXML
+    protected void onAddPasswordClick() throws IOException {
+        Stage stage = (Stage) addPasswordButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("add-password-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
     }
 
     public static class BackButton extends Button {

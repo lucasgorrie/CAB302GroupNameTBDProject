@@ -54,6 +54,11 @@
 
     <center>
         <VBox fx:id="mainContent" alignment="CENTER" spacing="20.0">
+         <HBox alignment="CENTER" prefHeight="43.0" prefWidth="800.0">
+            <children>
+               <Button fx:id="addPasswordButton" onAction="#onAddPasswordClick" text="Add Password" />
+            </children>
+         </HBox>
             <!-- HBox for the "Associated Websites" button and image -->
             <HBox alignment="CENTER" spacing="10.0">
                 <padding>
