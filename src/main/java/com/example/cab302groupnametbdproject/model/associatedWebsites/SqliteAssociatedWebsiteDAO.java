@@ -98,6 +98,23 @@ public class SqliteAssociatedWebsiteDAO implements AssociatedWebsiteDAO {
         return null;
     }
 
+    public Website getWebsiteFromURL(String URL) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM websites WHERE URL = ?");
+            statement.setString(1, URL);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                Website website = new Website(URL);
+                website.setId(id);
+                return website;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     // Returns a list containing Website objects of all the websites in the DB table "websites"
     // On its own, this will only return the objects themselves. Use something like this to get specific properties:
     // List<String> URLs = getAllWebsites().stream().map(Website::getURL).toList(); <-- gets all URLs

@@ -39,10 +39,7 @@
                      </image>
                   </ImageView>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="150.0">
-               <children>
-                  <Button fx:id="addPasswordButton" onAction="#onAddPasswordClick" layoutX="3.0" layoutY="3.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="133.0" text="Add Password" />
-               </children></Pane>
+            <Pane prefHeight="200.0" prefWidth="150.0" />
             <Pane prefHeight="200.0" prefWidth="195.0">
                <children>
                   <Button fx:id="userbutton" alignment="CENTER" layoutX="29.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #FFA500#FFA500; -fx-border-radius: 15px; -fx-border-color: #000000;" text="User0">

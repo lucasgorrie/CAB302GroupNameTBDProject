@@ -7,6 +7,7 @@ import com.example.cab302groupnametbdproject.model.passwords.SqlitePasswordDAO;
 import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
 import com.example.cab302groupnametbdproject.model.users.User;
 import com.example.cab302groupnametbdproject.model.users.UserDAO;
+import com.example.cab302groupnametbdproject.model.passwords.Encryption;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,21 +47,12 @@ public class MainTableController implements Initializable {
 
         @FXML
         private Button backToMenuButton;
-        @FXML
-        private Button addPasswordButton;
 
 
         @FXML
         protected void onBackToMenuClick() throws IOException {
                 Stage stage = (Stage) backToMenuButton.getScene().getWindow();
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
-                stage.setScene(scene);
-        }
-        @FXML
-        protected void onAddPasswordClick() throws IOException {
-                Stage stage = (Stage) addPasswordButton.getScene().getWindow();
-                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("add-password-view.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 stage.setScene(scene);
         }

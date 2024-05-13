@@ -1,5 +1,7 @@
 package com.example.cab302groupnametbdproject;
 
+import com.example.cab302groupnametbdproject.model.associatedWebsites.SqliteAssociatedWebsiteDAO;
+import com.example.cab302groupnametbdproject.model.associatedWebsites.Website;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,6 +20,8 @@ public class AddPasswordController {
     @FXML
     private TextField password;
     @FXML
+    private TextField URL;
+    @FXML
     private Button addPasswordButton;
     @FXML
     private Button generatePasswordButton;
@@ -30,7 +34,7 @@ public class AddPasswordController {
     @FXML
     protected void onBackToMenuClick() throws IOException {
         Stage stage = (Stage) backToMenuButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-datatable.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
@@ -38,20 +42,26 @@ public class AddPasswordController {
     @FXML
     protected void onAddPasswordClick() throws IOException {
         String passwordInput = password.getText();
+        String URLInput = URL.getText();
         if (passwordInput.isEmpty()) {
             infoLabel.setText("Password Field Empty");
         } else {
-            newPassword(passwordInput);
+            newPassword(passwordInput, URLInput);
         }
     }
-    private void newPassword(String addingPassword) {
-        SqlitePasswordDAO db = new SqlitePasswordDAO();
-        int user_id = 0;
-        int website_id = 0;
+    private void newPassword(String addingPassword, String URL) {
+        SqlitePasswordDAO passwordTable = new SqlitePasswordDAO();
+        SqliteAssociatedWebsiteDAO websiteTable = new SqliteAssociatedWebsiteDAO();
+        Website website = websiteTable.getWebsiteFromURL(URL);
+        if (website == null) {
+            website = new Website(URL);
+            websiteTable.addWebsite(website);
+            website = websiteTable.getWebsiteFromURL(URL);
+        }
         String key = "Test Key Innit";
         String encryptedPassword = Encryption.encrypt(addingPassword, key);
-        Password newPassword = new Password(user_id, website_id, encryptedPassword);
-        db.addPassword(newPassword);
+        Password newPassword = new Password(LoginController.loggedInUser.getId(), website.getId(), encryptedPassword);
+        passwordTable.addPassword(newPassword);
 
     }
 
