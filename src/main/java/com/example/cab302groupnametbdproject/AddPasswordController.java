@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 import java.util.Random;
 
 import java.io.IOException;
+import java.util.zip.Inflater;
+
 import com.example.cab302groupnametbdproject.model.passwords.Password;
 import com.example.cab302groupnametbdproject.model.passwords.SqlitePasswordDAO;
 import com.example.cab302groupnametbdproject.model.passwords.Encryption;
@@ -44,8 +46,8 @@ public class AddPasswordController {
     protected void onAddPasswordClick() throws IOException {
         String passwordInput = password.getText();
         String URLInput = URL.getText();
-        if (passwordInput.isEmpty()) {
-            infoLabel.setText("Password Field Empty");
+        if (passwordInput.isEmpty() || URLInput.isEmpty()) {
+            infoLabel.setText("Make sure all fields are filled.");
         } else {
             newPassword(passwordInput, URLInput);
             onBackToMenuClick();
@@ -54,18 +56,21 @@ public class AddPasswordController {
     @FXML
     protected void onGeneratePasswordClick() throws IOException {
         String URLInput = URL.getText();
-        String generatedPassword = "";
-        char[] Characters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w',
-        'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-                '0','1', '2', '3', '4', '5', '6', '7', '8', '9',
-                '!', '@', '#', '$', '%', '&' };
-        for (int i = 0; i < 15; i++) {
-            Random random = new Random();
-            generatedPassword += Characters[random.nextInt(Characters.length)];
+        if (URLInput.isEmpty()) {
+            infoLabel.setText("URL field is empty.");
+        } else {
+            String generatedPassword = "";
+            char[] Characters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w',
+                    'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+                    '0','1', '2', '3', '4', '5', '6', '7', '8', '9',
+                    '!', '@', '#', '$', '%', '&' };
+            for (int i = 0; i < 15; i++) {
+                Random random = new Random();
+                generatedPassword += Characters[random.nextInt(Characters.length)];
+            }
+            newPassword(generatedPassword, URLInput);
+            onBackToMenuClick();
         }
-        newPassword(generatedPassword, URLInput);
-        onBackToMenuClick();
-
 
 
     }
