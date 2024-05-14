@@ -36,4 +36,12 @@ public interface UserDAO {
      * @return A list of all users in the database.
      */
     public List<User> getAllUsers();
+
+    /**
+     *
+     * @param username the username to test
+     * @return Whether the username argued exists in the DB
+     */
+    public Boolean doesUsernameExist(String username);
+
 }
