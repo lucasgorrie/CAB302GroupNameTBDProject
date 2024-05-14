@@ -1,4 +1,5 @@
-package com.example.cab302groupnametbdproject;
+package com.example.cab302groupnametbdproject.controllers;
+import com.example.cab302groupnametbdproject.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,13 +14,11 @@ import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
 
 import java.io.IOException;
 
-import static com.example.cab302groupnametbdproject.LoginController.loggedInUser;
-
-public class CreateChildController {
+public class CreateUserController {
 
     public Label signupInfo;
     @FXML
-    private Button backToMenuButton;
+    private Button backToLoginButton;
     @FXML
     private Button createUser;
     @FXML
@@ -38,16 +37,16 @@ public class CreateChildController {
 
     //button to take the user back to the login page from the signup page
     @FXML
-    protected void onBackToMenuClick() throws IOException {
-        Stage stage = (Stage) backToMenuButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+    protected void onBackToLoginClick() throws IOException {
+        Stage stage = (Stage) backToLoginButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
     @FXML
-    protected void createChildClick() throws IOException {
-        String user_type = "CHILD";
-        int parent_id = loggedInUser.getId();
+    protected void createUserClick() throws IOException {
+        int parent_id = 0; // <-- NOT A CHILD
+        String user_type = "PARENT";
         String firstNameInput = firstName.getText();
         String lastNameInput = lastName.getText();
         String usernameInput = username.getText();
@@ -61,10 +60,9 @@ public class CreateChildController {
         } else {
             SqliteUserDAO table = new SqliteUserDAO();
             User newUser = new User(user_type, usernameInput, firstNameInput, lastNameInput, emailInput, passwordInput);
-            newUser.setParentId(parent_id);
             table.addUser(newUser);
-            onBackToMenuClick();
-            signupInfo.setText("Child Created");
+            onBackToLoginClick();
+            signupInfo.setText("User Created");
         }
 
     }

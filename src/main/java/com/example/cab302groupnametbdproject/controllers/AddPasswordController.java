@@ -1,5 +1,6 @@
-package com.example.cab302groupnametbdproject;
+package com.example.cab302groupnametbdproject.controllers;
 
+import com.example.cab302groupnametbdproject.HelloApplication;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.SqliteAssociatedWebsiteDAO;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.Website;
 import javafx.fxml.FXML;
@@ -7,13 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.util.Random;
 
 import java.io.IOException;
-import java.util.zip.Inflater;
 
 import com.example.cab302groupnametbdproject.model.passwords.Password;
 import com.example.cab302groupnametbdproject.model.passwords.SqlitePasswordDAO;

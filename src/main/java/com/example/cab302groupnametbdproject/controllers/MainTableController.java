@@ -1,5 +1,7 @@
-package com.example.cab302groupnametbdproject;
+package com.example.cab302groupnametbdproject.controllers;
 
+import com.example.cab302groupnametbdproject.HelloApplication;
+import com.example.cab302groupnametbdproject.MainTable;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.SqliteAssociatedWebsiteDAO;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.Website;
 import com.example.cab302groupnametbdproject.model.passwords.Password;
@@ -8,7 +10,6 @@ import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
 import com.example.cab302groupnametbdproject.model.users.User;
 import com.example.cab302groupnametbdproject.model.users.UserDAO;
 import com.example.cab302groupnametbdproject.model.passwords.Encryption;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,11 +25,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static com.example.cab302groupnametbdproject.LoginController.loggedInUser;
+import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
 
 public class MainTableController implements Initializable {
 

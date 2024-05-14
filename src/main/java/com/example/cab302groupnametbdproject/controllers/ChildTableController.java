@@ -1,8 +1,8 @@
-package com.example.cab302groupnametbdproject;
+package com.example.cab302groupnametbdproject.controllers;
 
-import com.example.cab302groupnametbdproject.model.associatedWebsites.AssociatedWebsiteDAO;
+import com.example.cab302groupnametbdproject.ChildTable;
+import com.example.cab302groupnametbdproject.HelloApplication;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.SqliteAssociatedWebsiteDAO;
-import com.example.cab302groupnametbdproject.model.passwords.PasswordDAO;
 import com.example.cab302groupnametbdproject.model.passwords.SqlitePasswordDAO;
 import com.example.cab302groupnametbdproject.model.users.User;
 import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
@@ -22,7 +22,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static com.example.cab302groupnametbdproject.LoginController.loggedInUser;
+import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
 
 public class ChildTableController implements Initializable {
 

@@ -1,5 +1,6 @@
-package com.example.cab302groupnametbdproject;
+package com.example.cab302groupnametbdproject.controllers;
 
+import com.example.cab302groupnametbdproject.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,8 +15,6 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
-import static com.example.cab302groupnametbdproject.LoginController.loggedInUser;
 
 public class MainInterfaceController {
 
