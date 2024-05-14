@@ -28,6 +28,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static com.example.cab302groupnametbdproject.LoginController.loggedInUser;
+
 public class MainTableController implements Initializable {
 
         @FXML
@@ -116,24 +118,25 @@ public class MainTableController implements Initializable {
 
                 // Iterate once per Password in DB:
                 for (Password password : passwords) {
-                        // Create User object based on the associated User of the Password
-                        User user = userDAO.getUser(password.getUser_id());
+                        if(password.getUser_id() == loggedInUser.getId()) {
+                                // Create User object based on the associated User of the Password
+                                User user = userDAO.getUser(password.getUser_id());
 
-                        // Create Website object based on the associated Website of the Password
-                        Website website = AssociatedWebsiteDAO.getWebsite(password.getWebsite_id());
+                                // Create Website object based on the associated Website of the Password
+                                Website website = AssociatedWebsiteDAO.getWebsite(password.getWebsite_id());
 
-                        // Create Password object based on current iteration
-                        Password cPassword = PasswordDAO.getPassword(password.getId());
-                        String decryptedPassword = Encryption.decrypt(cPassword.getPasswordContent(), LoginController.loggedInUser.getKey());
+                                // Create Password object based on current iteration
+                                Password cPassword = PasswordDAO.getPassword(password.getId());
+                                String decryptedPassword = Encryption.decrypt(cPassword.getPasswordContent(), loggedInUser.getKey());
 
-                        // Buttons
-                        List<Button> buttons = new ArrayList<>();
-                        buttons.add(new Button("Remove"));
-                        buttons.add(new Button("Edit"));
+                                // Buttons
+                                List<Button> buttons = new ArrayList<>();
+                                buttons.add(new Button("Remove"));
+                                buttons.add(new Button("Edit"));
 
-                        // Return datatable with user's username, website's URL, and password's content, buttons
-                        datatable.getItems().add(new MainTable(website.getURL(), user.getUsername(), decryptedPassword, buttons));
-
+                                // Return datatable with user's username, website's URL, and password's content, buttons
+                                datatable.getItems().add(new MainTable(website.getURL(), user.getUsername(), decryptedPassword, buttons));
+                        }
                 }
         }
 
