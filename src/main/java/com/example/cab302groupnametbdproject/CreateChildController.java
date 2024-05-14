@@ -13,11 +13,13 @@ import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
 
 import java.io.IOException;
 
-public class CreateUserController {
+import static com.example.cab302groupnametbdproject.LoginController.loggedInUser;
+
+public class CreateChildController {
 
     public Label signupInfo;
     @FXML
-    private Button backToLoginButton;
+    private Button backToMenuButton;
     @FXML
     private Button createUser;
     @FXML
@@ -36,16 +38,16 @@ public class CreateUserController {
 
     //button to take the user back to the login page from the signup page
     @FXML
-    protected void onBackToLoginClick() throws IOException {
-        Stage stage = (Stage) backToLoginButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
+    protected void onBackToMenuClick() throws IOException {
+        Stage stage = (Stage) backToMenuButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
     @FXML
-    protected void createUserClick() throws IOException {
-        int parent_id = 0; // <-- NOT A CHILD
-        String user_type = "PARENT";
+    protected void createChildClick() throws IOException {
+        String user_type = "CHILD";
+        int parent_id = loggedInUser.getId();
         String firstNameInput = firstName.getText();
         String lastNameInput = lastName.getText();
         String usernameInput = username.getText();
@@ -59,9 +61,10 @@ public class CreateUserController {
         } else {
             SqliteUserDAO table = new SqliteUserDAO();
             User newUser = new User(user_type, usernameInput, firstNameInput, lastNameInput, emailInput, passwordInput);
+            newUser.setParentId(parent_id);
             table.addUser(newUser);
-            onBackToLoginClick();
-            signupInfo.setText("User Created");
+            onBackToMenuClick();
+            signupInfo.setText("Child Created");
         }
 
     }

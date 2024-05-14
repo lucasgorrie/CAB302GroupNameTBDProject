@@ -1,5 +1,12 @@
 package com.example.cab302groupnametbdproject;
 
+import com.example.cab302groupnametbdproject.model.associatedWebsites.AssociatedWebsiteDAO;
+import com.example.cab302groupnametbdproject.model.associatedWebsites.SqliteAssociatedWebsiteDAO;
+import com.example.cab302groupnametbdproject.model.passwords.PasswordDAO;
+import com.example.cab302groupnametbdproject.model.passwords.SqlitePasswordDAO;
+import com.example.cab302groupnametbdproject.model.users.User;
+import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
+import com.example.cab302groupnametbdproject.model.users.UserDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,7 +19,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import static com.example.cab302groupnametbdproject.LoginController.loggedInUser;
 
 public class ChildTableController implements Initializable {
 
@@ -21,14 +31,6 @@ public class ChildTableController implements Initializable {
 
     @FXML
     private Button backToMenuButton;
-
-    @FXML
-    protected void onBackToMenuClick() throws IOException {
-        Stage stage = (Stage) backToMenuButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
 
     @FXML
     private TableColumn<ChildTable, Integer> childno;
@@ -45,11 +47,40 @@ public class ChildTableController implements Initializable {
     @FXML
     private Button userbutton1;
 
+    private UserDAO userDAO;
+    private com.example.cab302groupnametbdproject.model.associatedWebsites.AssociatedWebsiteDAO AssociatedWebsiteDAO;
+    private com.example.cab302groupnametbdproject.model.passwords.PasswordDAO PasswordDAO;
+
+    public ChildTableController(){
+        userDAO = new SqliteUserDAO();
+        AssociatedWebsiteDAO = new SqliteAssociatedWebsiteDAO();
+        PasswordDAO = new SqlitePasswordDAO();
+    }
+
+    @FXML
+    protected void onBackToMenuClick() throws IOException {
+        Stage stage = (Stage) backToMenuButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         user2.setCellValueFactory(new PropertyValueFactory<>("user2"));
         childno.setCellValueFactory(new PropertyValueFactory<>("userno"));
         associations.setCellValueFactory(new PropertyValueFactory<>("associations"));
+
+        List<User> all_users = userDAO.getAllUsers();
+        List<User> child_users = null;
+
+        // Child_users should be a list of all child accounts associated with the logged user
+        for(int i = 0; i < all_users.size(); i++){
+
+            if(all_users.get(i).getParentId() == loggedInUser.getId()) {
+                child_users.add(all_users.get(i));
+            }
+        }
 
         childtable.getItems().addAll(
                 new ChildTable("User0Child0", 1, 13),

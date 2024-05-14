@@ -1,5 +1,6 @@
 package com.example.cab302groupnametbdproject;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -20,6 +21,7 @@ public class MainInterfaceController {
 
     public Button associateWebsitesButton;
     public Button childAccountsButton;
+    public Button childCreateButton;
     @FXML
     private BorderPane mainLayout;
     @FXML
@@ -67,6 +69,13 @@ public class MainInterfaceController {
     protected void onAddPasswordClick() throws IOException {
         Stage stage = (Stage) addPasswordButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("add-password-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
+
+    public void onchildCreateButtonClick(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) childCreateButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("create-child-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
