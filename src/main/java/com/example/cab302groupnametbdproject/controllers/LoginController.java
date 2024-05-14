@@ -18,6 +18,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import com.example.cab302groupnametbdproject.model.users.User;
 import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
+import org.apache.commons.codec.digest.DigestUtils;
+
+import static org.apache.commons.codec.digest.DigestUtils.sha256Hex;
 
 import java.io.IOException;
 
@@ -80,7 +83,8 @@ public class LoginController {
             SqliteUserDAO table = new SqliteUserDAO();
             User userQuery = table.getUserFromUserName(usernameInput);
             if (userQuery != null) {
-                if (passwordInput.equals(userQuery.getPassword())) {
+                String hashedPasswordInput = DigestUtils.sha256Hex(passwordInput + usernameInput);
+                if (hashedPasswordInput.equals(userQuery.getPassword())) {
 
                     // Set new frame of main screen if logged in
                     Stage stage = (Stage) loginButton.getScene().getWindow();
