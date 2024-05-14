@@ -20,6 +20,7 @@ public class HelloApplication extends Application {
         stage.show();
 
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("style2.css")).toExternalForm());
+        int j;
     }
 
     public static void main(String[] args) {
