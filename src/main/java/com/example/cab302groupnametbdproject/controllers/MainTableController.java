@@ -123,7 +123,11 @@ public class MainTableController implements Initializable {
 
                 // Iterate once per Password in DB:
                 for (Password password : passwords) {
-                        if(password.getUser_id() == loggedInUser.getId()) {
+
+                        // Only get user and user's child's passwords
+                        if( (password.getUser_id() == loggedInUser.getId()) ||
+                                ((userDAO.getUser(password.getUser_id())).getParentId() == loggedInUser.getId() ) ) {
+
                                 // Create User object based on the associated User of the Password
                                 User user = userDAO.getUser(password.getUser_id());
 
