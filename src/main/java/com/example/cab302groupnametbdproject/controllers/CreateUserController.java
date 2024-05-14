@@ -11,6 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import com.example.cab302groupnametbdproject.model.users.User;
 import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
+import org.apache.commons.codec.digest.DigestUtils;
+
+import static org.apache.commons.codec.digest.DigestUtils.sha256Hex;
 
 import java.io.IOException;
 
@@ -59,7 +62,8 @@ public class CreateUserController {
             signupInfo.setText("Passwords do not match.");
         } else {
             SqliteUserDAO table = new SqliteUserDAO();
-            User newUser = new User(user_type, usernameInput, firstNameInput, lastNameInput, emailInput, passwordInput);
+            String passwordHash = DigestUtils.sha256Hex(passwordInput + usernameInput);
+            User newUser = new User(user_type, usernameInput, firstNameInput, lastNameInput, emailInput, passwordHash);
             table.addUser(newUser);
             onBackToLoginClick();
             signupInfo.setText("User Created");
