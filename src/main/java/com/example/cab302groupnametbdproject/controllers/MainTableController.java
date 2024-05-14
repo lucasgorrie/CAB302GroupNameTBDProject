@@ -50,6 +50,15 @@ public class MainTableController implements Initializable {
         @FXML
         private Button backToMenuButton;
 
+        private void onRemoveButtonClick(Password password) throws IOException {
+                PasswordDAO.deletePassword(password);
+
+                // Re-render page
+                Stage stage = (Stage) backToMenuButton.getScene().getWindow();
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-datatable.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                stage.setScene(scene);
+        }
 
         @FXML
         protected void onBackToMenuClick() throws IOException {
@@ -91,10 +100,6 @@ public class MainTableController implements Initializable {
                                         HBox hbox = new HBox();
                                         hbox.setSpacing(5);
                                         for (Button button : buttons) {
-                                                button.setOnAction(event -> {
-                                                        // Show an alert or perform any action here
-                                                        System.out.println("Button clicked: " + button.getText());
-                                                });
                                                 hbox.getChildren().add(button);
                                         }
                                         setGraphic(hbox);
@@ -131,8 +136,15 @@ public class MainTableController implements Initializable {
 
                                 // Buttons
                                 List<Button> buttons = new ArrayList<>();
-                                buttons.add(new Button("Remove"));
-                                buttons.add(new Button("Edit"));
+                                Button removeButton = new Button("Remove");
+                                removeButton.setOnAction(event -> {
+                                    try {
+                                        onRemoveButtonClick(password);
+                                    } catch (IOException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                });
+                                buttons.add(removeButton);
 
                                 // Return datatable with user's username, website's URL, and password's content, buttons
                                 datatable.getItems().add(new MainTable(website.getURL(), user.getUsername(), decryptedPassword, buttons));
