@@ -58,38 +58,6 @@ public class LoginController {
         return (SqlitePasswordDAO) this.PasswordDAO;
     }
 
-    public void addTestingData(){
-        User user1 = new User("PARENT", "AAA", "ANAME", "ALNAME", "A@EMAIL.COM", "AAA");
-        User user2 = new User("PARENT", "BBB", "BNAME", "BLNAME", "B@EMAIL.COM", "BBB");
-        User user3 = new User("PARENT", "CCC", "CNAME", "CLNAME", "C@EMAIL.COM", "CCC");
-        User user4 = new User("PARENT", "DDD", "DNAME", "DLNAME", "D@EMAIL.COM", "DDD");
-
-        Password password1 = new Password(1, 2, "AAAAA");
-        Password password2 = new Password(3, 3, "BBBBB");
-        Password password3 = new Password(2, 2, "CCCCC");
-        Password password4 = new Password(1, 1, "DDDDD");
-
-        Website website1 = new Website("A.COM");
-        Website website2 = new Website("B.COM");
-        Website website3 = new Website("C.COM");
-        Website website4 = new Website("D.COM");
-
-        userDAO.addUser(user1);
-        userDAO.addUser(user2);
-        userDAO.addUser(user3);
-        userDAO.addUser(user4);
-
-        PasswordDAO.addPassword(password1);
-        PasswordDAO.addPassword(password2);
-        PasswordDAO.addPassword(password3);
-        PasswordDAO.addPassword(password4);
-
-        AssociatedWebsiteDAO.addWebsite(website1);
-        AssociatedWebsiteDAO.addWebsite(website2);
-        AssociatedWebsiteDAO.addWebsite(website3);
-        AssociatedWebsiteDAO.addWebsite(website4);
-    }
-
 
     //button to take user to signup view when hitting create user button
     @FXML

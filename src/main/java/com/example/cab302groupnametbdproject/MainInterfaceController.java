@@ -73,7 +73,7 @@ public class MainInterfaceController {
         stage.setScene(scene);
     }
 
-    public void onchildCreateButtonClick(ActionEvent actionEvent) throws IOException {
+    public void onChildCreateButtonClick(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) childCreateButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("create-child-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());

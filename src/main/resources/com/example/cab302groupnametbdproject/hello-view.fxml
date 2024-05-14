@@ -90,7 +90,7 @@
                 <padding>
                     <Insets left="5.0" /> <!-- Adjust this value to move them as desired -->
                 </padding>
-                <Button fx:id="childCreateButton" onAction="#onchildCreateButtonClick" text="Create Child Account" />
+                <Button fx:id="childCreateButton" onAction="#onChildCreateButtonClick" text="Create Child Account" />
             </HBox>
 
             <!-- HBox for the "Child Accounts" button and image -->
