@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 // Handles DAO and CRUD
 public class SqliteUserDAO implements UserDAO {
@@ -164,5 +165,17 @@ public class SqliteUserDAO implements UserDAO {
             e.printStackTrace();
         }
         return users;
+    }
+
+    @Override
+    public Boolean doesUsernameExist(String username) {
+        List<User> allUsers = getAllUsers();
+        for (User user : allUsers) {
+            if (Objects.equals(username, user.getUsername())) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
