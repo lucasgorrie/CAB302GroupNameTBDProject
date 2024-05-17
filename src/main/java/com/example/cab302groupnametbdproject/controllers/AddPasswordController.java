@@ -36,7 +36,12 @@ public class AddPasswordController {
     @FXML
     protected void onBackToMenuClick() throws IOException {
         Stage stage = (Stage) backToMenuButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader;
+        if (LoginController.loggedInUser.getUserType().equals("PARENT")) {
+            fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        } else {
+            fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("child-interface-view.fxml"));
+        }
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }

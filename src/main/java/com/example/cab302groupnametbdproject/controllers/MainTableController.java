@@ -63,7 +63,12 @@ public class MainTableController implements Initializable {
         @FXML
         protected void onBackToMenuClick() throws IOException {
                 Stage stage = (Stage) backToMenuButton.getScene().getWindow();
-                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+                FXMLLoader fxmlLoader;
+                if (LoginController.loggedInUser.getUserType().equals("PARENT")) {
+                        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+                } else {
+                        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("child-interface-view.fxml"));
+                }
                 Scene scene = new Scene(fxmlLoader.load());
                 stage.setScene(scene);
         }
@@ -134,8 +139,13 @@ public class MainTableController implements Initializable {
                                 Website website = AssociatedWebsiteDAO.getWebsite(password.getWebsite_id());
 
                                 // Create Password object based on current iteration
-                                Password cPassword = PasswordDAO.getPassword(password.getId());
-                                String decryptedPassword = Encryption.decrypt(cPassword.getPasswordContent(), loggedInUser.getKey());
+                                String decryptedPassword;
+                                if (userDAO.getUser(password.getUser_id()).getId() != loggedInUser.getId()) {
+                                     decryptedPassword = "[HIDDEN]";
+                                } else {
+                                        Password cPassword = PasswordDAO.getPassword(password.getId());
+                                        decryptedPassword = Encryption.decrypt(cPassword.getPasswordContent(), loggedInUser.getKey());
+                                }
 
                                 // Buttons
                                 List<Button> buttons = new ArrayList<>();

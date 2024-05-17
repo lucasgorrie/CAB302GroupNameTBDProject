@@ -88,7 +88,12 @@ public class LoginController {
 
                     // Set new frame of main screen if logged in
                     Stage stage = (Stage) loginButton.getScene().getWindow();
-                    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+                    FXMLLoader fxmlLoader;
+                    if (userQuery.getUserType().equals("PARENT")) {
+                        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+                    } else {
+                        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("child-interface-view.fxml"));
+                    }
                     Scene scene = new Scene(fxmlLoader.load());
                     stage.setScene(scene);
                     // Set logged in User

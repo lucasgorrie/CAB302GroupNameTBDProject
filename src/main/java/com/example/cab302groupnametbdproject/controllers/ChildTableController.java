@@ -75,17 +75,22 @@ public class ChildTableController implements Initializable {
         List<User> child_users = null;
 
         // Child_users should be a list of all child accounts associated with the logged user
-        for(int i = 0; i < all_users.size(); i++){
 
-            if(all_users.get(i).getParentId() == loggedInUser.getId()) {
-                child_users.add(all_users.get(i));
+        populateTable();
+    }
+
+    public void populateTable() {
+
+        // Get all passwords
+        List<User> users = userDAO.getAllUsers();
+        for (User user : users) {
+            if (user.getUserType().equals("CHILD")) {
+                if (user.getParentId() == loggedInUser.getId()) {
+                    childtable.getItems().add(new ChildTable(user.getUsername(), user.getId(), 0));
+                }
             }
-        }
 
-        childtable.getItems().addAll(
-                new ChildTable("User0Child0", 1, 13),
-                new ChildTable("User0Child1", 2, 6)
-                );
+        }
     }
 
 }

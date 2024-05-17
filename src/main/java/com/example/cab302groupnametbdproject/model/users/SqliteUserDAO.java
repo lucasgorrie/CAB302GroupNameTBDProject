@@ -161,6 +161,7 @@ public class SqliteUserDAO implements UserDAO {
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
                 User user = new User(user_type, username, firstName, lastName, email, password);
+                user.setParentId(parent_id);
                 user.setId(id);
                 users.add(user);
             }

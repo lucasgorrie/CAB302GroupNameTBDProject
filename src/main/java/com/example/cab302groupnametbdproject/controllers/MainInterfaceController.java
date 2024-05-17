@@ -91,6 +91,7 @@ public class MainInterfaceController {
 
     @FXML
     private void onSignOutButtonClick() throws IOException {
+        LoginController.loggedInUser = null;
         Stage stage = (Stage) signOutButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
