@@ -3,14 +3,19 @@ package com.example.cab302groupnametbdproject.controllers;
 import com.example.cab302groupnametbdproject.HelloApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class AboutViewController {
+import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
+
+public class AboutViewController implements Initializable {
 
     @FXML
     public Button backbutton;
@@ -20,6 +25,11 @@ public class AboutViewController {
     public Button userbutton;
     @FXML
     public Button homebutton;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        userbutton.setText(loggedInUser.getUsername());
+    }
 
     @FXML
     protected void BackButton() throws IOException {

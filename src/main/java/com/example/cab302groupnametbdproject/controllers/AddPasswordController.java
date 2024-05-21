@@ -5,24 +5,32 @@ import com.example.cab302groupnametbdproject.model.associatedWebsites.SqliteAsso
 import com.example.cab302groupnametbdproject.model.associatedWebsites.Website;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.net.URL;
 import java.util.Random;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 import com.example.cab302groupnametbdproject.model.passwords.Password;
 import com.example.cab302groupnametbdproject.model.passwords.SqlitePasswordDAO;
 import com.example.cab302groupnametbdproject.model.passwords.Encryption;
 
-public class AddPasswordController {
+import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
+
+public class AddPasswordController implements Initializable {
     @FXML
     private TextField password;
     @FXML
     private TextField URL;
+    @FXML
+    private Button userbutton;
     @FXML
     private Button addPasswordButton;
     @FXML
@@ -32,6 +40,11 @@ public class AddPasswordController {
     private Button backToMenuButton;
     @FXML
     private Label infoLabel;
+
+    @Override
+    public void initialize(java.net.URL url, ResourceBundle resourceBundle) {
+        userbutton.setText(loggedInUser.getUsername());
+    }
 
     @FXML
     protected void onBackToMenuClick() throws IOException {

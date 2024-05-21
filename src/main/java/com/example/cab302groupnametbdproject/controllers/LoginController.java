@@ -89,11 +89,11 @@ public class LoginController {
                     } else {
                         fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("child-interface-view.fxml"));
                     }
-                    Scene scene = new Scene(fxmlLoader.load());
-                    stage.setScene(scene);
                     // Set logged in User
                     loggedInUser = userQuery;
                     loggedInUser.setKey(passwordInput);
+                    Scene scene = new Scene(fxmlLoader.load());
+                    stage.setScene(scene);
 
                 } else { loginInfo.setText("Incorrect Password."); }
             } else { loginInfo.setText("Username not found."); }

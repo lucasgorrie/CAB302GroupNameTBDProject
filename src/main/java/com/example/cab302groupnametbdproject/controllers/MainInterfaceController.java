@@ -4,6 +4,7 @@ import com.example.cab302groupnametbdproject.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -15,8 +16,12 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class MainInterfaceController {
+import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
+
+public class MainInterfaceController implements Initializable {
 
     public Button associateWebsitesButton;
     public Button childAccountsButton;
@@ -27,14 +32,11 @@ public class MainInterfaceController {
     private VBox mainContent;
 
     @FXML
+    private Button userbutton;
+    @FXML
     private Button backbutton;
-
     @FXML
     private Button homebutton;
-
-    @FXML
-    private Button userbutton;
-
     @FXML
     private Button signOutButton;
 
@@ -46,6 +48,11 @@ public class MainInterfaceController {
 
     private void switchToPage(String pageName) {
         mainLayout.setCenter(createContentPage(pageName));
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        userbutton.setText(loggedInUser.getUsername());
     }
 
     private BorderPane createContentPage(String pageName) {
@@ -91,7 +98,7 @@ public class MainInterfaceController {
 
     @FXML
     private void onSignOutButtonClick() throws IOException {
-        LoginController.loggedInUser = null;
+        loggedInUser = null;
         Stage stage = (Stage) signOutButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());

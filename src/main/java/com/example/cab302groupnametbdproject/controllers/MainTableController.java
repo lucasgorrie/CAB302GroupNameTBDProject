@@ -31,24 +31,20 @@ import java.util.ResourceBundle;
 import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
 
 public class MainTableController implements Initializable {
-
         @FXML
         private TableColumn<MainTable, String> urllink;
-
         @FXML
         private TableColumn<MainTable, String> user;
-
         @FXML
         private TableColumn<MainTable, String> password;
-
         @FXML
         private TableColumn<MainTable, String> actions;
-
         @FXML
         private TableView<MainTable> datatable;
-
         @FXML
         private Button backToMenuButton;
+        @FXML
+        private Button userbutton;
 
         private void onRemoveButtonClick(Password password) throws IOException {
                 PasswordDAO.deletePassword(password);
@@ -73,12 +69,6 @@ public class MainTableController implements Initializable {
                 stage.setScene(scene);
         }
 
-        @FXML
-        private Button homebutton;
-
-        @FXML
-        private Button userbutton;
-
         private UserDAO userDAO;
         private com.example.cab302groupnametbdproject.model.associatedWebsites.AssociatedWebsiteDAO AssociatedWebsiteDAO;
         private com.example.cab302groupnametbdproject.model.passwords.PasswordDAO PasswordDAO;
@@ -92,6 +82,7 @@ public class MainTableController implements Initializable {
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
+                userbutton.setText(loggedInUser.getUsername());
                 actions.setCellFactory(column -> new TableCell<MainTable, String>() {
                         @Override
                         protected void updateItem(String item, boolean empty) {

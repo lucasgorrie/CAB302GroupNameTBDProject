@@ -26,28 +26,20 @@ import java.util.ResourceBundle;
 import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
 
 public class ChildTableController implements Initializable {
-
     @FXML
     private TableColumn<ChildTable,Integer> associations;
-
     @FXML
     private Button backToMenuButton;
-
     @FXML
     private TableColumn<ChildTable, Integer> childno;
-
     @FXML
     private TableView<ChildTable> childtable;
-
     @FXML
     private TableColumn<ChildTable, String> user2;
-
     @FXML
     private Button userbutton;
-
     @FXML
     private Button userbutton1;
-
     private UserDAO userDAO;
     private com.example.cab302groupnametbdproject.model.associatedWebsites.AssociatedWebsiteDAO AssociatedWebsiteDAO;
     private com.example.cab302groupnametbdproject.model.passwords.PasswordDAO PasswordDAO;
@@ -79,6 +71,7 @@ public class ChildTableController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        userbutton.setText(loggedInUser.getUsername());
         user2.setCellValueFactory(new PropertyValueFactory<>("user2"));
         childno.setCellValueFactory(new PropertyValueFactory<>("userno"));
         associations.setCellValueFactory(new PropertyValueFactory<>("associations"));
