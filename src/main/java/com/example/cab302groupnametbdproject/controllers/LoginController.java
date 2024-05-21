@@ -1,11 +1,7 @@
 package com.example.cab302groupnametbdproject.controllers;
 
 import com.example.cab302groupnametbdproject.HelloApplication;
-import com.example.cab302groupnametbdproject.model.associatedWebsites.AssociatedWebsiteDAO;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.SqliteAssociatedWebsiteDAO;
-import com.example.cab302groupnametbdproject.model.associatedWebsites.Website;
-import com.example.cab302groupnametbdproject.model.passwords.Password;
-import com.example.cab302groupnametbdproject.model.passwords.PasswordDAO;
 import com.example.cab302groupnametbdproject.model.passwords.SqlitePasswordDAO;
 import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
 import com.example.cab302groupnametbdproject.model.users.UserDAO;
@@ -17,7 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import com.example.cab302groupnametbdproject.model.users.User;
-import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import static org.apache.commons.codec.digest.DigestUtils.sha256Hex;

@@ -1,4 +1,4 @@
-package com.example.cab302groupnametbdproject;
+package com.example.cab302groupnametbdproject.model;
 
 public class ChildTable {
 

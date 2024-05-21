@@ -1,7 +1,7 @@
 package com.example.cab302groupnametbdproject.controllers;
 
 import com.example.cab302groupnametbdproject.HelloApplication;
-import com.example.cab302groupnametbdproject.MainTable;
+import com.example.cab302groupnametbdproject.model.MainTable;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.SqliteAssociatedWebsiteDAO;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.Website;
 import com.example.cab302groupnametbdproject.model.passwords.Password;

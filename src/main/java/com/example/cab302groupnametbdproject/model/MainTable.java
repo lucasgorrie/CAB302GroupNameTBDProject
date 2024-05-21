@@ -1,4 +1,4 @@
-package com.example.cab302groupnametbdproject;
+package com.example.cab302groupnametbdproject.model;
 
 import javafx.scene.control.Button;
 import java.util.List;

@@ -1,11 +1,9 @@
 package com.example.cab302groupnametbdproject.controllers;
 import com.example.cab302groupnametbdproject.HelloApplication;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -16,7 +14,6 @@ import org.apache.commons.codec.digest.DigestUtils;
 import static org.apache.commons.codec.digest.DigestUtils.sha256Hex;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

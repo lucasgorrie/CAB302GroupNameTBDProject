@@ -1,6 +1,6 @@
 package com.example.cab302groupnametbdproject.controllers;
 
-import com.example.cab302groupnametbdproject.ChildTable;
+import com.example.cab302groupnametbdproject.model.ChildTable;
 import com.example.cab302groupnametbdproject.HelloApplication;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.SqliteAssociatedWebsiteDAO;
 import com.example.cab302groupnametbdproject.model.passwords.SqlitePasswordDAO;
