@@ -3,6 +3,7 @@ package com.example.cab302groupnametbdproject.controllers;
 import com.example.cab302groupnametbdproject.model.ChildTable;
 import com.example.cab302groupnametbdproject.HelloApplication;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.SqliteAssociatedWebsiteDAO;
+import com.example.cab302groupnametbdproject.model.passwords.Password;
 import com.example.cab302groupnametbdproject.model.passwords.SqlitePasswordDAO;
 import com.example.cab302groupnametbdproject.model.users.User;
 import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
@@ -57,6 +58,17 @@ public class ChildTableController implements Initializable {
         PasswordDAO = new SqlitePasswordDAO();
     }
 
+    public int TotalAssociations(int user_id){
+        List<Password> allPass = PasswordDAO.getAllPasswords();
+        int association_count = 0;
+        for (Password pass : allPass) {
+            if (pass.getUser_id() == user_id) {
+                association_count++;
+            }
+        }
+        return association_count;
+    }
+
     @FXML
     protected void onBackToMenuClick() throws IOException {
         Stage stage = (Stage) backToMenuButton.getScene().getWindow();
@@ -86,7 +98,7 @@ public class ChildTableController implements Initializable {
         for (User user : users) {
             if (user.getUserType().equals("CHILD")) {
                 if (user.getParentId() == loggedInUser.getId()) {
-                    childtable.getItems().add(new ChildTable(user.getUsername(), user.getId(), 0));
+                    childtable.getItems().add(new ChildTable(user.getUsername(), user.getId(), TotalAssociations(user.getId())));
                 }
             }
 
