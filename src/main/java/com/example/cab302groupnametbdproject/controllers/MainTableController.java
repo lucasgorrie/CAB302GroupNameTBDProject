@@ -19,6 +19,8 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -54,6 +56,20 @@ public class MainTableController implements Initializable {
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-datatable.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 stage.setScene(scene);
+        }
+
+        private void onCopyButtonClick(Password password) throws IOException {
+                String decryptedPassword;
+                if (userDAO.getUser(password.getUser_id()).getId() != loggedInUser.getId()) {
+                        decryptedPassword = "[HIDDEN]";
+                } else {
+                        Password cPassword = PasswordDAO.getPassword(password.getId());
+                        decryptedPassword = Encryption.decrypt(cPassword.getPasswordContent(), loggedInUser.getKey());
+                }
+                final Clipboard clipboard = Clipboard.getSystemClipboard();
+                final ClipboardContent clipboardPassword = new ClipboardContent();
+                clipboardPassword.putString(decryptedPassword);
+                clipboard.setContent(clipboardPassword);
         }
 
         @FXML
@@ -138,7 +154,7 @@ public class MainTableController implements Initializable {
                                         decryptedPassword = Encryption.decrypt(cPassword.getPasswordContent(), loggedInUser.getKey());
                                 }
 
-                                // Buttons
+                                // Button for password deletion
                                 List<Button> buttons = new ArrayList<>();
                                 Button removeButton = new Button("Remove");
                                 removeButton.setOnAction(event -> {
@@ -149,6 +165,17 @@ public class MainTableController implements Initializable {
                                     }
                                 });
                                 buttons.add(removeButton);
+
+                                // Button for password copy/paste
+                                Button copyButton = new Button("Copy");
+                                copyButton.setOnAction(event -> {
+                                        try {
+                                                onCopyButtonClick(password);
+                                        } catch (IOException e) {
+                                                throw new RuntimeException(e);
+                                        }
+                                });
+                                buttons.add(copyButton);
 
                                 // Return datatable with user's username, website's URL, and password's content, buttons
                                 datatable.getItems().add(new MainTable(website.getURL(), user.getUsername(), decryptedPassword, buttons));
