@@ -45,6 +45,7 @@ public class MainTableController implements Initializable {
         private TableView<MainTable> datatable;
         @FXML
         private Button backToMenuButton;
+        private Button editPasswordButton;
         @FXML
         private Button userbutton;
 
@@ -70,6 +71,14 @@ public class MainTableController implements Initializable {
                 final ClipboardContent clipboardPassword = new ClipboardContent();
                 clipboardPassword.putString(decryptedPassword);
                 clipboard.setContent(clipboardPassword);
+        }
+
+        private void onEditButtonClick(Password password) throws IOException {
+                Stage stage = (Stage) editPasswordButton.getScene().getWindow();
+                FXMLLoader fxmlLoader;
+                fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("edit-password-view.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                stage.setScene(scene);
         }
 
         @FXML
@@ -166,16 +175,29 @@ public class MainTableController implements Initializable {
                                 });
                                 buttons.add(removeButton);
 
-                                // Button for password copy/paste
-                                Button copyButton = new Button("Copy");
-                                copyButton.setOnAction(event -> {
-                                        try {
-                                                onCopyButtonClick(password);
-                                        } catch (IOException e) {
-                                                throw new RuntimeException(e);
+                                if((password.getUser_id() == loggedInUser.getId())) {
+                                        // Button for password copy/paste
+                                        Button copyButton = new Button("Copy");
+                                        copyButton.setOnAction(event -> {
+                                                try {
+                                                        onCopyButtonClick(password);
+                                                } catch (IOException e) {
+                                                        throw new RuntimeException(e);
+                                                }
+                                        });
+                                        buttons.add(copyButton);
+
+                                        // Button for password editing
+                                        Button editButton = new Button("Edit");
+                                        editButton.setOnAction(event -> {
+                                                try {
+                                                        onEditButtonClick(password);
+                                                } catch (IOException e) {
+                                                        throw new RuntimeException(e);
+                                                }
+                                        });
+                                        buttons.add(editButton);
                                         }
-                                });
-                                buttons.add(copyButton);
 
                                 // Return datatable with user's username, website's URL, and password's content, buttons
                                 datatable.getItems().add(new MainTable(website.getURL(), user.getUsername(), decryptedPassword, buttons));
