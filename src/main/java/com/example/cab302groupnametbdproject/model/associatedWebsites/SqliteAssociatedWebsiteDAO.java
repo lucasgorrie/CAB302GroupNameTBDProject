@@ -98,6 +98,7 @@ public class SqliteAssociatedWebsiteDAO implements AssociatedWebsiteDAO {
         return null;
     }
 
+    @Override
     public Website getWebsiteFromURL(String URL) {
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM websites WHERE URL = ?");

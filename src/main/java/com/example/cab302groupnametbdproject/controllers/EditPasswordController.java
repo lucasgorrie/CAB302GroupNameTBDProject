@@ -3,6 +3,8 @@ package com.example.cab302groupnametbdproject.controllers;
 import com.example.cab302groupnametbdproject.HelloApplication;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.SqliteAssociatedWebsiteDAO;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.Website;
+import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
+import com.example.cab302groupnametbdproject.model.users.UserDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,23 +25,29 @@ import com.example.cab302groupnametbdproject.model.passwords.SqlitePasswordDAO;
 import com.example.cab302groupnametbdproject.model.passwords.Encryption;
 
 import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
+import static com.example.cab302groupnametbdproject.controllers.MainTableController.passwordEditing;
 
 public class EditPasswordController implements Initializable {
     @FXML
     private TextField password;
     @FXML
-    private TextField URL;
-    @FXML
     private Button userbutton;
     @FXML
-    private Button addPasswordButton;
+    private Button editPasswordButton;
     @FXML
     private Button generatePasswordButton;
-
-    @FXML
-    public Button associateWebsitesButton;
     @FXML
     private Label infoLabel;
+
+    // Constructor
+    private UserDAO userDAO;
+    private com.example.cab302groupnametbdproject.model.associatedWebsites.AssociatedWebsiteDAO AssociatedWebsiteDAO;
+    private com.example.cab302groupnametbdproject.model.passwords.PasswordDAO PasswordDAO;
+    public EditPasswordController(){
+        userDAO = new SqliteUserDAO();
+        AssociatedWebsiteDAO = new SqliteAssociatedWebsiteDAO();
+        PasswordDAO = new SqlitePasswordDAO();
+    }
 
     @Override
     public void initialize(java.net.URL url, ResourceBundle resourceBundle) {
@@ -48,26 +56,26 @@ public class EditPasswordController implements Initializable {
 
     @FXML
     protected void onBackToMenuClick() throws IOException {
-        Stage stage = (Stage) associateWebsitesButton.getScene().getWindow();
+        Stage stage = (Stage) editPasswordButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-datatable.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
 
     @FXML
-    protected void onAddPasswordClick() throws IOException {
+    protected void onEditPasswordClick() throws IOException {
+        String URLInput = AssociatedWebsiteDAO.getWebsite(passwordEditing.getWebsite_id()).getURL();
         String passwordInput = password.getText();
-        String URLInput = URL.getText();
         if (passwordInput.isEmpty() || URLInput.isEmpty()) {
             infoLabel.setText("Make sure all fields are filled.");
         } else {
-            newPassword(passwordInput, URLInput);
+            editPassword(passwordInput, URLInput);
             onBackToMenuClick();
         }
     }
     @FXML
     protected void onGeneratePasswordClick() throws IOException {
-        String URLInput = URL.getText();
+        String URLInput = AssociatedWebsiteDAO.getWebsite(passwordEditing.getWebsite_id()).getURL();
         if (URLInput.isEmpty()) {
             infoLabel.setText("URL field is empty.");
         } else {
@@ -80,24 +88,23 @@ public class EditPasswordController implements Initializable {
                 Random random = new Random();
                 generatedPassword += Characters[random.nextInt(Characters.length)];
             }
-            newPassword(generatedPassword, URLInput);
+            editPassword(generatedPassword, URLInput);
             onBackToMenuClick();
         }
 
 
     }
-    private void newPassword(String addingPassword, String URL) {
-        SqlitePasswordDAO passwordTable = new SqlitePasswordDAO();
-        SqliteAssociatedWebsiteDAO websiteTable = new SqliteAssociatedWebsiteDAO();
-        Website website = websiteTable.getWebsiteFromURL(URL);
+    private void editPassword(String addingPassword, String URL) {
+        Website website = AssociatedWebsiteDAO.getWebsiteFromURL(URL);
         if (website == null) {
             website = new Website(URL);
-            websiteTable.addWebsite(website);
-            website = websiteTable.getWebsiteFromURL(URL);
+            AssociatedWebsiteDAO.addWebsite(website);
+            website = AssociatedWebsiteDAO.getWebsiteFromURL(URL);
         }
-        String encryptedPassword = Encryption.encrypt(addingPassword, LoginController.loggedInUser.getKey());
-        Password newPassword = new Password(LoginController.loggedInUser.getId(), website.getId(), encryptedPassword);
-        passwordTable.addPassword(newPassword);
+
+        String encryptedPassword = Encryption.encrypt(addingPassword, loggedInUser.getKey());
+        passwordEditing.setPassword(encryptedPassword); // Use same object with updated contents for same ID
+        PasswordDAO.updatePassword(passwordEditing);
 
     }
 

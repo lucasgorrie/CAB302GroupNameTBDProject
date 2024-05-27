@@ -45,9 +45,11 @@ public class MainTableController implements Initializable {
         private TableView<MainTable> datatable;
         @FXML
         private Button backToMenuButton;
-        private Button editPasswordButton;
         @FXML
         private Button userbutton;
+
+        // Global password object for editing purposes
+        public static Password passwordEditing;
 
         private void onRemoveButtonClick(Password password) throws IOException {
                 PasswordDAO.deletePassword(password);
@@ -74,7 +76,8 @@ public class MainTableController implements Initializable {
         }
 
         private void onEditButtonClick(Password password) throws IOException {
-                Stage stage = (Stage) editPasswordButton.getScene().getWindow();
+                passwordEditing = password; // Pass obj to be edited
+                Stage stage = (Stage) backToMenuButton.getScene().getWindow();
                 FXMLLoader fxmlLoader;
                 fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("edit-password-view.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
@@ -163,8 +166,8 @@ public class MainTableController implements Initializable {
                                         decryptedPassword = Encryption.decrypt(cPassword.getPasswordContent(), loggedInUser.getKey());
                                 }
 
-                                // Button for password deletion
                                 List<Button> buttons = new ArrayList<>();
+                                // Button for password deletion
                                 Button removeButton = new Button("Remove");
                                 removeButton.setOnAction(event -> {
                                     try {
@@ -175,7 +178,9 @@ public class MainTableController implements Initializable {
                                 });
                                 buttons.add(removeButton);
 
-                                if((password.getUser_id() == loggedInUser.getId())) {
+                                // So that these buttons do not appear for child entries
+                                if(password.getUser_id() == loggedInUser.getId()) {
+
                                         // Button for password copy/paste
                                         Button copyButton = new Button("Copy");
                                         copyButton.setOnAction(event -> {
@@ -197,7 +202,8 @@ public class MainTableController implements Initializable {
                                                 }
                                         });
                                         buttons.add(editButton);
-                                        }
+                                }
+
 
                                 // Return datatable with user's username, website's URL, and password's content, buttons
                                 datatable.getItems().add(new MainTable(website.getURL(), user.getUsername(), decryptedPassword, buttons));
