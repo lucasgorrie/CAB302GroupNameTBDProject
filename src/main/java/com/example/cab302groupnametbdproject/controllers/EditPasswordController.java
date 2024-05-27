@@ -98,7 +98,6 @@ public class EditPasswordController implements Initializable {
         String encryptedPassword = Encryption.encrypt(addingPassword, LoginController.loggedInUser.getKey());
         Password newPassword = new Password(LoginController.loggedInUser.getId(), website.getId(), encryptedPassword);
         passwordTable.addPassword(newPassword);
-
     }
 
 

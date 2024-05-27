@@ -45,7 +45,7 @@ public class MainTableController implements Initializable {
         private TableView<MainTable> datatable;
         @FXML
         private Button backToMenuButton;
-        private Button editPasswordButton;
+        public Button editPasswordButton;
         @FXML
         private Button userbutton;
 
