@@ -77,9 +77,9 @@ public class SqlitePasswordDAO implements PasswordDAO {
     @Override
     public void updatePassword(Password password) {
         try {
-            PreparedStatement statement = connection.prepareStatement("UPDATE passwords SET password = ?, WHERE id = ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE passwords SET password = ? WHERE id = ?");
             statement.setString(1, password.getPasswordContent());
-            statement.setInt(3, password.getId());
+            statement.setInt(2, password.getId());
             statement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

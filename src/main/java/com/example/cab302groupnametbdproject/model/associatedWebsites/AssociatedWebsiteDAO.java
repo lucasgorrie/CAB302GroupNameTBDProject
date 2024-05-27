@@ -30,4 +30,6 @@ public interface AssociatedWebsiteDAO {
      * @return A list of all websites in the database.
      */
     public List<Website> getAllWebsites();
+
+    Website getWebsiteFromURL(String url);
 }
