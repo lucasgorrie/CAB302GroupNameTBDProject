@@ -24,6 +24,8 @@ import static com.example.cab302groupnametbdproject.controllers.MainTableControl
 
 public class EditPasswordController implements Initializable {
     @FXML
+    public Label Title;
+    @FXML
     private TextField password;
     @FXML
     private Button userbutton;
@@ -47,6 +49,11 @@ public class EditPasswordController implements Initializable {
     @Override
     public void initialize(java.net.URL url, ResourceBundle resourceBundle) {
         userbutton.setText(loggedInUser.getUsername());
+
+        // Tell user what website they're editing the association for
+        String editing_pass_url = AssociatedWebsiteDAO.getWebsite(passwordEditing.getWebsite_id()).getURL();
+        String title_text = String.format("Editing Password for %s", editing_pass_url);
+        Title.setText(title_text);
     }
 
 
