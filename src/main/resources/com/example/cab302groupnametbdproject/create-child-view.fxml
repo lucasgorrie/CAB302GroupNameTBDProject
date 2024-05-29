@@ -73,7 +73,7 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="60.0" prefWidth="800.0">
                     <children>
-                        <Button fx:id="createUser" mnemonicParsing="false" onAction="#createChildClick" prefHeight="41.0" prefWidth="116.0" styleClass="loginSignupButton" text="Create User">
+                        <Button fx:id="createUser" mnemonicParsing="false" onAction="#createChildClick" prefHeight="41.0" prefWidth="116.0" styleClass="loginSignupButton" text="Create Child">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor>
