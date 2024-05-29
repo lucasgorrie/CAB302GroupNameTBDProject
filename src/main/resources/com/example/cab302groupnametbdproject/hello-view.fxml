@@ -58,25 +58,25 @@
    <center>
       <GridPane prefHeight="345.0" prefWidth="800.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="651.2000122070312" minWidth="10.0" prefWidth="547.9999877929688" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="394.4000244140625" minWidth="10.0" prefWidth="252.0000122070312" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="651.2000122070312" minWidth="10.0" prefWidth="535.2000122070312" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="394.4000244140625" minWidth="10.0" prefWidth="265.5999877929687" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="350.0" minHeight="10.0" prefHeight="43.00001525878906" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="476.59998474121096" minHeight="10.0" prefHeight="476.59998474121096" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="350.0" minHeight="10.0" prefHeight="78.39999694824219" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="476.59998474121096" minHeight="10.0" prefHeight="441.6000030517578" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <VBox maxHeight="350.0" prefHeight="393.0" prefWidth="253.0" style="-fx-border-color: black; -fx-border-width: 3; -fx-border-insets: 5; -fx-background-color: linear-gradient(to bottom, #fcca81, white);" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <VBox maxHeight="350.0" prefHeight="393.0" prefWidth="253.0" style="-fx-border-color: black; -fx-border-width: 0; -fx-border-insets: 5;" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <children>
-                  <HBox prefHeight="7.0" prefWidth="237.0" />
-                  <HBox prefHeight="92.0" prefWidth="237.0">
+                  <HBox prefHeight="14.0" prefWidth="243.0" />
+                  <HBox prefHeight="104.0" prefWidth="243.0">
                      <children>
-                        <HBox prefHeight="92.0" prefWidth="92.0" />
+                        <HBox prefHeight="104.0" prefWidth="96.0" />
                         <HBox prefHeight="100.0" prefWidth="100.0">
                            <children>
                               <HBox prefHeight="87.0" prefWidth="100.0">
                                  <children>
-                                    <ImageView fitHeight="55.0" fitWidth="55.0">
+                                    <ImageView fitHeight="70.0" fitWidth="70.0">
                                        <image>
                                           <Image url="@images/1176.png" />
                                        </image>
@@ -87,16 +87,16 @@
                         </HBox>
                      </children>
                   </HBox>
-                  <HBox prefHeight="75.0" prefWidth="237.0">
+                  <HBox prefHeight="100.0" prefWidth="255.0">
                      <children>
-                        <HBox prefHeight="75.0" prefWidth="54.0" />
-                        <Button fx:id="signOutButton" maxHeight="0.0" onAction="#onSignOutButtonClick" prefWidth="127.0" styleClass="sign-out-button" text="Sign Out" />
+                        <HBox prefHeight="75.0" prefWidth="5.0" />
+                        <Button fx:id="signOutButton" maxHeight="54.0" onAction="#onSignOutButtonClick" prefHeight="54.0" prefWidth="242.0" styleClass="sign-out-button" text="Sign Out" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <HBox prefHeight="100.0" prefWidth="24.0" />
-                        <Button fx:id="aboutbutton" maxHeight="54.0" onAction="#onAboutButtonClick" prefHeight="54.0" prefWidth="188.0" text="About the App" />
+                        <HBox prefHeight="100.0" prefWidth="5.0" />
+                        <Button fx:id="aboutbutton" maxHeight="54.0" onAction="#onAboutButtonClick" prefHeight="54.0" prefWidth="242.0" text="About the App" />
                      </children>
                   </HBox>
                </children>
@@ -110,16 +110,16 @@
                 <RowConstraints maxHeight="350.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <VBox prefHeight="350.0" prefWidth="281.0" style="-fx-border-color: black; -fx-border-width: 3; -fx-border-insets: 5; -fx-background-color: linear-gradient(to bottom, #fcca81, white);" GridPane.halignment="CENTER">
+                  <VBox prefHeight="350.0" prefWidth="281.0" style="-fx-border-color: black; -fx-border-width: 0; -fx-border-insets: 5;" GridPane.halignment="CENTER">
                      <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <HBox prefHeight="118.0" prefWidth="267.0">
                            <children>
-                              <HBox prefHeight="100.0" prefWidth="94.0" />
+                              <HBox prefHeight="118.0" prefWidth="85.0" />
                               <HBox prefHeight="100.0" prefWidth="100.0">
                                  <children>
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <ImageView fitHeight="75.0" fitWidth="75.0">
+                                          <ImageView fitHeight="100.0" fitWidth="100.0">
                                              <image>
                                                 <Image url="@images/web.png" />
                                              </image>
@@ -130,16 +130,16 @@
                               </HBox>
                            </children>
                         </HBox>
-                        <HBox prefHeight="72.0" prefWidth="261.0">
+                        <HBox prefHeight="98.0" prefWidth="267.0">
                            <children>
-                              <HBox prefHeight="66.0" prefWidth="5.0" />
-                              <Button fx:id="associateWebsitesButton" maxHeight="54.0" onAction="#onAssociatedWebsitesClick" prefHeight="54.0" prefWidth="248.0" text="Associated Websites" />
+                              <HBox prefHeight="98.0" prefWidth="10.0" />
+                              <Button fx:id="associateWebsitesButton" maxHeight="54.0" onAction="#onAssociatedWebsitesClick" prefHeight="54.0" prefWidth="242.0" text="Associated Websites" />
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <HBox prefHeight="100.0" prefWidth="21.0" />
-                              <Button fx:id="addPasswordButton" maxHeight="54.0" onAction="#onAddPasswordClick" prefHeight="54.0" prefWidth="211.0" text="Add Password" />
+                              <HBox prefHeight="100.0" prefWidth="10.0" />
+                              <Button fx:id="addPasswordButton" maxHeight="54.0" onAction="#onAddPasswordClick" prefHeight="54.0" prefWidth="242.0" text="Add Password" />
                            </children>
                         </HBox>
                      </children>
@@ -150,16 +150,16 @@
                         <Insets />
                      </opaqueInsets>
                   </VBox>
-                  <VBox prefHeight="520.0" prefWidth="264.0" style="-fx-border-color: black; -fx-border-width: 3; -fx-border-insets: 5; -fx-background-color: linear-gradient(to bottom, #fcca81, white);" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <VBox prefHeight="520.0" prefWidth="264.0" style="-fx-border-color: black; -fx-border-width: 0; -fx-border-insets: 5;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <HBox prefHeight="117.0" prefWidth="262.0">
                            <children>
-                              <HBox prefHeight="100.0" prefWidth="94.0" />
+                              <HBox prefHeight="118.0" prefWidth="83.0" />
                               <HBox prefHeight="100.0" prefWidth="100.0">
                                  <children>
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
-                                          <ImageView fitHeight="75.0" fitWidth="75.0">
+                                          <ImageView fitHeight="100.0" fitWidth="100.0">
                                              <image>
                                                 <Image url="@images/childaccount.png" />
                                              </image>
@@ -170,10 +170,10 @@
                               </HBox>
                            </children>
                         </HBox>
-                        <HBox prefHeight="73.0" prefWidth="255.0">
+                        <HBox prefHeight="99.0" prefWidth="256.0">
                            <children>
-                              <HBox prefHeight="68.0" prefWidth="36.0" />
-                              <Button fx:id="childAccountsButton" maxHeight="0.0" onAction="#onChildAccountsButtonClick" text="Child Accounts" />
+                              <HBox prefHeight="74.0" prefWidth="11.0" />
+                              <Button fx:id="childAccountsButton" maxHeight="54.0" onAction="#onChildAccountsButtonClick" prefHeight="54.0" prefWidth="242.0" text="Child Accounts" />
                            </children>
                         </HBox>
                         <HBox prefHeight="68.0" prefWidth="254.0">
