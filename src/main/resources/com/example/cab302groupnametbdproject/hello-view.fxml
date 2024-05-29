@@ -90,13 +90,13 @@
                   <HBox prefHeight="75.0" prefWidth="237.0">
                      <children>
                         <HBox prefHeight="75.0" prefWidth="54.0" />
-                        <Button fx:id="signOutButton1" maxHeight="0.0" onAction="#onSignOutButtonClick" prefWidth="127.0" styleClass="sign-out-button" text="Sign Out" />
+                        <Button fx:id="signOutButton" maxHeight="0.0" onAction="#onSignOutButtonClick" prefWidth="127.0" styleClass="sign-out-button" text="Sign Out" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <HBox prefHeight="100.0" prefWidth="24.0" />
-                        <Button fx:id="aboutbutton1" maxHeight="54.0" onAction="#onAboutButtonClick" prefHeight="54.0" prefWidth="188.0" text="About the App" />
+                        <Button fx:id="aboutbutton" maxHeight="54.0" onAction="#onAboutButtonClick" prefHeight="54.0" prefWidth="188.0" text="About the App" />
                      </children>
                   </HBox>
                </children>
