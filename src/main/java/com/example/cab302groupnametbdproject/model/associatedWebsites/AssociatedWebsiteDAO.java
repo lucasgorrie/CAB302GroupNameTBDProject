@@ -31,5 +31,10 @@ public interface AssociatedWebsiteDAO {
      */
     public List<Website> getAllWebsites();
 
+    /**
+     *
+     * @param url the URL of the object
+     * @return the Website object with argued URL
+     */
     Website getWebsiteFromURL(String url);
 }

@@ -1,9 +1,6 @@
 package com.example.cab302groupnametbdproject.model.passwords;
 
 import com.example.cab302groupnametbdproject.model.SqliteConnection;
-import com.example.cab302groupnametbdproject.model.associatedWebsites.Website;
-import com.example.cab302groupnametbdproject.model.users.User;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,8 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SqlitePasswordDAO implements PasswordDAO {
 
+public class SqlitePasswordDAO implements PasswordDAO {
     private Connection connection;
 
     // Constructor
@@ -40,6 +37,7 @@ public class SqlitePasswordDAO implements PasswordDAO {
         }
     }
 
+    // Testing data insert, if we need it
     private void insertTestingData() {
         try {
             // Clear deployed DB before inserting
@@ -59,7 +57,7 @@ public class SqlitePasswordDAO implements PasswordDAO {
         }
     }
 
-    // Add a new Password to the DB table passwords. Requires int arguments for FKs
+    // Add a new Password to the DB table passwords
     @Override
     public void addPassword(Password password) {
         try {
@@ -73,7 +71,7 @@ public class SqlitePasswordDAO implements PasswordDAO {
         }
     }
 
-    // Updates an existing password in the passwords table with a Password object argument. Cannot change FKs
+    // Updates an existing password in the passwords table with a Password object argument
     @Override
     public void updatePassword(Password password) {
         try {

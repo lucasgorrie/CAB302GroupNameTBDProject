@@ -1,6 +1,5 @@
 package com.example.cab302groupnametbdproject.model.users;
 
-import com.example.cab302groupnametbdproject.model.passwords.Password;
 
 // User object
 public class User {

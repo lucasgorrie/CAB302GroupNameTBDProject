@@ -1,6 +1,7 @@
 package com.example.cab302groupnametbdproject.model.passwords;
 
-// Structure of Password objects
+
+// Password object
 public class Password {
     private int id;
     private int user_id; // represents a FK for associated User
@@ -57,25 +58,5 @@ public class Password {
      * @param password the password content to set for the Password object
      */
     public void setPassword(String password){this.password = password;}
-
-
-    /**
-     * Encrypts the password
-     */
-    public void encryptPassword(){
-        // FUNCTIONALITY TO BE ADDED
-        String encrypted_password = password; // <-- CHANGE THIS LATER
-        setPassword(encrypted_password);
-    }
-
-    /**
-     *
-     * @return the decrypted password
-     */
-    public String decryptedPassword(){
-        // FUNCTIONALITY TO BE ADDED
-        String decrypted_password = password; // <-- CHANGE THIS LATER
-        return decrypted_password;
-    }
 
 }

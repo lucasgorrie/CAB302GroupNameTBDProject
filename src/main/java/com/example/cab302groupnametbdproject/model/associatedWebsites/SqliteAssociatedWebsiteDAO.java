@@ -1,8 +1,6 @@
 package com.example.cab302groupnametbdproject.model.associatedWebsites;
 
 import com.example.cab302groupnametbdproject.model.SqliteConnection;
-import com.example.cab302groupnametbdproject.model.users.User;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,9 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+
 // Handles DAO and CRUD
 public class SqliteAssociatedWebsiteDAO implements AssociatedWebsiteDAO {
-
     private Connection connection;
 
     // Constructor
@@ -36,6 +34,7 @@ public class SqliteAssociatedWebsiteDAO implements AssociatedWebsiteDAO {
         }
     }
 
+    // Insert testing data if we need it
     private void insertTestingData() {
         try {
             // Clear deployed DB before inserting
@@ -98,6 +97,7 @@ public class SqliteAssociatedWebsiteDAO implements AssociatedWebsiteDAO {
         return null;
     }
 
+    // Returns a website object based on a URL argument
     @Override
     public Website getWebsiteFromURL(String URL) {
         try {
@@ -138,5 +138,4 @@ public class SqliteAssociatedWebsiteDAO implements AssociatedWebsiteDAO {
         }
         return websites;
     }
-
 }

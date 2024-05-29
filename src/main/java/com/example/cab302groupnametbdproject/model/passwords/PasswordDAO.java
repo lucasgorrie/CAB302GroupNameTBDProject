@@ -34,5 +34,4 @@ public interface PasswordDAO {
      * @return A list of all Passwords in the database.
      */
     public List<Password> getAllPasswords();
-
 }
