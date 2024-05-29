@@ -23,14 +23,13 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
 import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
+
 
 public class MainTableController implements Initializable {
         @FXML
@@ -47,10 +46,22 @@ public class MainTableController implements Initializable {
         private Button backToMenuButton;
         @FXML
         private Button userbutton;
-
         // Global password object for editing purposes
         public static Password passwordEditing;
 
+
+        // Constructor
+        private UserDAO userDAO;
+        private com.example.cab302groupnametbdproject.model.associatedWebsites.AssociatedWebsiteDAO AssociatedWebsiteDAO;
+        private com.example.cab302groupnametbdproject.model.passwords.PasswordDAO PasswordDAO;
+        public MainTableController() {
+                userDAO = new SqliteUserDAO();
+                AssociatedWebsiteDAO = new SqliteAssociatedWebsiteDAO();
+                PasswordDAO = new SqlitePasswordDAO();
+        }
+
+
+        // Remove password button method
         private void onRemoveButtonClick(Password password) throws IOException {
                 PasswordDAO.deletePassword(password);
 
@@ -61,6 +72,8 @@ public class MainTableController implements Initializable {
                 stage.setScene(scene);
         }
 
+
+        // Copy password button method
         private void onCopyButtonClick(Password password) throws IOException {
                 String decryptedPassword;
                 if (userDAO.getUser(password.getUser_id()).getId() != loggedInUser.getId()) {
@@ -75,6 +88,8 @@ public class MainTableController implements Initializable {
                 clipboard.setContent(clipboardPassword);
         }
 
+
+        // Edit password button method
         private void onEditButtonClick(Password password) throws IOException {
                 passwordEditing = password; // Pass obj to be edited
                 Stage stage = (Stage) backToMenuButton.getScene().getWindow();
@@ -84,6 +99,8 @@ public class MainTableController implements Initializable {
                 stage.setScene(scene);
         }
 
+
+        // Back button method
         @FXML
         protected void onBackToMenuClick() throws IOException {
                 Stage stage = (Stage) backToMenuButton.getScene().getWindow();
@@ -97,17 +114,8 @@ public class MainTableController implements Initializable {
                 stage.setScene(scene);
         }
 
-        private UserDAO userDAO;
-        private com.example.cab302groupnametbdproject.model.associatedWebsites.AssociatedWebsiteDAO AssociatedWebsiteDAO;
-        private com.example.cab302groupnametbdproject.model.passwords.PasswordDAO PasswordDAO;
 
-        // Constructor
-        public MainTableController() {
-                userDAO = new SqliteUserDAO();
-                AssociatedWebsiteDAO = new SqliteAssociatedWebsiteDAO();
-                PasswordDAO = new SqlitePasswordDAO();
-        }
-
+        // Init
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
                 userbutton.setText(loggedInUser.getUsername());
@@ -139,15 +147,14 @@ public class MainTableController implements Initializable {
 
         }
 
+
+        // Add rows to main data table
         public void populateTable() {
 
                 // Get all passwords
                 List<Password> passwords = PasswordDAO.getAllPasswords();
-
-
                 // Iterate once per Password in DB:
                 for (Password password : passwords) {
-
                         // Only get user and user's child's passwords
                         if((password.getUser_id() == loggedInUser.getId()) || (userDAO.getUser(password.getUser_id())).getParentId() == loggedInUser.getId()) {
 
@@ -178,7 +185,7 @@ public class MainTableController implements Initializable {
                                 });
                                 buttons.add(removeButton);
 
-                                // So that these buttons do not appear for child entries
+                                // Additional IF so that these buttons do not appear for child entries
                                 if(password.getUser_id() == loggedInUser.getId()) {
 
                                         // Button for password copy/paste
@@ -204,11 +211,9 @@ public class MainTableController implements Initializable {
                                         buttons.add(editButton);
                                 }
 
-
                                 // Return datatable with user's username, website's URL, and password's content, buttons
                                 datatable.getItems().add(new MainTable(website.getURL(), user.getUsername(), decryptedPassword, buttons));
                         }
                 }
         }
-
 }

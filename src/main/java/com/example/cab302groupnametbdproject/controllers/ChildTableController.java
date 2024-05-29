@@ -17,15 +17,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-
 import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
 
+
 public class ChildTableController implements Initializable {
+
     @FXML
     private TableColumn<ChildTable,Integer> associations;
     @FXML
@@ -38,18 +38,20 @@ public class ChildTableController implements Initializable {
     private TableColumn<ChildTable, String> user2;
     @FXML
     private Button userbutton;
-    @FXML
-    private Button userbutton1;
+
+
+    // Constructor
     private UserDAO userDAO;
     private com.example.cab302groupnametbdproject.model.associatedWebsites.AssociatedWebsiteDAO AssociatedWebsiteDAO;
     private com.example.cab302groupnametbdproject.model.passwords.PasswordDAO PasswordDAO;
-
     public ChildTableController(){
         userDAO = new SqliteUserDAO();
         AssociatedWebsiteDAO = new SqliteAssociatedWebsiteDAO();
         PasswordDAO = new SqlitePasswordDAO();
     }
 
+
+    // Returns the total number of associated websites for a particular user based on an ID arg
     public int TotalAssociations(int user_id){
         List<Password> allPass = PasswordDAO.getAllPasswords();
         int association_count = 0;
@@ -61,6 +63,7 @@ public class ChildTableController implements Initializable {
         return association_count;
     }
 
+    // Back to menu button method
     @FXML
     protected void onBackToMenuClick() throws IOException {
         Stage stage = (Stage) backToMenuButton.getScene().getWindow();
@@ -69,6 +72,7 @@ public class ChildTableController implements Initializable {
         stage.setScene(scene);
     }
 
+    // Init
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userbutton.setText(loggedInUser.getUsername());
@@ -84,6 +88,7 @@ public class ChildTableController implements Initializable {
         populateTable();
     }
 
+    // Add rows to table
     public void populateTable() {
 
         // Get all passwords
@@ -94,8 +99,6 @@ public class ChildTableController implements Initializable {
                     childtable.getItems().add(new ChildTable(user.getUsername(), user.getId(), TotalAssociations(user.getId())));
                 }
             }
-
         }
     }
-
 }

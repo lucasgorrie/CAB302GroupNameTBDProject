@@ -3,6 +3,8 @@ package com.example.cab302groupnametbdproject.controllers;
 import com.example.cab302groupnametbdproject.HelloApplication;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.SqliteAssociatedWebsiteDAO;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.Website;
+import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
+import com.example.cab302groupnametbdproject.model.users.UserDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,20 +13,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import java.net.URL;
 import java.util.Random;
-
 import java.io.IOException;
 import java.util.ResourceBundle;
-
 import com.example.cab302groupnametbdproject.model.passwords.Password;
 import com.example.cab302groupnametbdproject.model.passwords.SqlitePasswordDAO;
 import com.example.cab302groupnametbdproject.model.passwords.Encryption;
-
 import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
 
+
 public class AddPasswordController implements Initializable {
+
     @FXML
     private TextField password;
     @FXML
@@ -32,20 +31,28 @@ public class AddPasswordController implements Initializable {
     @FXML
     private Button userbutton;
     @FXML
-    private Button addPasswordButton;
-    @FXML
-    private Button generatePasswordButton;
-
-    @FXML
     private Button backToMenuButton;
     @FXML
     private Label infoLabel;
 
+    // Init
     @Override
     public void initialize(java.net.URL url, ResourceBundle resourceBundle) {
         userbutton.setText(loggedInUser.getUsername());
     }
 
+    // Constructor
+    private UserDAO userDAO;
+    private com.example.cab302groupnametbdproject.model.associatedWebsites.AssociatedWebsiteDAO AssociatedWebsiteDAO;
+    private com.example.cab302groupnametbdproject.model.passwords.PasswordDAO PasswordDAO;
+    public AddPasswordController(){
+        userDAO = new SqliteUserDAO();
+        AssociatedWebsiteDAO = new SqliteAssociatedWebsiteDAO();
+        PasswordDAO = new SqlitePasswordDAO();
+    }
+
+
+    // Back button method
     @FXML
     protected void onBackToMenuClick() throws IOException {
         Stage stage = (Stage) backToMenuButton.getScene().getWindow();
@@ -59,6 +66,8 @@ public class AddPasswordController implements Initializable {
         stage.setScene(scene);
     }
 
+
+    // Add password button method
     @FXML
     protected void onAddPasswordClick() throws IOException {
         String passwordInput = password.getText();
@@ -70,6 +79,9 @@ public class AddPasswordController implements Initializable {
             onBackToMenuClick();
         }
     }
+
+
+    // Password generation button method
     @FXML
     protected void onGeneratePasswordClick() throws IOException {
         String URLInput = URL.getText();
@@ -88,23 +100,20 @@ public class AddPasswordController implements Initializable {
             newPassword(generatedPassword, URLInput);
             onBackToMenuClick();
         }
-
-
     }
+
+
+    // Use DAO to add new password
     private void newPassword(String addingPassword, String URL) {
-        SqlitePasswordDAO passwordTable = new SqlitePasswordDAO();
-        SqliteAssociatedWebsiteDAO websiteTable = new SqliteAssociatedWebsiteDAO();
-        Website website = websiteTable.getWebsiteFromURL(URL);
+        Website website = AssociatedWebsiteDAO.getWebsiteFromURL(URL);
         if (website == null) {
             website = new Website(URL);
-            websiteTable.addWebsite(website);
-            website = websiteTable.getWebsiteFromURL(URL);
+            AssociatedWebsiteDAO.addWebsite(website);
+            website = AssociatedWebsiteDAO.getWebsiteFromURL(URL);
         }
         String encryptedPassword = Encryption.encrypt(addingPassword, LoginController.loggedInUser.getKey());
         Password newPassword = new Password(LoginController.loggedInUser.getId(), website.getId(), encryptedPassword);
-        passwordTable.addPassword(newPassword);
+        PasswordDAO.addPassword(newPassword);
 
     }
-
-
 }

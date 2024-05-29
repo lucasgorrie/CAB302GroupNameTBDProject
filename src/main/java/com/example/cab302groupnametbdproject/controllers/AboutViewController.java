@@ -8,12 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
+
 
 public class AboutViewController implements Initializable {
 
@@ -26,11 +25,13 @@ public class AboutViewController implements Initializable {
     @FXML
     public Button homebutton;
 
+    // Init
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userbutton.setText(loggedInUser.getUsername());
     }
 
+    // Back button method
     @FXML
     protected void BackButton() throws IOException {
         Stage stage = (Stage) backbutton.getScene().getWindow();

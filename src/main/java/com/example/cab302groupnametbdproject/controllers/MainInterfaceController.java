@@ -8,21 +8,18 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
 
-public class MainInterfaceController implements Initializable {
 
+public class MainInterfaceController implements Initializable {
     public Button associateWebsitesButton;
     public Button childAccountsButton;
     public Button childCreateButton;
@@ -30,47 +27,23 @@ public class MainInterfaceController implements Initializable {
     private BorderPane mainLayout;
     @FXML
     private VBox mainContent;
-
     @FXML
     private Button userbutton;
     @FXML
-    private Button backbutton;
-    @FXML
-    private Button homebutton;
-    @FXML
     private Button signOutButton;
-
     @FXML
     private Button aboutbutton;
     @FXML
     private Button addPasswordButton;
-    
 
-    private void switchToPage(String pageName) {
-        mainLayout.setCenter(createContentPage(pageName));
-    }
-
+    // Init
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userbutton.setText(loggedInUser.getUsername());
     }
 
-    private BorderPane createContentPage(String pageName) {
-        Label titleLabel = new Label(pageName);
-        titleLabel.setAlignment(Pos.CENTER);
 
-        VBox content = new VBox(titleLabel);
-        content.setAlignment(Pos.CENTER);
-
-        BackButton backButton = new BackButton(mainLayout, mainContent);
-
-        BorderPane pageLayout = new BorderPane();
-        pageLayout.setTop(backButton);
-        pageLayout.setCenter(content);
-
-        return pageLayout;
-    }
-
+    // Add password button method
     @FXML
     protected void onAddPasswordClick() throws IOException {
         Stage stage = (Stage) addPasswordButton.getScene().getWindow();
@@ -79,6 +52,8 @@ public class MainInterfaceController implements Initializable {
         stage.setScene(scene);
     }
 
+
+    // Create child button method
     public void onChildCreateButtonClick(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) childCreateButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("create-child-view.fxml"));
@@ -86,6 +61,8 @@ public class MainInterfaceController implements Initializable {
         stage.setScene(scene);
     }
 
+
+    // Back button
     public static class BackButton extends Button {
         public BackButton(BorderPane mainLayout, Pane mainContent) {
             super("Back");
@@ -96,6 +73,8 @@ public class MainInterfaceController implements Initializable {
         }
     }
 
+
+    // Sign out button method
     @FXML
     private void onSignOutButtonClick() throws IOException {
         loggedInUser = null;
@@ -105,6 +84,8 @@ public class MainInterfaceController implements Initializable {
         stage.setScene(scene);
     }
 
+
+    // Associated websites table method
     @FXML
     private void onAssociatedWebsitesClick() throws IOException {
         Stage stage = (Stage) associateWebsitesButton.getScene().getWindow();
@@ -113,6 +94,8 @@ public class MainInterfaceController implements Initializable {
         stage.setScene(scene);
     }
 
+
+    // About button method
     @FXML
     private void onAboutButtonClick() throws IOException {
         Stage stage = (Stage) aboutbutton.getScene().getWindow();
@@ -121,6 +104,8 @@ public class MainInterfaceController implements Initializable {
         stage.setScene(scene);
     }
 
+
+    // Child accounts button method
     @FXML
     private void onChildAccountsButtonClick() throws IOException {
         Stage stage = (Stage) childAccountsButton.getScene().getWindow();

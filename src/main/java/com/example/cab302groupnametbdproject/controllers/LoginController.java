@@ -14,10 +14,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import com.example.cab302groupnametbdproject.model.users.User;
 import org.apache.commons.codec.digest.DigestUtils;
-
-import static org.apache.commons.codec.digest.DigestUtils.sha256Hex;
-
 import java.io.IOException;
+
 
 public class LoginController {
 
@@ -25,7 +23,6 @@ public class LoginController {
     private Button loginButton;
     @FXML
     private Button createUserButton;
-
     @FXML
     private Label loginInfo;
     @FXML
@@ -33,7 +30,6 @@ public class LoginController {
     @FXML
     private TextField password;
     public static User loggedInUser;
-
 
     // Constructor
     private UserDAO userDAO;
@@ -45,20 +41,8 @@ public class LoginController {
         PasswordDAO = new SqlitePasswordDAO();
     }
 
-    public SqliteUserDAO getUserDAO(){
-        return (SqliteUserDAO) this.userDAO;
-    }
 
-    public SqliteAssociatedWebsiteDAO getWebsiteDAO(){
-        return (SqliteAssociatedWebsiteDAO) this.AssociatedWebsiteDAO;
-    }
-
-    public SqlitePasswordDAO getPasswordDAO(){
-        return (SqlitePasswordDAO) this.PasswordDAO;
-    }
-
-
-    //button to take user to signup view when hitting create user button
+    // Button to take user to signup view when hitting create user button
     @FXML
     protected void onCreateUserButtonClick() throws IOException {
         Stage stage = (Stage) createUserButton.getScene().getWindow();
@@ -66,10 +50,10 @@ public class LoginController {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
+
+    // Login button method
     @FXML
     protected void onLoginButtonClick() throws IOException {
-
-
         String usernameInput = username.getText();
         String passwordInput = password.getText();
         if (usernameInput.isEmpty() || passwordInput.isEmpty()) {
@@ -99,7 +83,4 @@ public class LoginController {
             } else { loginInfo.setText("Username not found."); }
         }
     }
-
-
-
 }

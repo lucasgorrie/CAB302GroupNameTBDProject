@@ -1,4 +1,5 @@
 package com.example.cab302groupnametbdproject.controllers;
+
 import com.example.cab302groupnametbdproject.HelloApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,20 +11,16 @@ import javafx.stage.Stage;
 import com.example.cab302groupnametbdproject.model.users.User;
 import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
 import org.apache.commons.codec.digest.DigestUtils;
-
-import static org.apache.commons.codec.digest.DigestUtils.sha256Hex;
-
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 public class CreateUserController {
 
     public Label signupInfo;
     @FXML
     private Button backToLoginButton;
-    @FXML
-    private Button createUser;
     @FXML
     private TextField firstName;
     @FXML
@@ -36,24 +33,28 @@ public class CreateUserController {
     private TextField password;
     @FXML
     private TextField repeatPassword;
-
     private final int MIN_USERNAME_CHARACTERS = 6;
     private final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
     private final Pattern VALID_PASSWORD_REGEX =
             Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[\\\\!\"#$%&'()*+,-./:;<=>?@\\]\\[^_`{|}~])(?=\\S+$).{8,}$");
 
+
+    // Check that string arg matches email regex
     private boolean validateEmail(String email_string){
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email_string);
         return matcher.matches();
     }
 
+
+    // Check that string arg matches password regex
     private boolean validatePassword(String password_string){
         Matcher matcher = VALID_PASSWORD_REGEX.matcher(password_string);
         return matcher.matches();
     }
 
-    //button to take the user back to the login page from the signup page
+
+    // Button to take the user back to the login page from the signup page
     @FXML
     protected void onBackToLoginClick() throws IOException {
         Stage stage = (Stage) backToLoginButton.getScene().getWindow();
@@ -61,9 +62,11 @@ public class CreateUserController {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
+
+    // Create user button method
     @FXML
     protected void createUserClick() throws IOException {
-        SqliteUserDAO table = new SqliteUserDAO();
+        SqliteUserDAO table = new SqliteUserDAO(); // DAO instantiated here rather than in constructor
         int parent_id = 0; // <-- NOT A CHILD
         String user_type = "PARENT";
         String firstNameInput = firstName.getText();
@@ -105,8 +108,5 @@ public class CreateUserController {
             onBackToLoginClick();
             signupInfo.setText("User Created");
         }
-
     }
-
-
 }

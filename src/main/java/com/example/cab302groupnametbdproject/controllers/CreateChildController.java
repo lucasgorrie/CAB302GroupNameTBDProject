@@ -1,4 +1,5 @@
 package com.example.cab302groupnametbdproject.controllers;
+
 import com.example.cab302groupnametbdproject.HelloApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,20 +11,17 @@ import javafx.stage.Stage;
 import com.example.cab302groupnametbdproject.model.users.User;
 import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
 import org.apache.commons.codec.digest.DigestUtils;
-
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
+
 
 public class CreateChildController {
 
     public Label signupInfo;
     @FXML
     private Button backToMenuButton;
-    @FXML
-    private Button createUser;
     @FXML
     private TextField firstName;
     @FXML
@@ -36,18 +34,21 @@ public class CreateChildController {
     private TextField password;
     @FXML
     private TextField repeatPassword;
-
     private final int MIN_USERNAME_CHARACTERS = 6;
     private final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
     private final Pattern VALID_PASSWORD_REGEX =
             Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[\\\\!\"#$%&'()*+,-./:;<=>?@\\]\\[^_`{|}~])(?=\\S+$).{8,}$");
 
+
+    // Check that string arg matches email regex
     private boolean validateEmail(String email_string){
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email_string);
         return matcher.matches();
     }
 
+
+    // Check that string arg matches password regex
     private boolean validatePassword(String password_string){
         Matcher matcher = VALID_PASSWORD_REGEX.matcher(password_string);
         return matcher.matches();
@@ -62,10 +63,13 @@ public class CreateChildController {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
+
+
+    // Create child account button method
     @FXML
     protected void createChildClick() throws IOException {
         String user_type = "CHILD";
-        SqliteUserDAO table = new SqliteUserDAO();
+        SqliteUserDAO table = new SqliteUserDAO(); // DAO instantiated here rather than in constructor
         int parent_id = loggedInUser.getId();
         String firstNameInput = firstName.getText();
         String lastNameInput = lastName.getText();
@@ -105,8 +109,5 @@ public class CreateChildController {
             onBackToMenuClick();
             signupInfo.setText("Child Created");
         }
-
     }
-
-
 }

@@ -1,4 +1,5 @@
 module com.example.cab302groupnametbdproject {
+
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
@@ -12,4 +13,5 @@ module com.example.cab302groupnametbdproject {
     opens com.example.cab302groupnametbdproject.model to javafx.fxml;
     exports com.example.cab302groupnametbdproject;
     opens com.example.cab302groupnametbdproject to javafx.fxml;
+
 }

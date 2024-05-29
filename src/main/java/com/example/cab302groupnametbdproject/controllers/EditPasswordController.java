@@ -13,19 +13,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import java.net.URL;
 import java.util.Random;
-
 import java.io.IOException;
 import java.util.ResourceBundle;
-
-import com.example.cab302groupnametbdproject.model.passwords.Password;
 import com.example.cab302groupnametbdproject.model.passwords.SqlitePasswordDAO;
 import com.example.cab302groupnametbdproject.model.passwords.Encryption;
-
 import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
 import static com.example.cab302groupnametbdproject.controllers.MainTableController.passwordEditing;
+
 
 public class EditPasswordController implements Initializable {
     @FXML
@@ -35,9 +30,8 @@ public class EditPasswordController implements Initializable {
     @FXML
     private Button editPasswordButton;
     @FXML
-    private Button generatePasswordButton;
-    @FXML
     private Label infoLabel;
+
 
     // Constructor
     private UserDAO userDAO;
@@ -49,11 +43,14 @@ public class EditPasswordController implements Initializable {
         PasswordDAO = new SqlitePasswordDAO();
     }
 
+    // Init
     @Override
     public void initialize(java.net.URL url, ResourceBundle resourceBundle) {
         userbutton.setText(loggedInUser.getUsername());
     }
 
+
+    // Back button method
     @FXML
     protected void onBackToMenuClick() throws IOException {
         Stage stage = (Stage) editPasswordButton.getScene().getWindow();
@@ -62,6 +59,8 @@ public class EditPasswordController implements Initializable {
         stage.setScene(scene);
     }
 
+
+    // Edit password button method
     @FXML
     protected void onEditPasswordClick() throws IOException {
         String URLInput = AssociatedWebsiteDAO.getWebsite(passwordEditing.getWebsite_id()).getURL();
@@ -73,6 +72,9 @@ public class EditPasswordController implements Initializable {
             onBackToMenuClick();
         }
     }
+
+
+    // Password generation button method
     @FXML
     protected void onGeneratePasswordClick() throws IOException {
         String URLInput = AssociatedWebsiteDAO.getWebsite(passwordEditing.getWebsite_id()).getURL();
@@ -91,9 +93,10 @@ public class EditPasswordController implements Initializable {
             editPassword(generatedPassword, URLInput);
             onBackToMenuClick();
         }
-
-
     }
+
+
+    // Edit password functionality
     private void editPassword(String addingPassword, String URL) {
         Website website = AssociatedWebsiteDAO.getWebsiteFromURL(URL);
         if (website == null) {
@@ -107,6 +110,4 @@ public class EditPasswordController implements Initializable {
         PasswordDAO.updatePassword(passwordEditing);
 
     }
-
-
 }
