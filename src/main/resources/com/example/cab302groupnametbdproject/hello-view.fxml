@@ -33,7 +33,7 @@
                <children>
                       <Pane layoutX="14.0" prefHeight="200.0" prefWidth="232.0" />
                </children></Pane>
-                  <Button fx:id="userbutton" alignment="TOP_RIGHT" mnemonicParsing="false" prefHeight="50.0" style="-fx-background-color: #FFA500#FFA500; -fx-border-radius: 22; -fx-border-color: #000000;" text="User0" HBox.hgrow="ALWAYS">
+                  <Button fx:id="userbutton" onAction="#onUserButtonClick" alignment="TOP_RIGHT" mnemonicParsing="false" prefHeight="50.0" style="-fx-background-color: #FFA500#FFA500; -fx-border-radius: 22; -fx-border-color: #000000;" text="User0" HBox.hgrow="ALWAYS">
                       <graphic>
                           <ImageView fitHeight="40.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                               <image>

@@ -20,6 +20,8 @@ public class CreateUserController {
 
     public Label signupInfo;
     @FXML
+    public Button createUser;
+    @FXML
     private Button backToLoginButton;
     @FXML
     private TextField firstName;
