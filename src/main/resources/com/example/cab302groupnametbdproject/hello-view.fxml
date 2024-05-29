@@ -27,28 +27,27 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Pane prefHeight="200.0" prefWidth="200.0" />
-                <Pane prefHeight="200.0" prefWidth="200.0" />
-                <Pane prefHeight="200.0" prefWidth="150.0">
+                <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                <Pane prefHeight="200.0" prefWidth="150.0" HBox.hgrow="ALWAYS">
                <children>
-                      <Pane layoutX="14.0" prefHeight="200.0" prefWidth="232.0">
-                          <children>
-                        <HBox layoutX="241.0" layoutY="-4.0" prefHeight="100.0" prefWidth="37.0" />
-                              <Button fx:id="userbutton" alignment="CENTER" layoutX="89.0" layoutY="14.0" mnemonicParsing="false" prefHeight="50.0" style="-fx-background-color: #FFA500#FFA500; -fx-border-radius: 15px; -fx-border-color: #000000;" text="User0">
-                                  <graphic>
-                                      <ImageView fitHeight="40.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-                                          <image>
-                                              <Image url="@images/Personlogo.png" />
-                                          </image>
-                                      </ImageView>
-                                  </graphic>
-                                  <font>
-                                      <Font name="System Bold" size="16.0" />
-                                  </font>
-                              </Button>
-                          </children>
-                      </Pane>
+                      <Pane layoutX="14.0" prefHeight="200.0" prefWidth="232.0" />
                </children></Pane>
+                  <Button fx:id="userbutton" alignment="TOP_RIGHT" mnemonicParsing="false" prefHeight="50.0" style="-fx-background-color: #FFA500#FFA500; -fx-border-radius: 22; -fx-border-color: #000000;" text="User0" HBox.hgrow="ALWAYS">
+                      <graphic>
+                          <ImageView fitHeight="40.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                  <Image url="@images/Personlogo.png" />
+                              </image>
+                          </ImageView>
+                      </graphic>
+                      <font>
+                          <Font name="System Bold" size="16.0" />
+                      </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+                  </Button>
             </children>
             <padding>
                 <Insets top="5.0" />
@@ -56,14 +55,14 @@
         </HBox>
     </top>
    <center>
-      <GridPane prefHeight="345.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+      <GridPane alignment="CENTER" prefHeight="345.0" prefWidth="800.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="651.2000122070312" minWidth="10.0" prefWidth="521.6000244140625" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="394.4000244140625" minWidth="10.0" prefWidth="278.39997558593745" />
+          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="651.2000122070312" minWidth="10.0" prefWidth="521.6000244140625" />
+          <ColumnConstraints hgrow="ALWAYS" maxWidth="394.4000244140625" minWidth="10.0" prefWidth="278.39997558593745" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="350.0" minHeight="10.0" prefHeight="78.39999694824219" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="476.59998474121096" minHeight="10.0" prefHeight="441.6000030517578" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="350.0" minHeight="10.0" prefHeight="78.39999694824219" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="476.59998474121096" minHeight="10.0" prefHeight="441.6000030517578" vgrow="ALWAYS" />
         </rowConstraints>
          <children>
             <VBox maxHeight="350.0" prefHeight="393.0" prefWidth="253.0" style="-fx-border-color: black; -fx-border-width: 0; -fx-border-insets: 5;" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">

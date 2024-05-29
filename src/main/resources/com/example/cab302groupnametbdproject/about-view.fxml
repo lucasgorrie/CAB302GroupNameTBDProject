@@ -66,17 +66,11 @@
 
     <center>
         <VBox fx:id="mainContent" alignment="CENTER" prefHeight="366.0" prefWidth="800.0" spacing="20.0">
-            <Pane prefHeight="278.0" prefWidth="800.0">
-                    <Text layoutX="39.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="750"
-                          text="Password Manager™ was designed to be a completely offline alternative to storing
-passwords online through dedicated applications/websites. This has a few notable advantages including significantly
-decreasing the chances of a data breach. Additionally, in order for an attacker to access the passwords, they would have
-to gain access to the user's computer and decrypt the database, a process which while theoretically possible, is deemed
-unlikely enough to not be a serious security risk. Compared to an alternative such as a notepad file, Password Manager™
-has the notable advantages of encrypting all of the passwords, meaning that unless the user is logged in to the
-corresponding account, all of the passwords will be displayed as the encrypted version. If the user would like to
-transfer over their database to a different computer, they may copy the database into the other device as the
-encryption/decryption logic is the same between every instance of the app."/>
+            <Pane prefHeight="419.0" prefWidth="800.0">
+                    <Text layoutX="75.0" layoutY="27.0" lineSpacing="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password Manager™ was designed to be a completely offline alternative to storing passwords online through dedicated applications/websites. This has a few notable advantages including significantly decreasing the chances of a data breach. Additionally, in order for an attacker to access the passwords, they would have to gain access to the user's computer and decrypt the database, a process which while theoretically possible, is deemed unlikely enough to not be a serious security risk. Compared to an alternative such as a notepad file, Password Manager™ has the notable advantages of encrypting all of the passwords, meaning that unless the user is logged in to the corresponding account, all of the passwords will be displayed as the encrypted version. If the user would like to transfer over their database to a different computer, they may copy the database into the other device as the encryption/decryption logic is the same between every instance of the app." wrappingWidth="649.199951171875">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
             </Pane>
         </VBox>
     </center>
