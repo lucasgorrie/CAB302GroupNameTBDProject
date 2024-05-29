@@ -66,7 +66,7 @@
             <RowConstraints maxHeight="476.59998474121096" minHeight="10.0" prefHeight="476.59998474121096" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <VBox maxHeight="350.0" prefHeight="393.0" prefWidth="253.0" style="-fx-border-color: black; -fx-border-width: 3; -fx-border-insets: 5;" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <VBox maxHeight="350.0" prefHeight="393.0" prefWidth="253.0" style="-fx-border-color: black; -fx-border-width: 3; -fx-border-insets: 5; -fx-background-color: linear-gradient(to bottom, #fcca81, white);" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <children>
                   <HBox prefHeight="7.0" prefWidth="237.0" />
                   <HBox prefHeight="92.0" prefWidth="237.0">
@@ -110,7 +110,7 @@
                 <RowConstraints maxHeight="350.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <VBox prefHeight="350.0" prefWidth="281.0" style="-fx-border-color: black; -fx-border-width: 3; -fx-border-insets: 5;" GridPane.halignment="CENTER">
+                  <VBox prefHeight="350.0" prefWidth="281.0" style="-fx-border-color: black; -fx-border-width: 3; -fx-border-insets: 5; -fx-background-color: linear-gradient(to bottom, #fcca81, white);" GridPane.halignment="CENTER">
                      <children>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
@@ -150,7 +150,7 @@
                         <Insets />
                      </opaqueInsets>
                   </VBox>
-                  <VBox prefHeight="520.0" prefWidth="264.0" style="-fx-border-color: black; -fx-border-width: 3; -fx-border-insets: 5;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <VBox prefHeight="520.0" prefWidth="264.0" style="-fx-border-color: black; -fx-border-width: 3; -fx-border-insets: 5; -fx-background-color: linear-gradient(to bottom, #fcca81, white);" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <children>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
