@@ -9,7 +9,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
@@ -23,10 +22,6 @@ public class MainInterfaceController implements Initializable {
     public Button associateWebsitesButton;
     public Button childAccountsButton;
     public Button childCreateButton;
-    @FXML
-    private BorderPane mainLayout;
-    @FXML
-    private VBox mainContent;
     @FXML
     private Button userbutton;
     @FXML
@@ -42,6 +37,14 @@ public class MainInterfaceController implements Initializable {
         userbutton.setText(loggedInUser.getUsername());
     }
 
+    // Navigate to user info page
+    @FXML
+    protected void onUserButtonClick() throws IOException {
+        Stage stage = (Stage) userbutton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("user-info.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
 
     // Add password button method
     @FXML
@@ -51,7 +54,6 @@ public class MainInterfaceController implements Initializable {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
-
 
     // Create child button method
     public void onChildCreateButtonClick(ActionEvent actionEvent) throws IOException {
