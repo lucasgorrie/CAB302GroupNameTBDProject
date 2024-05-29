@@ -58,8 +58,8 @@
    <center>
       <GridPane prefHeight="345.0" prefWidth="800.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="651.2000122070312" minWidth="10.0" prefWidth="535.2000122070312" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="394.4000244140625" minWidth="10.0" prefWidth="265.5999877929687" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="651.2000122070312" minWidth="10.0" prefWidth="521.6000244140625" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="394.4000244140625" minWidth="10.0" prefWidth="278.39997558593745" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="350.0" minHeight="10.0" prefHeight="78.39999694824219" vgrow="SOMETIMES" />
@@ -69,7 +69,7 @@
             <VBox maxHeight="350.0" prefHeight="393.0" prefWidth="253.0" style="-fx-border-color: black; -fx-border-width: 0; -fx-border-insets: 5;" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <children>
                   <HBox prefHeight="14.0" prefWidth="243.0" />
-                  <HBox prefHeight="104.0" prefWidth="243.0">
+                  <HBox prefHeight="103.0" prefWidth="269.0">
                      <children>
                         <HBox prefHeight="104.0" prefWidth="96.0" />
                         <HBox prefHeight="100.0" prefWidth="100.0">
@@ -132,13 +132,13 @@
                         </HBox>
                         <HBox prefHeight="98.0" prefWidth="267.0">
                            <children>
-                              <HBox prefHeight="98.0" prefWidth="10.0" />
+                              <HBox prefHeight="98.0" prefWidth="24.0" />
                               <Button fx:id="associateWebsitesButton" maxHeight="54.0" onAction="#onAssociatedWebsitesClick" prefHeight="54.0" prefWidth="242.0" text="Associated Websites" />
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <HBox prefHeight="100.0" prefWidth="10.0" />
+                              <HBox prefHeight="100.0" prefWidth="21.0" />
                               <Button fx:id="addPasswordButton" maxHeight="54.0" onAction="#onAddPasswordClick" prefHeight="54.0" prefWidth="242.0" text="Add Password" />
                            </children>
                         </HBox>
@@ -152,7 +152,7 @@
                   </VBox>
                   <VBox prefHeight="520.0" prefWidth="264.0" style="-fx-border-color: black; -fx-border-width: 0; -fx-border-insets: 5;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <children>
-                        <HBox prefHeight="117.0" prefWidth="262.0">
+                        <HBox prefHeight="118.0" prefWidth="249.0">
                            <children>
                               <HBox prefHeight="118.0" prefWidth="83.0" />
                               <HBox prefHeight="100.0" prefWidth="100.0">
