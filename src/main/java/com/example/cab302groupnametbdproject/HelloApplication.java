@@ -5,11 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Objects;
 
+
 public class HelloApplication extends Application {
+
+    // Entry point
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
@@ -21,7 +23,6 @@ public class HelloApplication extends Application {
 
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("style2.css")).toExternalForm());
     }
-
     public static void main(String[] args) {
         launch();
     }

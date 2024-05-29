@@ -1,7 +1,6 @@
 package com.example.cab302groupnametbdproject.model.users;
 
 import com.example.cab302groupnametbdproject.model.SqliteConnection;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,6 +18,7 @@ public class SqliteUserDAO implements UserDAO {
         connection = SqliteConnection.getInstance(); // Establish connection with DB
         createTable(); // Create table if it does not exist
     }
+
     // Create the users table, if it doesn't already exist
     private void createTable() {
         try {
@@ -118,6 +118,7 @@ public class SqliteUserDAO implements UserDAO {
         return null;
     }
 
+    // Returns a User object based on a username argument
     public User getUserFromUserName(String username) {
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
@@ -171,6 +172,7 @@ public class SqliteUserDAO implements UserDAO {
         return users;
     }
 
+    // Check if username exists already
     @Override
     public Boolean doesUsernameExist(String username) {
         List<User> allUsers = getAllUsers();
@@ -179,7 +181,6 @@ public class SqliteUserDAO implements UserDAO {
                 return true;
             }
         }
-
         return false;
     }
 }

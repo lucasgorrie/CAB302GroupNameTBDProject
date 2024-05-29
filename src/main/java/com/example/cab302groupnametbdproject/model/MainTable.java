@@ -16,7 +16,6 @@ public class MainTable {
         this.user = user;
         this.password = password;
         this.actions = actions;
-
     }
 
     /* Getters */
@@ -24,15 +23,12 @@ public class MainTable {
     public String getUrllink() {
         return urllink;
     }
-
     public String getUser() {
         return user;
     }
-
     public String getPassword() {
         return password;
     }
-
     public List<Button> getActions() {
         return actions;
     }
