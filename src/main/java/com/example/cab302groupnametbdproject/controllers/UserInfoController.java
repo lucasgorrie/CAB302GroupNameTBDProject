@@ -39,6 +39,10 @@ public class UserInfoController implements Initializable {
     public Text associationsnum;
     @FXML
     public Text childaccountsnum;
+    @FXML
+    public Button changedetailsbutton;
+    @FXML
+    public Button changepasswordbutton;
 
 
     // Constructor
@@ -102,5 +106,23 @@ public class UserInfoController implements Initializable {
         stage.setScene(scene);
     }
 
+    // Change details button method
+    @FXML
+    protected void changeDetailsButtonClick() throws IOException {
+        Stage stage = (Stage) changedetailsbutton.getScene().getWindow();
+        FXMLLoader fxmlLoader;
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("update-details-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
 
+    // Change password button method
+    @FXML
+    protected void changePasswordButtonClick() throws IOException {
+        Stage stage = (Stage) backToMenuButton.getScene().getWindow();
+        FXMLLoader fxmlLoader;
+        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("update-password-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
 }

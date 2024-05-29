@@ -135,7 +135,7 @@
                             <children>
                                 <HBox prefHeight="59.0" prefWidth="174.0">
                                     <children>
-                                        <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="140.0" text="Change Details">
+                                        <Button fx:id="changedetailsbutton" onAction="#changeDetailsButtonClick" mnemonicParsing="false" prefHeight="38.0" prefWidth="140.0" text="Change Details">
                                             <font>
                                                 <Font size="16.0" />
                                             </font>
@@ -147,7 +147,7 @@
                                 </HBox>
                                 <HBox prefHeight="59.0" prefWidth="181.0">
                                     <children>
-                                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="152.0" text="Change Password">
+                                        <Button fx:id="changepasswordbutton" onAction="#changePasswordButtonClick" mnemonicParsing="false" prefHeight="35.0" prefWidth="152.0" text="Change Password">
                                             <font>
                                                 <Font size="16.0" />
                                             </font>
