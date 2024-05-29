@@ -23,7 +23,7 @@
     -fx-background-radius: 30; /* Rounded corners */
     -fx-padding: 10 20;
     -fx-font-weight: bold;
-    -fx-font-size: 25px;
+    -fx-font-size: 20px;
     -fx-border-color: black; /* Black border */
     -fx-border-width: 2; /* Border width */
     -fx-border-radius: 30; /* Rounded border to match the button's corner radius */

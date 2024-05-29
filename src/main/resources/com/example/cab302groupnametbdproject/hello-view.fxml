@@ -5,8 +5,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -27,86 +30,163 @@
                 <Pane prefHeight="200.0" prefWidth="200.0" />
                 <Pane prefHeight="200.0" prefWidth="200.0" />
                 <Pane prefHeight="200.0" prefWidth="150.0">
-
-                </Pane>
-                <Pane prefHeight="200.0" prefWidth="195.0">
-                    <children>
-                        <Button fx:id="userbutton" alignment="CENTER" layoutX="29.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" style="-fx-background-color: #FFA500#FFA500; -fx-border-radius: 15px; -fx-border-color: #000000;" text="User0">
-                            <graphic>
-                                <ImageView fitHeight="40.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@images/Personlogo.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                            <font>
-                                <Font name="System Bold" size="16.0" />
-                            </font>
-                        </Button>
-                    </children>
-                </Pane>
+               <children>
+                      <Pane layoutX="14.0" prefHeight="200.0" prefWidth="232.0">
+                          <children>
+                        <HBox layoutX="241.0" layoutY="-4.0" prefHeight="100.0" prefWidth="37.0" />
+                              <Button fx:id="userbutton" alignment="CENTER" layoutX="89.0" layoutY="14.0" mnemonicParsing="false" prefHeight="50.0" style="-fx-background-color: #FFA500#FFA500; -fx-border-radius: 15px; -fx-border-color: #000000;" text="User0">
+                                  <graphic>
+                                      <ImageView fitHeight="40.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                              <Image url="@images/Personlogo.png" />
+                                          </image>
+                                      </ImageView>
+                                  </graphic>
+                                  <font>
+                                      <Font name="System Bold" size="16.0" />
+                                  </font>
+                              </Button>
+                          </children>
+                      </Pane>
+               </children></Pane>
             </children>
             <padding>
                 <Insets top="5.0" />
             </padding>
         </HBox>
     </top>
-
-    <center>
-        <VBox fx:id="mainContent" alignment="CENTER" spacing="20.0">
-            <HBox alignment="CENTER" prefHeight="43.0" prefWidth="800.0">
-                <children>
-                    <Button fx:id="addPasswordButton" onAction="#onAddPasswordClick" text="Add Password" />
-                </children>
-            </HBox>
-            <!-- HBox for the "Associated Websites" button and image -->
-            <HBox alignment="CENTER" spacing="10.0">
-                <padding>
-                    <Insets left="60.0" /> <!-- Adjust this value to move them as desired -->
-                </padding>
-                <Button fx:id="associateWebsitesButton" onAction="#onAssociatedWebsitesClick" text="Associated Websites" />
-                <ImageView fitHeight="50" fitWidth="50">
-                    <image>
-                        <Image url="@images/web.png" />
-                    </image>
-                </ImageView>
-            </HBox>
-
-            <!-- HBox for the "About the App" button and image -->
-            <HBox alignment="CENTER" spacing="20.0">
-                <padding>
-                    <Insets left="63.0" /> <!-- Adjust this value to move them as desired -->
-                </padding>
-                <Button fx:id="aboutbutton" onAction="#onAboutButtonClick" text="About the App" />
-                <ImageView fitHeight="50" fitWidth="50">
-                    <image>
-                        <Image url="@images/1176.png" />
-                    </image>
-                </ImageView>
-            </HBox>
-
-            <!-- HBox for the "About the App" button and image -->
-            <HBox alignment="CENTER" spacing="20.0">
-                <padding>
-                    <Insets left="5.0" /> <!-- Adjust this value to move them as desired -->
-                </padding>
-                <Button fx:id="childCreateButton" onAction="#onChildCreateButtonClick" text="Create Child Account" />
-            </HBox>
-
-            <!-- HBox for the "Child Accounts" button and image -->
-            <HBox alignment="CENTER" spacing="10.0">
-                <padding>
-                    <Insets left="60.0" /> <!-- Adjust this value to move them as desired -->
-                </padding>
-                <Button fx:id="childAccountsButton" onAction="#onChildAccountsButtonClick" text="Child Accounts" />
-                <ImageView fitHeight="50" fitWidth="50">
-                    <image>
-                        <Image url="@images/childaccount.png" />
-                    </image>
-                </ImageView>
-            </HBox>
-
-            <Button fx:id="signOutButton" onAction="#onSignOutButtonClick" styleClass="sign-out-button" text="Sign Out" />
-        </VBox>
-    </center>
+   <center>
+      <GridPane prefHeight="345.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="651.2000122070312" minWidth="10.0" prefWidth="547.9999877929688" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="394.4000244140625" minWidth="10.0" prefWidth="252.0000122070312" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="350.0" minHeight="10.0" prefHeight="43.00001525878906" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="476.59998474121096" minHeight="10.0" prefHeight="476.59998474121096" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox maxHeight="350.0" prefHeight="393.0" prefWidth="253.0" style="-fx-border-color: black; -fx-border-width: 3; -fx-border-insets: 5;" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <children>
+                  <HBox prefHeight="7.0" prefWidth="237.0" />
+                  <HBox prefHeight="92.0" prefWidth="237.0">
+                     <children>
+                        <HBox prefHeight="92.0" prefWidth="92.0" />
+                        <HBox prefHeight="100.0" prefWidth="100.0">
+                           <children>
+                              <HBox prefHeight="87.0" prefWidth="100.0">
+                                 <children>
+                                    <ImageView fitHeight="55.0" fitWidth="55.0">
+                                       <image>
+                                          <Image url="@images/1176.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="75.0" prefWidth="237.0">
+                     <children>
+                        <HBox prefHeight="75.0" prefWidth="54.0" />
+                        <Button fx:id="signOutButton1" maxHeight="0.0" onAction="#onSignOutButtonClick" prefWidth="127.0" styleClass="sign-out-button" text="Sign Out" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="24.0" />
+                        <Button fx:id="aboutbutton1" maxHeight="54.0" onAction="#onAboutButtonClick" prefHeight="54.0" prefWidth="188.0" text="About the App" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <GridPane prefHeight="262.0" prefWidth="539.0" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="314.0000366210937" minWidth="250.0" prefWidth="276.5999755859375" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="279.1999755859375" minWidth="238.79996337890623" prefWidth="271.0000244140625" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="350.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <VBox prefHeight="350.0" prefWidth="281.0" style="-fx-border-color: black; -fx-border-width: 3; -fx-border-insets: 5;" GridPane.halignment="CENTER">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="94.0" />
+                              <HBox prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <ImageView fitHeight="75.0" fitWidth="75.0">
+                                             <image>
+                                                <Image url="@images/web.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="72.0" prefWidth="261.0">
+                           <children>
+                              <HBox prefHeight="66.0" prefWidth="5.0" />
+                              <Button fx:id="associateWebsitesButton" maxHeight="54.0" onAction="#onAssociatedWebsitesClick" prefHeight="54.0" prefWidth="248.0" text="Associated Websites" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="21.0" />
+                              <Button fx:id="addPasswordButton" maxHeight="54.0" onAction="#onAddPasswordClick" prefHeight="54.0" prefWidth="211.0" text="Add Password" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <VBox prefHeight="520.0" prefWidth="264.0" style="-fx-border-color: black; -fx-border-width: 3; -fx-border-insets: 5;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="94.0" />
+                              <HBox prefHeight="100.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <ImageView fitHeight="75.0" fitWidth="75.0">
+                                             <image>
+                                                <Image url="@images/childaccount.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="73.0" prefWidth="255.0">
+                           <children>
+                              <HBox prefHeight="68.0" prefWidth="36.0" />
+                              <Button fx:id="childAccountsButton" maxHeight="0.0" onAction="#onChildAccountsButtonClick" text="Child Accounts" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="68.0" prefWidth="254.0">
+                           <children>
+                              <HBox prefHeight="68.0" prefWidth="9.0" />
+                              <Button fx:id="childCreateButton" maxHeight="54.0" onAction="#onChildCreateButtonClick" prefHeight="54.0" prefWidth="242.0" text="Create Child Account" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </center>
 </BorderPane>
