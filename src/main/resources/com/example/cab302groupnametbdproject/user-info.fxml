@@ -185,7 +185,7 @@
                         </HBox>
                         <HBox prefHeight="42.0" prefWidth="294.0">
                             <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Child Accounts:" wrappingWidth="110.93669891357422" HBox.hgrow="ALWAYS">
+                                <Text fx:id="childaccountstitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Child Accounts:" wrappingWidth="110.93669891357422" HBox.hgrow="ALWAYS">
                                     <font>
                                         <Font size="16.0" />
                                     </font>

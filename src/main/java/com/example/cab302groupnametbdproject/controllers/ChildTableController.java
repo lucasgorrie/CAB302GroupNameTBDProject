@@ -50,6 +50,15 @@ public class ChildTableController implements Initializable {
         PasswordDAO = new SqlitePasswordDAO();
     }
 
+    // Navigate to user info page
+    @FXML
+    protected void onUserButtonClick() throws IOException {
+        Stage stage = (Stage) userbutton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("user-info.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
+
 
     // Returns the total number of associated websites for a particular user based on an ID arg
     public int TotalAssociations(int user_id){

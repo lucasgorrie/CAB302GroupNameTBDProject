@@ -31,6 +31,15 @@ public class AboutViewController implements Initializable {
         userbutton.setText(loggedInUser.getUsername());
     }
 
+    // Navigate to user info page
+    @FXML
+    protected void onUserButtonClick() throws IOException {
+        Stage stage = (Stage) userbutton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("user-info.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
+
     // Back button method
     @FXML
     protected void BackButton() throws IOException {

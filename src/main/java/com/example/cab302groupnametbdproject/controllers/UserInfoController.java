@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
 
@@ -43,6 +44,8 @@ public class UserInfoController implements Initializable {
     public Button changedetailsbutton;
     @FXML
     public Button changepasswordbutton;
+    @FXML
+    public Text childaccountstitle;
 
 
     // Constructor
@@ -68,6 +71,13 @@ public class UserInfoController implements Initializable {
 
         associationsnum.setText(associations);
         childaccountsnum.setText(children);
+
+        // If account is child account do not show details relating to child accounts
+        if(Objects.equals(loggedInUser.getUserType(), "CHILD")) {
+            childaccountsnum.setText("");
+            childaccountstitle.setText("");
+        }
+
     }
 
     public int TotalAssociations(int user_id){
