@@ -178,7 +178,7 @@
                         <HBox prefHeight="68.0" prefWidth="254.0">
                            <children>
                               <HBox prefHeight="68.0" prefWidth="9.0" />
-                              <Button fx:id="childCreateButton" maxHeight="54.0" onAction="#onChildCreateButtonClick" prefHeight="54.0" prefWidth="242.0" text="Create Child Account" />
+                              <Button fx:id="childCreateButton" maxHeight="54.0" onAction="#onChildCreateButtonClick" prefHeight="54.0" prefWidth="250.0" text="Create Child Account" />
                            </children>
                         </HBox>
                      </children>
