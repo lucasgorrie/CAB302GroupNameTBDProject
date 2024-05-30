@@ -60,12 +60,13 @@ public class MainTableController implements Initializable {
         // Remove password button method
         private void onRemoveButtonClick(Password password) throws IOException {
                 String delete_URL = AssociatedWebsiteDAO.getWebsite(password.getWebsite_id()).getURL();
+
+                // Remove password if user says yes to dialogue
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete Password for " + delete_URL  + " ?",
                         ButtonType.YES, ButtonType.NO);
                 alert.showAndWait();
 
                 if (alert.getResult() == ButtonType.YES) {
-                        //do stuff
 
                         PasswordDAO.deletePassword(password);
 
