@@ -81,7 +81,7 @@
                                         <Insets left="5.0" />
                                     </HBox.margin>
                                 </Text>
-                                <Text fx:id="nametext" strokeType="OUTSIDE" strokeWidth="0.0" text="NAME" wrappingWidth="61.33673095703125">
+                                <Text fx:id="nametext" strokeType="OUTSIDE" strokeWidth="0.0" text="NAME" wrappingWidth="200">
                                     <font>
                                         <Font size="20.0" />
                                     </font>

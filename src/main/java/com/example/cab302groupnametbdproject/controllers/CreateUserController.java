@@ -100,7 +100,8 @@ public class CreateUserController {
 
         // Check that password input matches password regex
         } else if(!validatePassword(passwordInput)){
-            signupInfo.setText("Password must be mixed case, contain a number and a special character, and be of at least 8 characters");
+            signupInfo.setText("Password must be mixed case, contain a number and" +
+                    "\na special character, and be of at least 8 characters");
 
         // Enter user into DB
         } else {
