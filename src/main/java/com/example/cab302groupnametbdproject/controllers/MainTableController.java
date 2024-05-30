@@ -14,10 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
@@ -49,7 +46,6 @@ public class MainTableController implements Initializable {
         // Global password object for editing purposes
         public static Password passwordEditing;
 
-
         // Constructor
         private UserDAO userDAO;
         private com.example.cab302groupnametbdproject.model.associatedWebsites.AssociatedWebsiteDAO AssociatedWebsiteDAO;
@@ -63,13 +59,22 @@ public class MainTableController implements Initializable {
 
         // Remove password button method
         private void onRemoveButtonClick(Password password) throws IOException {
-                PasswordDAO.deletePassword(password);
+                String delete_URL = AssociatedWebsiteDAO.getWebsite(password.getWebsite_id()).getURL();
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete Password for " + delete_URL  + " ?",
+                        ButtonType.YES, ButtonType.NO);
+                alert.showAndWait();
 
-                // Re-render page
-                Stage stage = (Stage) backToMenuButton.getScene().getWindow();
-                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-datatable.fxml"));
-                Scene scene = new Scene(fxmlLoader.load());
-                stage.setScene(scene);
+                if (alert.getResult() == ButtonType.YES) {
+                        //do stuff
+
+                        PasswordDAO.deletePassword(password);
+
+                        // Re-render page
+                        Stage stage = (Stage) backToMenuButton.getScene().getWindow();
+                        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-datatable.fxml"));
+                        Scene scene = new Scene(fxmlLoader.load());
+                        stage.setScene(scene);
+                }
         }
 
 
