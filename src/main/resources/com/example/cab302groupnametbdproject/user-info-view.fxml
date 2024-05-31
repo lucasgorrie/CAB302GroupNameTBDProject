@@ -57,7 +57,7 @@
         </Button>
         <ImageView fitHeight="60.0" fitWidth="150.0" layoutX="309.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@images/Personlogo.png" />
+                <Image url="@images/personLogo.png" />
             </image>
         </ImageView>
         <GridPane layoutX="84.0" layoutY="219.0" prefHeight="224.0" prefWidth="631.0">

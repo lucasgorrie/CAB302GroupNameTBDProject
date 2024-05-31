@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.util.Objects;
 
 
+/**
+ * main class to start application 
+ */
 public class PasswordMangerMain extends Application {
 
     // Entry point

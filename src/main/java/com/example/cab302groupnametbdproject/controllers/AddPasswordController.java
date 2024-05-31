@@ -106,6 +106,7 @@ public class AddPasswordController implements Initializable {
         if (URLInput.isEmpty()) {
             infoLabel.setText("URL field is empty.");
         } else {
+            //picks random characters from chracter bank and creates password
             String generatedPassword = "";
             char[] Characters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w',
                     'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
@@ -133,6 +134,7 @@ public class AddPasswordController implements Initializable {
             AssociatedWebsiteDAO.addWebsite(website);
             website = AssociatedWebsiteDAO.getWebsiteFromURL(URL);
         }
+        //encrypts password
         String encryptedPassword = Encryption.encrypt(addingPassword, LoginController.loggedInUser.getKey());
         Password newPassword = new Password(LoginController.loggedInUser.getId(), website.getId(), encryptedPassword);
         PasswordDAO.addPassword(newPassword);

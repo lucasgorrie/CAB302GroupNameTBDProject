@@ -109,10 +109,11 @@ public class ChildTableController implements Initializable {
      */
     public void populateTable() {
 
-        // Get all passwords
+        // Get all accounts
         List<User> users = userDAO.getAllUsers();
         for (User user : users) {
             if (user.getUserType().equals("CHILD")) {
+                //adds all child accounts that are associted with parent to table
                 if (user.getParentId() == loggedInUser.getId()) {
                     childtable.getItems().add(new ChildTable(user.getUsername(), user.getId(), TotalAssociations(user.getId())));
                 }

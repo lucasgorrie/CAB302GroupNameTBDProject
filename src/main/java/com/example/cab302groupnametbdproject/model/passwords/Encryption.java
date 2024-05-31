@@ -3,7 +3,18 @@ package com.example.cab302groupnametbdproject.model.passwords;
 import java.nio.charset.StandardCharsets;
 import java.util.HexFormat;
 
+
+/**
+ * Static class containing encrpytion methods
+ */
 public class Encryption {
+
+    /**
+     * encrypts text given with a key as text
+     * @param plainText plain text to be encrypted
+     * @param key encryption key
+     * @return encrypted bytes in hexadecimal
+     */
     public static String encrypt(String plainText, String key) {
         byte[] plainTextBytes = plainText.getBytes(StandardCharsets.UTF_8);
         byte[] keyBytes = key.getBytes(StandardCharsets.UTF_8);
@@ -28,6 +39,12 @@ public class Encryption {
         return finalHexString;
     }
 
+    /**
+     * encrypts hex bits given with a key as text
+     * @param encryptedHex hexadecimal bits to be decrypted
+     * @param key decryption key (same as encryption one)
+     * @return decrypted text string
+     */
     public static String decrypt(String encryptedHex, String key) {
         byte[] encrypedByteArray = HexFormat.of().parseHex(encryptedHex);
         byte[] keyBytes = key.getBytes(StandardCharsets.UTF_8);

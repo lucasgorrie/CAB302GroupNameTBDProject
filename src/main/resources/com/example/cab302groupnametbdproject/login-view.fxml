@@ -20,7 +20,7 @@
                <children>
                   <ImageView fitHeight="181.0" fitWidth="383.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/PasswordManagerLogo.png" />
+                        <Image url="@images/passwordManagerLogo.png" />
                      </image>
                   </ImageView>
                </children>
