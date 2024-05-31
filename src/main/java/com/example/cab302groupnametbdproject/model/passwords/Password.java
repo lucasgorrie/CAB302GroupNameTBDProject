@@ -1,7 +1,9 @@
 package com.example.cab302groupnametbdproject.model.passwords;
 
 
-// Password object
+/**
+ * Website object
+ */
 public class Password {
     private int id;
     private int user_id; // represents a FK for associated User

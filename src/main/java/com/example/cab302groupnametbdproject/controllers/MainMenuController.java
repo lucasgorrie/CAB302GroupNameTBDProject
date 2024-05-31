@@ -1,6 +1,6 @@
 package com.example.cab302groupnametbdproject.controllers;
 
-import com.example.cab302groupnametbdproject.HelloApplication;
+import com.example.cab302groupnametbdproject.PasswordMangerMain;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +18,10 @@ import java.util.ResourceBundle;
 import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
 
 
-public class MainInterfaceController implements Initializable {
+/**
+ * Controller for main menu
+ */
+public class MainMenuController implements Initializable {
     public Button associateWebsitesButton;
     public Button childAccountsButton;
     public Button childCreateButton;
@@ -37,34 +40,17 @@ public class MainInterfaceController implements Initializable {
         userbutton.setText(loggedInUser.getUsername());
     }
 
-    // Navigate to user info page
+    /**
+     * Button to redirect to user page
+     */
     @FXML
     protected void onUserButtonClick() throws IOException {
         Stage stage = (Stage) userbutton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("user-info.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("user-info-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
 
-    // Add password button method
-    @FXML
-    protected void onAddPasswordClick() throws IOException {
-        Stage stage = (Stage) addPasswordButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("add-password-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-
-    // Create child button method
-    public void onChildCreateButtonClick(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) childCreateButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("create-child-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-
-
-    // Back button
     public static class BackButton extends Button {
         public BackButton(BorderPane mainLayout, Pane mainContent) {
             super("Back");
@@ -74,44 +60,70 @@ public class MainInterfaceController implements Initializable {
             BorderPane.setAlignment(this, Pos.TOP_LEFT);
         }
     }
-
-
-    // Sign out button method
+    /**
+     * Button to sign out user
+     */
     @FXML
     private void onSignOutButtonClick() throws IOException {
         loggedInUser = null;
         Stage stage = (Stage) signOutButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
 
+    /**
+     * Button to redirect to add password page
+     */
+    @FXML
+    protected void onAddPasswordClick() throws IOException {
+        Stage stage = (Stage) addPasswordButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("add-password-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
 
-    // Associated websites table method
+    /**
+     * Button to redirect to create child account page
+     */
+    public void onChildCreateButtonClick(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) childCreateButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("create-child-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
+
+    /**
+     * Button to redirect to associated websites page
+     */
     @FXML
     private void onAssociatedWebsitesClick() throws IOException {
         Stage stage = (Stage) associateWebsitesButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-datatable.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("associated-websites-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
 
 
-    // About button method
+    /**
+     * Button to redirect to about page
+     */
     @FXML
     private void onAboutButtonClick() throws IOException {
         Stage stage = (Stage) aboutbutton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("about-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("about-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
 
 
-    // Child accounts button method
+    /**
+     * Button to redirect to associated child accounts page
+     */
     @FXML
     private void onChildAccountsButtonClick() throws IOException {
         Stage stage = (Stage) childAccountsButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("childaccount-datatable.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("child-accounts-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }

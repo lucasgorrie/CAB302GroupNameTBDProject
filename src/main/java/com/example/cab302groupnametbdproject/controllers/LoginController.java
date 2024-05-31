@@ -1,6 +1,6 @@
 package com.example.cab302groupnametbdproject.controllers;
 
-import com.example.cab302groupnametbdproject.HelloApplication;
+import com.example.cab302groupnametbdproject.PasswordMangerMain;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.SqliteAssociatedWebsiteDAO;
 import com.example.cab302groupnametbdproject.model.passwords.SqlitePasswordDAO;
 import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
@@ -17,6 +17,9 @@ import org.apache.commons.codec.digest.DigestUtils;
 import java.io.IOException;
 
 
+/**
+ * Controller for login page
+ */
 public class LoginController {
 
     @FXML
@@ -31,10 +34,11 @@ public class LoginController {
     private TextField password;
     public static User loggedInUser;
 
-    // Constructor
     private UserDAO userDAO;
     private com.example.cab302groupnametbdproject.model.associatedWebsites.AssociatedWebsiteDAO AssociatedWebsiteDAO;
     private com.example.cab302groupnametbdproject.model.passwords.PasswordDAO PasswordDAO;
+
+    // Constructor
     public LoginController(){
         userDAO = new SqliteUserDAO();
         AssociatedWebsiteDAO = new SqliteAssociatedWebsiteDAO();
@@ -42,16 +46,20 @@ public class LoginController {
     }
 
 
-    // Button to take user to signup view when hitting create user button
+    /**
+     * Redirects user to create account page
+     */
     @FXML
     protected void onCreateUserButtonClick() throws IOException {
         Stage stage = (Stage) createUserButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("create-user-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("create-user-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
 
-    // Login button method
+    /**
+     * Button when user logs in. Check that all fields are filled and validates that entered info matches an account in the database.
+     */
     @FXML
     protected void onLoginButtonClick() throws IOException {
         String usernameInput = username.getText();
@@ -69,9 +77,9 @@ public class LoginController {
                     Stage stage = (Stage) loginButton.getScene().getWindow();
                     FXMLLoader fxmlLoader;
                     if (userQuery.getUserType().equals("PARENT")) {
-                        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+                        fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("main-menu-view.fxml"));
                     } else {
-                        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("child-interface-view.fxml"));
+                        fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("child-mainmenu-view.fxml"));
                     }
                     // Set logged in User
                     loggedInUser = userQuery;

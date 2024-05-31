@@ -13,5 +13,7 @@ module com.example.cab302groupnametbdproject {
     opens com.example.cab302groupnametbdproject.model to javafx.fxml;
     exports com.example.cab302groupnametbdproject;
     opens com.example.cab302groupnametbdproject to javafx.fxml;
+    exports com.example.cab302groupnametbdproject.model.tables;
+    opens com.example.cab302groupnametbdproject.model.tables to javafx.fxml;
 
 }

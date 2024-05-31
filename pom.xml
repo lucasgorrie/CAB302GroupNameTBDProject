@@ -109,7 +109,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.example.cab302groupnametbdproject/com.example.cab302groupnametbdproject.HelloApplication
+                                com.example.cab302groupnametbdproject/com.example.cab302groupnametbdproject.PasswordMangerMain
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

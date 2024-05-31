@@ -1,7 +1,9 @@
 package com.example.cab302groupnametbdproject.model.associatedWebsites;
 
 
-// Website object
+/**
+ * Website object
+ */
 public class Website {
     private int id;
     private String URL;

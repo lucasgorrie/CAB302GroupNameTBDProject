@@ -1,6 +1,6 @@
 package com.example.cab302groupnametbdproject.controllers;
 
-import com.example.cab302groupnametbdproject.HelloApplication;
+import com.example.cab302groupnametbdproject.PasswordMangerMain;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,6 +16,9 @@ import java.util.regex.Pattern;
 import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
 
 
+/**
+ * Controller for update password page
+ */
 public class UpdatePasswordController {
 
     public Label signupInfo;
@@ -27,27 +30,36 @@ public class UpdatePasswordController {
     private TextField password;
     @FXML
     private TextField repeatPassword;
+
+    //Regex to validate info
     private final Pattern VALID_PASSWORD_REGEX =
             Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[\\\\!\"#$%&'()*+,-./:;<=>?@\\]\\[^_`{|}~])(?=\\S+$).{8,}$");
 
 
-    // Check that string arg matches password regex
+    /**
+     * Check that string arg matches password regex
+     * @return True if valid, false if not
+     */
     private boolean validatePassword(String password_string){
         Matcher matcher = VALID_PASSWORD_REGEX.matcher(password_string);
         return matcher.matches();
     }
 
 
-    // Button to take the user back to the login page from the signup page
+    /**
+     * Redirects back to user page
+     */
     @FXML
     protected void onBackToInfoClick() throws IOException {
         Stage stage = (Stage) backToInfoButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("user-info.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("user-info-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
 
-    // Update password button method
+    /**
+     * Validates password and updates in the database
+     */
     @FXML
     protected void updatePasswordClick() throws IOException {
         SqliteUserDAO table = new SqliteUserDAO(); // DAO instantiated here rather than in constructor

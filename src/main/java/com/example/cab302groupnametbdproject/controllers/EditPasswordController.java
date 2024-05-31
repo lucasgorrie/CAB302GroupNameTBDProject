@@ -1,6 +1,6 @@
 package com.example.cab302groupnametbdproject.controllers;
 
-import com.example.cab302groupnametbdproject.HelloApplication;
+import com.example.cab302groupnametbdproject.PasswordMangerMain;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.SqliteAssociatedWebsiteDAO;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.Website;
 import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
@@ -19,9 +19,12 @@ import java.util.ResourceBundle;
 import com.example.cab302groupnametbdproject.model.passwords.SqlitePasswordDAO;
 import com.example.cab302groupnametbdproject.model.passwords.Encryption;
 import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
-import static com.example.cab302groupnametbdproject.controllers.MainTableController.passwordEditing;
+import static com.example.cab302groupnametbdproject.controllers.AssociatedWebsitesController.passwordEditing;
 
 
+/**
+ * Controller for edit password page
+ */
 public class EditPasswordController implements Initializable {
     @FXML
     public Label Title;
@@ -35,10 +38,11 @@ public class EditPasswordController implements Initializable {
     private Label infoLabel;
 
 
-    // Constructor
     private UserDAO userDAO;
     private com.example.cab302groupnametbdproject.model.associatedWebsites.AssociatedWebsiteDAO AssociatedWebsiteDAO;
     private com.example.cab302groupnametbdproject.model.passwords.PasswordDAO PasswordDAO;
+
+    // Constructor
     public EditPasswordController(){
         userDAO = new SqliteUserDAO();
         AssociatedWebsiteDAO = new SqliteAssociatedWebsiteDAO();
@@ -56,27 +60,33 @@ public class EditPasswordController implements Initializable {
         Title.setText(title_text);
     }
 
-    // Navigate to user info page
+    /**
+     * Button to redirect to user page
+     */
     @FXML
     protected void onUserButtonClick() throws IOException {
         Stage stage = (Stage) userbutton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("user-info.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("user-info-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
 
 
-    // Back button method
+    /**
+     * Button to redirect back to home page
+     */
     @FXML
     protected void onBackToMenuClick() throws IOException {
         Stage stage = (Stage) editPasswordButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-datatable.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("associated-websites-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
 
 
-    // Edit password button method
+    /**
+     * Takes info from password textfield and updates password in the database
+     */
     @FXML
     protected void onEditPasswordClick() throws IOException {
         String URLInput = AssociatedWebsiteDAO.getWebsite(passwordEditing.getWebsite_id()).getURL();
@@ -90,7 +100,9 @@ public class EditPasswordController implements Initializable {
     }
 
 
-    // Password generation button method
+    /**
+     * Generates a random, secure password and updates it in the database
+     */
     @FXML
     protected void onGeneratePasswordClick() throws IOException {
         String URLInput = AssociatedWebsiteDAO.getWebsite(passwordEditing.getWebsite_id()).getURL();
@@ -112,7 +124,11 @@ public class EditPasswordController implements Initializable {
     }
 
 
-    // Edit password functionality
+    /**
+     * Method called when updating password in the DB. Uses user key to encrypt given password. Also adds URL to associated websites if not already there
+     * @param addingPassword password to be added to DB
+     * @param URL URL that password is to be associated with
+     */
     private void editPassword(String addingPassword, String URL) {
         Website website = AssociatedWebsiteDAO.getWebsiteFromURL(URL);
         if (website == null) {

@@ -1,6 +1,6 @@
 package com.example.cab302groupnametbdproject.controllers;
 
-import com.example.cab302groupnametbdproject.HelloApplication;
+import com.example.cab302groupnametbdproject.PasswordMangerMain;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.SqliteAssociatedWebsiteDAO;
 import com.example.cab302groupnametbdproject.model.passwords.Password;
 import com.example.cab302groupnametbdproject.model.passwords.SqlitePasswordDAO;
@@ -22,6 +22,9 @@ import java.util.ResourceBundle;
 import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
 
 
+/**
+ * Controller for user info page
+ */
 public class UserInfoController implements Initializable {
 
     @FXML
@@ -80,6 +83,26 @@ public class UserInfoController implements Initializable {
 
     }
 
+    /**
+     * Button to redirect user back to main menu
+     */
+    @FXML
+    protected void onBackToMenuClick() throws IOException {
+        Stage stage = (Stage) backToMenuButton.getScene().getWindow();
+        FXMLLoader fxmlLoader;
+        if (LoginController.loggedInUser.getUserType().equals("PARENT")) {
+            fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("main-menu-view.fxml"));
+        } else {
+            fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("child-mainmenu-view.fxml"));
+        }
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
+
+    /**
+     * Finds total number of associations for given user
+     * @return number of association
+     */
     public int TotalAssociations(int user_id){
         List<Password> allPass = PasswordDAO.getAllPasswords();
         int association_count = 0;
@@ -91,6 +114,10 @@ public class UserInfoController implements Initializable {
         return association_count;
     }
 
+    /**
+     * Finds total number of child accounts for given user
+     * @return number of child accounts
+     */
     public int TotalChildAccounts(int user_id){
         List<User> allUser = userDAO.getAllUsers();
         int child_count = 0;
@@ -102,36 +129,26 @@ public class UserInfoController implements Initializable {
         return child_count;
     }
 
-    // Back button method
-    @FXML
-    protected void onBackToMenuClick() throws IOException {
-        Stage stage = (Stage) backToMenuButton.getScene().getWindow();
-        FXMLLoader fxmlLoader;
-        if (LoginController.loggedInUser.getUserType().equals("PARENT")) {
-            fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        } else {
-            fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("child-interface-view.fxml"));
-        }
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-
-    // Change details button method
+    /**
+     * Button to redirect to update details page
+     */
     @FXML
     protected void changeDetailsButtonClick() throws IOException {
         Stage stage = (Stage) changedetailsbutton.getScene().getWindow();
         FXMLLoader fxmlLoader;
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("update-details-view.fxml"));
+        fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("update-details-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
 
-    // Change password button method
+    /**
+     * Button to redirect to update password page
+     */
     @FXML
     protected void changePasswordButtonClick() throws IOException {
         Stage stage = (Stage) backToMenuButton.getScene().getWindow();
         FXMLLoader fxmlLoader;
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("update-password-view.fxml"));
+        fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("update-password-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }

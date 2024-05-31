@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-// Handles DAO and CRUD
+/**
+ * Handles DAO and CRUD
+ */
 public class SqliteAssociatedWebsiteDAO implements AssociatedWebsiteDAO {
     private Connection connection;
 

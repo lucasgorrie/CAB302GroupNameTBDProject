@@ -1,6 +1,6 @@
 package com.example.cab302groupnametbdproject.controllers;
 
-import com.example.cab302groupnametbdproject.HelloApplication;
+import com.example.cab302groupnametbdproject.PasswordMangerMain;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,6 +17,9 @@ import java.util.regex.Pattern;
 import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
 
 
+/**
+ * Controller for creating child account page
+ */
 public class CreateChildController {
 
     public Label signupInfo;
@@ -34,6 +37,8 @@ public class CreateChildController {
     private TextField password;
     @FXML
     private TextField repeatPassword;
+
+    //Regex to validate info
     private final int MIN_USERNAME_CHARACTERS = 6;
     private final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
@@ -41,31 +46,40 @@ public class CreateChildController {
             Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[\\\\!\"#$%&'()*+,-./:;<=>?@\\]\\[^_`{|}~])(?=\\S+$).{8,}$");
 
 
-    // Check that string arg matches email regex
+    /**
+     * Check that string arg matches email regex
+     * @return True if valid, false if not
+     */
     private boolean validateEmail(String email_string){
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email_string);
         return matcher.matches();
     }
 
-
-    // Check that string arg matches password regex
+    /**
+     * Check that string arg matches password regex
+     * @return True if valid, false if not
+     */
     private boolean validatePassword(String password_string){
         Matcher matcher = VALID_PASSWORD_REGEX.matcher(password_string);
         return matcher.matches();
     }
 
 
-    //button to take the user back to the login page from the signup page
+    /**
+     * Button to redirect user back to home page
+     */
     @FXML
     protected void onBackToMenuClick() throws IOException {
         Stage stage = (Stage) backToMenuButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("main-menu-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
 
 
-    // Create child account button method
+    /**
+     * Method called when create child account button is clicked. Takes all entered data, ensures they are valid, then adds child account to the database. Salts and hashes passwords.
+     */
     @FXML
     protected void createChildClick() throws IOException {
         String user_type = "CHILD";

@@ -1,6 +1,6 @@
 package com.example.cab302groupnametbdproject.controllers;
 
-import com.example.cab302groupnametbdproject.HelloApplication;
+import com.example.cab302groupnametbdproject.PasswordMangerMain;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,6 +14,9 @@ import java.util.ResourceBundle;
 import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
 
 
+/**
+ * Controller for about page
+ */
 public class AboutViewController implements Initializable {
 
     @FXML
@@ -31,24 +34,28 @@ public class AboutViewController implements Initializable {
         userbutton.setText(loggedInUser.getUsername());
     }
 
-    // Navigate to user info page
+    /**
+     * Redirects to user info page
+     */
     @FXML
     protected void onUserButtonClick() throws IOException {
         Stage stage = (Stage) userbutton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("user-info.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("user-info-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
 
-    // Back button method
+    /**
+     * Redirects to home page
+     */
     @FXML
     protected void BackButton() throws IOException {
         Stage stage = (Stage) backbutton.getScene().getWindow();
         FXMLLoader fxmlLoader;
         if (LoginController.loggedInUser.getUserType().equals("PARENT")) {
-            fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+            fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("main-menu-view.fxml"));
         } else {
-            fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("child-interface-view.fxml"));
+            fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("child-mainmenu-view.fxml"));
         }
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);

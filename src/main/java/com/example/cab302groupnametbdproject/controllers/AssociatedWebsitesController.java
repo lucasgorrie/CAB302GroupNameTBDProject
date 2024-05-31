@@ -1,7 +1,7 @@
 package com.example.cab302groupnametbdproject.controllers;
 
-import com.example.cab302groupnametbdproject.HelloApplication;
-import com.example.cab302groupnametbdproject.model.MainTable;
+import com.example.cab302groupnametbdproject.PasswordMangerMain;
+import com.example.cab302groupnametbdproject.model.tables.MainTable;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.SqliteAssociatedWebsiteDAO;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.Website;
 import com.example.cab302groupnametbdproject.model.passwords.Password;
@@ -28,7 +28,10 @@ import java.util.ResourceBundle;
 import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
 
 
-public class MainTableController implements Initializable {
+/**
+ * Controller for associated websites page
+ */
+public class AssociatedWebsitesController implements Initializable {
         @FXML
         private TableColumn<MainTable, String> urllink;
         @FXML
@@ -45,27 +48,49 @@ public class MainTableController implements Initializable {
         private Button userbutton;
         // Global password object for editing purposes
         public static Password passwordEditing;
-
-        // Constructor
         private UserDAO userDAO;
         private com.example.cab302groupnametbdproject.model.associatedWebsites.AssociatedWebsiteDAO AssociatedWebsiteDAO;
         private com.example.cab302groupnametbdproject.model.passwords.PasswordDAO PasswordDAO;
-        public MainTableController() {
+
+
+        // Constructor
+        public AssociatedWebsitesController() {
                 userDAO = new SqliteUserDAO();
                 AssociatedWebsiteDAO = new SqliteAssociatedWebsiteDAO();
                 PasswordDAO = new SqlitePasswordDAO();
         }
 
-        // Navigate to user info page
+        /**
+         * Button to redirect to user page
+         */
         @FXML
         protected void onUserButtonClick() throws IOException {
                 Stage stage = (Stage) userbutton.getScene().getWindow();
-                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("user-info.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("user-info-view.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 stage.setScene(scene);
         }
 
-        // Remove password button method
+        /**
+         * Button to redirect back to main menu
+         */
+        @FXML
+        protected void onBackToMenuClick() throws IOException {
+                Stage stage = (Stage) backToMenuButton.getScene().getWindow();
+                FXMLLoader fxmlLoader;
+                if (LoginController.loggedInUser.getUserType().equals("PARENT")) {
+                        fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("main-menu-view.fxml"));
+                } else {
+                        fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("child-mainmenu-view.fxml"));
+                }
+                Scene scene = new Scene(fxmlLoader.load());
+                stage.setScene(scene);
+        }
+
+        /**
+         * Button to remove password from database
+         * @param password Password to be removed
+         */
         private void onRemoveButtonClick(Password password) throws IOException {
                 String delete_URL = AssociatedWebsiteDAO.getWebsite(password.getWebsite_id()).getURL();
 
@@ -80,14 +105,17 @@ public class MainTableController implements Initializable {
 
                         // Re-render page
                         Stage stage = (Stage) backToMenuButton.getScene().getWindow();
-                        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-datatable.fxml"));
+                        FXMLLoader fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("associated-websites-view.fxml"));
                         Scene scene = new Scene(fxmlLoader.load());
                         stage.setScene(scene);
                 }
         }
 
 
-        // Copy password button method
+        /**
+         * Button to copy password to clipboard from database
+         * @param password Password to be copied
+         */
         private void onCopyButtonClick(Password password) throws IOException {
                 String decryptedPassword;
                 if (userDAO.getUser(password.getUser_id()).getId() != loggedInUser.getId()) {
@@ -103,33 +131,22 @@ public class MainTableController implements Initializable {
         }
 
 
-        // Edit password button method
+        /**
+         * Redirects user to password edit page
+         * @param password Password to be edited
+         */
         private void onEditButtonClick(Password password) throws IOException {
                 passwordEditing = password; // Pass obj to be edited
                 Stage stage = (Stage) backToMenuButton.getScene().getWindow();
                 FXMLLoader fxmlLoader;
-                fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("edit-password-view.fxml"));
+                fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("edit-password-view.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 stage.setScene(scene);
         }
 
-
-        // Back button method
-        @FXML
-        protected void onBackToMenuClick() throws IOException {
-                Stage stage = (Stage) backToMenuButton.getScene().getWindow();
-                FXMLLoader fxmlLoader;
-                if (LoginController.loggedInUser.getUserType().equals("PARENT")) {
-                        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-                } else {
-                        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("child-interface-view.fxml"));
-                }
-                Scene scene = new Scene(fxmlLoader.load());
-                stage.setScene(scene);
-        }
-
-
-        // Init
+        /**
+         * Initializes table and calls populateTable method to populate the password table
+         */
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
                 userbutton.setText(loggedInUser.getUsername());
@@ -162,7 +179,9 @@ public class MainTableController implements Initializable {
         }
 
 
-        // Add rows to main data table
+        /**
+         * Populates table with decrypted password and their associated websties from database. This includes associated child passwords.
+         */
         public void populateTable() {
 
                 // Get all passwords

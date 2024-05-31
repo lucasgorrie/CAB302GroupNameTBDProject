@@ -1,7 +1,7 @@
 package com.example.cab302groupnametbdproject.controllers;
 
-import com.example.cab302groupnametbdproject.model.ChildTable;
-import com.example.cab302groupnametbdproject.HelloApplication;
+import com.example.cab302groupnametbdproject.model.tables.ChildTable;
+import com.example.cab302groupnametbdproject.PasswordMangerMain;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.SqliteAssociatedWebsiteDAO;
 import com.example.cab302groupnametbdproject.model.passwords.Password;
 import com.example.cab302groupnametbdproject.model.passwords.SqlitePasswordDAO;
@@ -24,6 +24,9 @@ import java.util.ResourceBundle;
 import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
 
 
+/**
+ * Controller for child table page
+ */
 public class ChildTableController implements Initializable {
 
     @FXML
@@ -49,39 +52,6 @@ public class ChildTableController implements Initializable {
         AssociatedWebsiteDAO = new SqliteAssociatedWebsiteDAO();
         PasswordDAO = new SqlitePasswordDAO();
     }
-
-    // Navigate to user info page
-    @FXML
-    protected void onUserButtonClick() throws IOException {
-        Stage stage = (Stage) userbutton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("user-info.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-
-
-    // Returns the total number of associated websites for a particular user based on an ID arg
-    public int TotalAssociations(int user_id){
-        List<Password> allPass = PasswordDAO.getAllPasswords();
-        int association_count = 0;
-        for (Password pass : allPass) {
-            if (pass.getUser_id() == user_id) {
-                association_count++;
-            }
-        }
-        return association_count;
-    }
-
-    // Back to menu button method
-    @FXML
-    protected void onBackToMenuClick() throws IOException {
-        Stage stage = (Stage) backToMenuButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-
-    // Init
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userbutton.setText(loggedInUser.getUsername());
@@ -97,7 +67,46 @@ public class ChildTableController implements Initializable {
         populateTable();
     }
 
-    // Add rows to table
+    /**
+     * Redirects to user page
+     */
+    @FXML
+    protected void onUserButtonClick() throws IOException {
+        Stage stage = (Stage) userbutton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("user-info-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
+
+    /**
+     * Redirects back to home page
+     */
+    @FXML
+    protected void onBackToMenuClick() throws IOException {
+        Stage stage = (Stage) backToMenuButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("main-menu-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
+
+    /**
+     * Returns the total number of associated websites for a particular user based on an ID arg
+     */
+    public int TotalAssociations(int user_id){
+        List<Password> allPass = PasswordDAO.getAllPasswords();
+        int association_count = 0;
+        for (Password pass : allPass) {
+            if (pass.getUser_id() == user_id) {
+                association_count++;
+            }
+        }
+        return association_count;
+    }
+
+
+    /**
+     * Adds child accounts to the table rendered on the page
+     */
     public void populateTable() {
 
         // Get all passwords

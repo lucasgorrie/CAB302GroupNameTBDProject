@@ -1,7 +1,9 @@
 package com.example.cab302groupnametbdproject.model.users;
 
 
-// User object
+/**
+ * User object
+ */
 public class User {
     private int id;
     private String user_type; // <-- PARENT or CHILD

@@ -1,6 +1,6 @@
 package com.example.cab302groupnametbdproject.controllers;
 
-import com.example.cab302groupnametbdproject.HelloApplication;
+import com.example.cab302groupnametbdproject.PasswordMangerMain;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,6 +16,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
+/**
+ * Controller for create user page
+ */
 public class CreateUserController {
 
     public Label signupInfo;
@@ -42,30 +45,40 @@ public class CreateUserController {
             Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[\\\\!\"#$%&'()*+,-./:;<=>?@\\]\\[^_`{|}~])(?=\\S+$).{8,}$");
 
 
-    // Check that string arg matches email regex
+    /**
+     * Check that string arg matches email regex
+     * @return True if valid, false if not
+     */
     private boolean validateEmail(String email_string){
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email_string);
         return matcher.matches();
     }
 
 
-    // Check that string arg matches password regex
+    /**
+     * Check that string arg matches password regex
+     * @return True if valid, false if not
+     */
     private boolean validatePassword(String password_string){
         Matcher matcher = VALID_PASSWORD_REGEX.matcher(password_string);
         return matcher.matches();
     }
 
 
-    // Button to take the user back to the login page from the signup page
+    /**
+     * Button to redirect user back to home page
+     */
     @FXML
     protected void onBackToLoginClick() throws IOException {
         Stage stage = (Stage) backToLoginButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
 
-    // Create user button method
+    /**
+     * Method called when create child account button is clicked. Takes all entered data, ensures they are valid, then adds account to the database. Salts and hashes passwords.
+     */
     @FXML
     protected void createUserClick() throws IOException {
         SqliteUserDAO table = new SqliteUserDAO(); // DAO instantiated here rather than in constructor

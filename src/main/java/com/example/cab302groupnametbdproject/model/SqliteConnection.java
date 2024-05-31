@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-// Establishes a connection with the SQLite DB for DAOs
+/**
+ * Interface for Data Access Object and CRUD operations
+ */
 public class SqliteConnection {
     private static Connection instance = null;
 

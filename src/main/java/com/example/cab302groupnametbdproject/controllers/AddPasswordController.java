@@ -1,6 +1,6 @@
 package com.example.cab302groupnametbdproject.controllers;
 
-import com.example.cab302groupnametbdproject.HelloApplication;
+import com.example.cab302groupnametbdproject.PasswordMangerMain;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.SqliteAssociatedWebsiteDAO;
 import com.example.cab302groupnametbdproject.model.associatedWebsites.Website;
 import com.example.cab302groupnametbdproject.model.users.SqliteUserDAO;
@@ -22,6 +22,9 @@ import com.example.cab302groupnametbdproject.model.passwords.Encryption;
 import static com.example.cab302groupnametbdproject.controllers.LoginController.loggedInUser;
 
 
+/**
+ * Controller for adding password page
+ */
 public class AddPasswordController implements Initializable {
 
     @FXML
@@ -51,11 +54,13 @@ public class AddPasswordController implements Initializable {
         PasswordDAO = new SqlitePasswordDAO();
     }
 
-    // Navigate to user info page
+    /**
+     * Redirects to home page
+     */
     @FXML
     protected void onUserButtonClick() throws IOException {
         Stage stage = (Stage) userbutton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("user-info.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("user-info-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
@@ -67,16 +72,18 @@ public class AddPasswordController implements Initializable {
         Stage stage = (Stage) backToMenuButton.getScene().getWindow();
         FXMLLoader fxmlLoader;
         if (LoginController.loggedInUser.getUserType().equals("PARENT")) {
-            fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+            fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("main-menu-view.fxml"));
         } else {
-            fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("child-interface-view.fxml"));
+            fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("child-mainmenu-view.fxml"));
         }
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
 
 
-    // Add password button method
+    /**
+     * Takes info from password textfield and adds a new password from it
+     */
     @FXML
     protected void onAddPasswordClick() throws IOException {
         String passwordInput = password.getText();
@@ -90,7 +97,9 @@ public class AddPasswordController implements Initializable {
     }
 
 
-    // Password generation button method
+    /**
+     * Generates a random, secure password and adds it to the database
+     */
     @FXML
     protected void onGeneratePasswordClick() throws IOException {
         String URLInput = URL.getText();
@@ -112,7 +121,11 @@ public class AddPasswordController implements Initializable {
     }
 
 
-    // Use DAO to add new password
+    /**
+     * Method called when adding password to DB. Uses user key to encrypt given password. Also adds URL to associated websites if not already there
+     * @param addingPassword password to be added to DB
+     * @param URL URL that password is to be associated with
+     */
     private void newPassword(String addingPassword, String URL) {
         Website website = AssociatedWebsiteDAO.getWebsiteFromURL(URL);
         if (website == null) {

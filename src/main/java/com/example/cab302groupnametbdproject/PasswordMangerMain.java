@@ -9,12 +9,12 @@ import java.io.IOException;
 import java.util.Objects;
 
 
-public class HelloApplication extends Application {
+public class PasswordMangerMain extends Application {
 
     // Entry point
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PasswordMangerMain.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.getIcons().add(new Image("file:src/main/resources/com/example/cab302groupnametbdproject/images/logo.png"));
         stage.setTitle("Password Manager");

@@ -3,7 +3,9 @@ package com.example.cab302groupnametbdproject.model.users;
 import java.util.List;
 
 
-// Interface for Data Access Object and CRUD operations
+/**
+ * Interface for Data Access Object and CRUD operations
+ */
 public interface UserDAO {
 
     /**

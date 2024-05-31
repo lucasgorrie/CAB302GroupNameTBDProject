@@ -3,7 +3,9 @@ package com.example.cab302groupnametbdproject.model.associatedWebsites;
 import java.util.List;
 
 
-// Interface for Data Access Object and CRUD operations
+/**
+ * Interface for Data Access Object and CRUD operations
+ */
 public interface AssociatedWebsiteDAO {
 
     /**

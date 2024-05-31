@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-// Handles DAO and CRUD
+/**
+ * Handles DAO and CRUD
+ */
 public class SqliteUserDAO implements UserDAO {
     private Connection connection;
 
